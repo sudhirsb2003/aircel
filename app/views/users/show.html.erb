@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Employee Photo:</strong>
+  <%= image_tag @user.photo.url(:medium) %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @user.address %>
+</p>
+
+<p>
+  <strong>Employee uid:</strong>
+  <%= @user.employee_uid %>
+</p>
+
+
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> 

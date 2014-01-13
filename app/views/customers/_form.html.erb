@@ -1,0 +1,75 @@
+<%= form_for(@customer) do |f| %>
+  <% if @customer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+      <% @customer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div class="row">
+  <div class="field">
+    <%= f.label :application_ref_number %><br>
+    <% if @customer.blank? %>
+      <b><%= f.text_field :application_ref_number, :class=>"form-control", :value=> @final_no %></b>
+    <% else %>
+      <b><%= f.text_field :application_ref_number, :class=>"form-control", :value=> @final_no %></b>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :ageny_name %><br>
+    <%= f.text_field :ageny_name, :class=>"form-control" , :value => "Scorpeo Private Limited" %>
+  </div></div>
+ <div class="row">
+  <div class="field">
+    <%= f.label :applicant_name %><br>
+    <%= f.text_field :applicant_name, :class=>"form-control" %>
+  </div></div>
+  <div class="row">
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_area :address, :class=>"form-control" %>
+  </div></div>
+  <div class="row">
+  <div class="field">
+    <%= f.label :landmark %><br>
+    <%= f.text_field :landmark, :class=>"form-control" %>
+  </div>
+    <div class="field">
+    <%= f.label :contact_number %><br>
+    <%= f.text_field :contact_number, :class=>"form-control" %>
+  </div>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_birth %><br>
+    <%= f.date_select :date_of_birth, :class=>"form-control", :start_year => 1990,:prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year' }  %>
+  </div>
+ <div class="row">
+  <!--<div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status, :class=>"form-control" %>
+  </div>-->
+  <div class="field">
+    <%= f.label :country %><br>
+    <b><%= f.text_field :coountry, :class=>"form-control", :value => "India" %></b>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br>
+    <%= f.text_field :state, :class=>"form-control", :value => "Maharashtra" %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city, :class=>"form-control", :value => "Mumbai" %>
+  </div>
+    <div class="field">
+    <%= f.label :pincode %><br>
+    <%= f.text_field :pincode, :class=>"form-control" %>
+  </div></div>
+  <br><br>
+  <div class="actions">
+    <%= f.submit :class=>"btn btn-default" %> <%= link_to 'Back', customers_path, :class=>"btn btn-info" %>
+  </div>
+<% end %>

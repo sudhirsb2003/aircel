@@ -1,0 +1,1 @@
+json.extract! @customer, :id, :application_ref_number, :ageny_name, :applicant_name, :address, :landmark, :date_of_birth, :pincode, :contact_number, :status, :coountry, :state, :city, :created_at, :updated_at

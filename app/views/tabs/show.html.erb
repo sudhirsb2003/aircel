@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tab.name %>
+</p>
+
+<p>
+  <strong>Tab code:</strong>
+  <%= @tab.tab_code %>
+</p>
+
+<p>
+  <strong>Pincode:</strong>
+  <%= @tab.pincode %>
+</p>
+
+<p>
+  <strong>Mac address:</strong>
+  <%= @tab.mac_address %>
+</p>
+
+<%= link_to 'Edit', edit_tab_path(@tab) %> |
+<%= link_to 'Back', tabs_path %>

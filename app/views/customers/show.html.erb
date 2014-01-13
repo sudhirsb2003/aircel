@@ -1,0 +1,64 @@
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %><br><br>
+<table class="table">
+<tr><td>
+  <strong>Application ref number:</strong>
+  <%= @customer.application_ref_number %>
+</td></tr>
+
+<tr><td>
+  <strong>Ageny name:</strong>
+  <%= @customer.ageny_name %>
+</td></tr>
+
+<tr><td>
+  <strong>Applicant name:</strong>
+  <%= @customer.applicant_name %>
+</td></tr>
+
+<tr><td>
+  <strong>Address:</strong>
+  <%= @customer.address %>
+</td><tr>
+
+<tr><td>
+  <strong>Landmark:</strong>
+  <%= @customer.landmark %>
+</td><tr>
+
+<tr><td>
+  <strong>Date of birth:</strong>
+  <%= @customer.date_of_birth %>
+</td><tr>
+
+<tr><td>
+  <strong>Pincode:</strong>
+  <%= @customer.pincode %>
+</td><tr>
+
+<tr><td>
+  <strong>Contact number:</strong>
+  <%= @customer.contact_number %>
+</td><tr>
+
+<tr><td>
+  <strong>Status:</strong>
+  <%= @customer.status %>
+</td><tr>
+
+<tr><td>
+  <strong>Coountry:</strong>
+  <%= @customer.coountry %>
+</td><tr>
+
+<tr><td>
+  <strong>State:</strong>
+  <%= @customer.state %>
+</td><tr>
+
+<tr><td>
+  <strong>City:</strong>
+  <%= @customer.city %>
+</td><tr>
+</table>

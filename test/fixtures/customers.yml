@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  application_ref_number: MyString
+  ageny_name: MyString
+  applicant_name: MyString
+  address: MyText
+  landmark: MyString
+  date_of_birth: 2014-01-12
+  pincode: MyString
+  contact_number: MyString
+  status: MyString
+  coountry: MyString
+  state: MyString
+  city: MyString
+
+two:
+  application_ref_number: MyString
+  ageny_name: MyString
+  applicant_name: MyString
+  address: MyText
+  landmark: MyString
+  date_of_birth: 2014-01-12
+  pincode: MyString
+  contact_number: MyString
+  status: MyString
+  coountry: MyString
+  state: MyString
+  city: MyString

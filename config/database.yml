@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: airecel_development
+  pool: 5
+  username: postgres
+  password: safew
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: airecel_test
+  pool: 5
+  username: postgres
+  password: safew
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: airecel_production
+  pool: 5
+  username: postgres
+  password: safew

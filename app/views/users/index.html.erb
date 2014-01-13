@@ -1,0 +1,29 @@
+<h1>All Users</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Employee uid</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |tab_user| %>
+      <tr>
+        <td><%= tab_user.name %></td>
+        <td><%= tab_user.address %></td>
+        <td><%= tab_user.employee_uid %></td>
+        <td><%= link_to 'Show', tab_user %></td>
+        <% if current_user %>
+        <td><%= link_to 'Edit', edit_user_path(tab_user) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tab user', new_user_path %>
