@@ -1,0 +1,59 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  customer_id: 1
+  tab_id: 1
+  user_id: 1
+  landmark: MyString
+  ease_of_location: MyString
+  telephone_number: MyString
+  mobile_number: MyString
+  person_contacted: MyString
+  relationship_with_applicant: MyString
+  years_at_current_address: 1
+  expected_monthly_usage: 1.5
+  bill_payer: MyString
+  bill_payer_occupation: MyString
+  residence_type: MyString
+  locality: MyString
+  residence_status: MyString
+  age: MyString
+  customer_attitude: MyString
+  credit_card: MyString
+  pan_card: MyString
+  pancard_number: MyString
+  address_proof_sighted: MyString
+  asset_seen: MyString
+  vihicle_owned: MyString
+  final_recomendation: MyString
+  av_done_by: MyString
+  av_supervisor_name: MyString
+
+two:
+  customer_id: 1
+  tab_id: 1
+  user_id: 1
+  landmark: MyString
+  ease_of_location: MyString
+  telephone_number: MyString
+  mobile_number: MyString
+  person_contacted: MyString
+  relationship_with_applicant: MyString
+  years_at_current_address: 1
+  expected_monthly_usage: 1.5
+  bill_payer: MyString
+  bill_payer_occupation: MyString
+  residence_type: MyString
+  locality: MyString
+  residence_status: MyString
+  age: MyString
+  customer_attitude: MyString
+  credit_card: MyString
+  pan_card: MyString
+  pancard_number: MyString
+  address_proof_sighted: MyString
+  asset_seen: MyString
+  vihicle_owned: MyString
+  final_recomendation: MyString
+  av_done_by: MyString
+  av_supervisor_name: MyString

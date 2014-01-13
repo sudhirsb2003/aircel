@@ -1,0 +1,139 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name Of the Customer:</strong>
+  <%= @servey.customer.applicant_name %>
+</p>
+
+<p>
+  <strong>Name of the Tab User who made the Servey:</strong>
+  <%= @servey.tab.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @servey.user_id %>
+</p>
+
+<p>
+  <strong>Landmark:</strong>
+  <%= @servey.landmark %>
+</p>
+
+<p>
+  <strong>Ease of location:</strong>
+  <%= @servey.ease_of_location %>
+</p>
+
+<p>
+  <strong>Telephone number:</strong>
+  <%= @servey.telephone_number %>
+</p>
+
+<p>
+  <strong>Mobile number:</strong>
+  <%= @servey.mobile_number %>
+</p>
+
+<p>
+  <strong>Person contacted:</strong>
+  <%= @servey.person_contacted %>
+</p>
+
+<p>
+  <strong>Relationship with applicant:</strong>
+  <%= @servey.relationship_with_applicant %>
+</p>
+
+<p>
+  <strong>Years at current address:</strong>
+  <%= @servey.years_at_current_address %>
+</p>
+
+<p>
+  <strong>Expected monthly usage:</strong>
+  <%= @servey.expected_monthly_usage %>
+</p>
+
+<p>
+  <strong>Bill payer:</strong>
+  <%= @servey.bill_payer %>
+</p>
+
+<p>
+  <strong>Bill payer occupation:</strong>
+  <%= @servey.bill_payer_occupation %>
+</p>
+
+<p>
+  <strong>Residence type:</strong>
+  <%= @servey.residence_type %>
+</p>
+
+<p>
+  <strong>Locality:</strong>
+  <%= @servey.locality %>
+</p>
+
+<p>
+  <strong>Residence status:</strong>
+  <%= @servey.residence_status %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @servey.age %>
+</p>
+
+<p>
+  <strong>Customer attitude:</strong>
+  <%= @servey.customer_attitude %>
+</p>
+
+<p>
+  <strong>Credit card:</strong>
+  <%= @servey.credit_card %>
+</p>
+
+<p>
+  <strong>Pan card:</strong>
+  <%= @servey.pan_card %>
+</p>
+
+<p>
+  <strong>Pancard number:</strong>
+  <%= @servey.pancard_number %>
+</p>
+
+<p>
+  <strong>Address proof sighted:</strong>
+  <%= @servey.address_proof_sighted %>
+</p>
+
+<p>
+  <strong>Asset seen:</strong>
+  <%= @servey.asset_seen %>
+</p>
+
+<p>
+  <strong>Vihicle owned:</strong>
+  <%= @servey.vihicle_owned %>
+</p>
+
+<p>
+  <strong>Final recomendation:</strong>
+  <%= @servey.final_recomendation %>
+</p>
+
+<p>
+  <strong>Av done by:</strong>
+  <%= @servey.av_done_by %>
+</p>
+
+<p>
+  <strong>Av supervisor name:</strong>
+  <%= @servey.av_supervisor_name %>
+</p>
+
+<%= link_to 'Edit', edit_servey_path(@servey) %> |
+<%= link_to 'Back', serveys_path %>

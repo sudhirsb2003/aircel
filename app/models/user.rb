@@ -4,10 +4,8 @@ class User < ActiveRecord::Base
 	has_secure_password
 	validates :name ,presence: true , uniqueness: true
 	has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }#, :default_url => "/images/:style/missing.png"
-
-
-
-
+  belongs_to :tab
+  has_one :assignment
 
 
   def make_admin

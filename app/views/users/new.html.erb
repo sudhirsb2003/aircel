@@ -41,7 +41,40 @@
   <div class="field">
     <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation, :class=>"form-control" %>
-  </div><br><br>
+  </div>
+
+<%= f.label :roles %>
+<label class="checkbox">
+ <input id="user_roles" name="user[role_name]" type="checkbox" value="super_user" /> Super User
+</label>
+
+<label class="checkbox">
+ <input id="user_roles" name="user[role_name]" type="checkbox" value="tab_user" /> Tab User
+</label>
+
+<div style="display:none;">
+<label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Select a tab (if role is not super user) </label>
+ <%= f.collection_select :tab_id, Tab.all, :id, :name %>
+</div>
+</br>
+
+
+
+<script>
+$(".checkbox").click(function(){
+
+   $(this).next("div").toggle();
+   //alert('fooo ' + $(this).next("div").html());
+});
+</script>
+
+</div>
+</br>
+
+
+  <br><br>
+
+
 <div class="actions">
     <%= f.submit :class=>"btn btn-default" %>
   </div>

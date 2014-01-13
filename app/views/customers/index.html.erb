@@ -6,6 +6,7 @@
       <th>Applicant name</th>
       <th>Date of birth</th>
       <th>Contact number</th>
+      <th>Status</th>
       <th></th>
       <th></th>
       <th></th>
@@ -15,13 +16,11 @@
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
-        <td><%= customer.application_ref_number %></td>
-        <td><%= customer.applicant_name %></td>
+        <td><%= link_to customer.application_ref_number, customer %></td>
+        <td><%= link_to customer.applicant_name, customer %></td>
         <td><%= customer.date_of_birth %></td>
         <td><%= customer.contact_number %></td>
-        <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td> <span class="label label-info"><%= customer.status %></span></td>
       </tr>
     <% end %>
   </tbody>

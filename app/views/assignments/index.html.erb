@@ -1,0 +1,30 @@
+<table class ="table">
+  <thead>
+    <tr>
+      <th>Tab name</th>
+      <th>Customer name</th>
+      <th>Assigned By</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assignments.each do |assignment| %>
+      <tr>
+        <td><%= assignment.tab.name %></td>
+        <td><%= assignment.customer.applicant_name %></td>
+        <td><%= assignment.user.name %></td>
+        <td><%= assignment.customer.status %></td>
+        <td><%= link_to 'Show', assignment %></td>
+        <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
+        <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Assignment', new_assignment_path, :class=> "btn btn-info" %>

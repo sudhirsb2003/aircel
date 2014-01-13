@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140112053311) do
+ActiveRecord::Schema.define(version: 20140113104439) do
+
+  create_table "assignments", force: true do |t|
+    t.integer  "tab_id"
+    t.integer  "customer_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "customers", force: true do |t|
     t.string   "application_ref_number"
@@ -26,6 +34,39 @@ ActiveRecord::Schema.define(version: 20140112053311) do
     t.string   "coountry"
     t.string   "state"
     t.string   "city"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+  end
+
+  create_table "serveys", force: true do |t|
+    t.integer  "customer_id"
+    t.integer  "tab_id"
+    t.integer  "user_id"
+    t.string   "landmark"
+    t.string   "ease_of_location"
+    t.string   "telephone_number"
+    t.string   "mobile_number"
+    t.string   "person_contacted"
+    t.string   "relationship_with_applicant"
+    t.integer  "years_at_current_address"
+    t.float    "expected_monthly_usage"
+    t.string   "bill_payer"
+    t.string   "bill_payer_occupation"
+    t.string   "residence_type"
+    t.string   "locality"
+    t.string   "residence_status"
+    t.string   "age"
+    t.string   "customer_attitude"
+    t.string   "credit_card"
+    t.string   "pan_card"
+    t.string   "pancard_number"
+    t.string   "address_proof_sighted"
+    t.string   "asset_seen"
+    t.string   "vihicle_owned"
+    t.string   "final_recomendation"
+    t.string   "av_done_by"
+    t.string   "av_supervisor_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -51,6 +92,8 @@ ActiveRecord::Schema.define(version: 20140112053311) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string   "role_name"
+    t.integer  "tab_id"
   end
 
 end

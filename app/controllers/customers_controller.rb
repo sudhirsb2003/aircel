@@ -10,6 +10,7 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
+   @new_assignments = Assignment.new
   end
 
   # GET /customers/new
@@ -49,6 +50,20 @@ class CustomersController < ApplicationController
     end
   end
 
+  def accept
+   @customer = Customer.find(params[:customer_id])
+   logger.info "##############" + @customer.inspect
+   @customer.accept!
+     redirect_to @customer, notice: 'Customer was successfully updated.'
+  end
+
+
+  def reassign
+   @customer = Customer.find(params[:customer_id])
+   @customer.re_assign!
+     redirect_to @customer, notice: 'Customer was successfully updated.'
+  end
+
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
@@ -73,10 +88,16 @@ class CustomersController < ApplicationController
     end
   end
 
+  def assignments
+   @customer = Customer.find(params[:customer_id])
+  end
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
-      @customer = Customer.find(params[:id])
+      @customer = Customer.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

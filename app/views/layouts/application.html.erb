@@ -5,12 +5,11 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
   <%= csrf_meta_tags %>
-  <link href='http://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
 </head>
 <style>
  #header {margin:10px;height:50px;border-bottom:1px solid black;}
  #user {float:right;font-size: 25px;}
- .body_data {font-size:13px;font-weight:bold;margin:50px;font-family: 'Sansation', sans-serif;}
+ .body_data {font-size:12px;font-weight:bold;margin:50px;font-family: 'Sansation', sans-serif;}
  body { margin-top:100px;padding-bottom: 70px;font-family: 'Sansation', sans-serif; }
 </style>
 
@@ -20,7 +19,9 @@
   <% if logged_in? && current_user.admin?   %>
   <li><%= link_to 'Customers', customers_path %></li>
   <li><%= link_to 'tabs', tabs_path %></li>
-  <li><%= link_to "Completed survey", root_path  %></li>
+  <li><%= link_to "Add users", new_user_path  %></li>
+  <li><%= link_to "Assignments", assignments_path  %></li>
+  <li><%= link_to "Servey Detail", serveys_path  %></li>
   <% end %>
 </ul>
 

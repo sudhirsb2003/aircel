@@ -13,21 +13,21 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name , :class=>"form-control"%>
   </div>
   <div class="field">
     <%= f.label :tab_code %><br>
-    <%= f.text_field :tab_code %>
+    <%= f.text_field :tab_code , :class=>"form-control"%>
   </div>
   <div class="field">
     <%= f.label :pincode %><br>
-    <%= f.text_field :pincode %>
+    <%= f.text_field :pincode , :class=>"form-control"%>
   </div>
   <div class="field">
     <%= f.label :mac_address %><br>
-    <%= f.text_field :mac_address %>
+    <%= f.text_field :mac_address , :class=>"form-control"%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class=>"btn btn-success"%>
   </div>
 <% end %>

@@ -1,0 +1,206 @@
+<%= form_for(@servey) do |f| %>
+  <% if @servey.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@servey.errors.count, "error") %> prohibited this servey from being saved:</h2>
+
+      <ul>
+      <% @servey.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.hidden_field :customer_id, :value => params[:customer_id] %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :tab_id, :value => params[:tab_id] %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :user_id, :value => params[:user_id] %>
+  </div>
+
+<hr>
+  <p style="color:red"> C.A.F. Number : <u><%= (@id.created_at).to_date %>-<%= @id.application_ref_number %></u></p>
+
+  <div class="field">
+    <%= f.label :"landmark observed" %><br>
+    <%= f.text_field :landmark %>
+  </div>
+  <div class="field">
+    <%= f.label :ease_of_location %><br>
+    <%#= f.text_field :ease_of_location %>
+   <div class="controls">
+       Easy <input id="servey_address_confirmed" name="servey[ease_of_location]" type="radio" value="Easy" />
+       Difficult <input id="servey_address_confirmed" name="servey[ease_of_location]" type="radio" value="Difficult" />
+       untraceable <input id="servey_address_confirmed" name="servey[ease_of_location]" type="radio" value="Untraceable" />
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :telephone_number %><br>
+    <%= f.text_field :telephone_number %>
+  </div>
+  <div class="field">
+    <%= f.label :mobile_number %><br>
+    <%= f.text_field :mobile_number %>
+  </div>
+  <div class="field">
+    <%= f.label :person_contacted %><br>
+    <%= f.text_field :person_contacted %>
+  </div>
+  <div class="field">
+    <%= f.label :relationship_with_applicant %><br>
+    <%= f.text_field :relationship_with_applicant %>
+  </div>
+  <div class="field">
+    <%= f.label :years_at_current_address %><br>
+    <%= f.number_field :years_at_current_address %>
+  </div>
+  <div class="field">
+    <%= f.label :expected_monthly_usage %><br>
+    <%= f.text_field :expected_monthly_usage %>
+  </div><hr>
+  <div class="field">
+    <p><%= f.label :bill_payer %></p>
+    <%#= f.text_field :bill_payer %>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[bill_payer]" type="checkbox" value="self" /> Self
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[bill_payer]" type="checkbox" value="Brother/Sister" /> Brother/Sister
+      </label>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[bill_payer]" type="checkbox" value="Son/Daughter" /> Son/Daughter
+      </label>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[bill_payer]" type="checkbox" value="Father/Mother" /> Father/Mother
+      </label>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[bill_payer]" type="checkbox" value="Husband/Wife" /> Husband/Wife
+      </label>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[bill_payer]" type="checkbox" value="others" /> others
+      </label>
+  </div>
+<hr>
+  <div class="field">
+    <p><%= f.label :bill_payer_occupation %></p>
+    <%#= f.text_field :bill_payer_occupation %>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[bill_payer_occupation]" type="checkbox" value="self employed" /> self employed
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[bill_payer_occupation]" type="checkbox" value="Owned Business" /> Owned Business
+      </label>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[bill_payer_occupation]" type="checkbox" value="Senior Employee" /> Senior Employee
+      </label>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[bill_payer_occupation]" type="checkbox" value="Other Employed" /> Other Employed
+      </label>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[bill_payer_occupation]" type="checkbox" value="Unemployed" /> Unemployed
+      </label>
+
+  </div>
+  <div class="field">
+    <p><%= f.label :residence_type %></p>
+    <%#= f.text_field :residence_type %>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[residence_type]" type="checkbox" value="Bunglow" /> Bunglow
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[residence_type]" type="checkbox" value="Flat" /> Flat
+      </label>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[residence_type]" type="checkbox" value="Chawl" /> Chawl
+      </label>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :locality %></p>
+    <%#= f.text_field :locality %>
+      <label class="checkbox" for="checkbox1">
+         <input id="bill_payer" name="servey[locality]" type="checkbox" value="Up Middle Class" /> Up Middle Class
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[locality]" type="checkbox" value="Lower Middle Class" /> Lower Middle Class
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[locality]" type="checkbox" value="Slum" /> Slum
+      </label>
+
+
+
+  </div>
+  <div class="field">
+    <p><%= f.label :residence_status %></p>
+    <%= f.text_field :residence_status %>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[residence_status]" type="checkbox" value="Owned" /> Owned
+      </label>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[residence_status]" type="checkbox" value="Rented" /> Rented
+      </label>
+
+
+  </div>
+  <div class="field">
+    <%= f.label :age %><br>
+    <%= f.text_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :customer_attitude %><br>
+    <%= f.text_field :customer_attitude %>
+  </div>
+  <div class="field">
+    <%= f.label :credit_card %><br>
+    <%= f.text_field :credit_card %>
+  </div>
+  <div class="field">
+    <%= f.label :pan_card %><br>
+    <%= f.text_field :pan_card %>
+  </div>
+  <div class="field">
+    <%= f.label :pancard_number %><br>
+    <%= f.text_field :pancard_number %>
+  </div>
+  <div class="field">
+    <%= f.label :address_proof_sighted %><br>
+    <%= f.text_field :address_proof_sighted %>
+  </div>
+  <div class="field">
+    <%= f.label :asset_seen %><br>
+    <%= f.text_field :asset_seen %>
+  </div>
+  <div class="field">
+    <%= f.label :vihicle_owned %><br>
+    <%= f.text_field :vihicle_owned %>
+  </div>
+  <div class="field">
+    <%= f.label :final_recomendation %><br>
+    <%= f.text_field :final_recomendation %>
+  </div>
+  <div class="field">
+    <%= f.label :av_done_by %><br>
+    <%= f.text_field :av_done_by %>
+  </div>
+  <div class="field">
+    <%= f.label :av_supervisor_name %><br>
+    <%= f.text_field :av_supervisor_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

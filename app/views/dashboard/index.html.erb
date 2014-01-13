@@ -1,1 +1,19 @@
-<b> Please enter your dashbaord detail</b>
+
+<% if logged_in? && current_user.role_name == "tab_user" %>
+  <table class ="table table-condensed">
+  <% @tab_user_task.each do |tab_task| %>
+  <% if tab_task.customer.status == 'submitted' %>
+  <tr>
+   <td><%= tab_task.customer.id %><br>
+   <td><%= tab_task.customer.applicant_name %><br>
+   <small><%= tab_task.customer.address %></small></td>
+   <td><%= link_to "Start Servey", new_servey_path(:user_id => tab_task.user.id, :tab_id => tab_task.tab.id , :customer_id => tab_task.customer.id, ) %></td>
+   </tr>
+  <% end %>
+  <% end %>
+  </table>
+<% else %>
+<p> Todays Status </p>
+
+
+<% end %>

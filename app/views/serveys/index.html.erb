@@ -1,0 +1,78 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Tab Name</th>
+      <th>Assigned By</th>
+      <th>Landmark</th>
+      <th>Ease of location</th>
+      <th>Telephone number</th>
+      <th>Mobile number</th>
+      <th>Person contacted</th>
+      <th>Relationship with applicant</th>
+      <th>Years at current address</th>
+      <th>Expected monthly usage</th>
+      <th>Bill payer</th>
+      <th>Bill payer occupation</th>
+      <th>Residence type</th>
+      <th>Locality</th>
+      <th>Residence status</th>
+      <th>Age</th>
+      <th>Customer attitude</th>
+      <th>Credit card</th>
+      <th>Pan card</th>
+      <th>Pancard number</th>
+      <th>Address proof sighted</th>
+      <th>Asset seen</th>
+      <th>Vihicle owned</th>
+      <th>Final recomendation</th>
+      <th>Av done by</th>
+      <th>Av supervisor name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @serveys.each do |servey| %>
+      <tr>
+        <td><%= servey.customer.applicant_name %></td>
+        <td><%= servey.tab.name %></td>
+        <td><%= servey.user.name %></td>
+        <td><%= servey.landmark %></td>
+        <td><%= servey.ease_of_location %></td>
+        <td><%= servey.telephone_number %></td>
+        <td><%= servey.mobile_number %></td>
+        <td><%= servey.person_contacted %></td>
+        <td><%= servey.relationship_with_applicant %></td>
+        <td><%= servey.years_at_current_address %></td>
+        <td><%= servey.expected_monthly_usage %></td>
+        <td><%= servey.bill_payer %></td>
+        <td><%= servey.bill_payer_occupation %></td>
+        <td><%= servey.residence_type %></td>
+        <td><%= servey.locality %></td>
+        <td><%= servey.residence_status %></td>
+        <td><%= servey.age %></td>
+        <td><%= servey.customer_attitude %></td>
+        <td><%= servey.credit_card %></td>
+        <td><%= servey.pan_card %></td>
+        <td><%= servey.pancard_number %></td>
+        <td><%= servey.address_proof_sighted %></td>
+        <td><%= servey.asset_seen %></td>
+        <td><%= servey.vihicle_owned %></td>
+        <td><%= servey.final_recomendation %></td>
+        <td><%= servey.av_done_by %></td>
+        <td><%= servey.av_supervisor_name %></td>
+        <td><%= link_to 'Show', servey %></td>
+        <td><%= link_to 'Edit', edit_servey_path(servey) %></td>
+        <td><%= link_to 'Destroy', servey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Servey', new_servey_path, :class => "btn btn-primary" %>

@@ -12,6 +12,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
 		                          :github => 'anjlab/bootstrap-rails',
 		                          :branch => '3.0.0'
+gem 'workflow'
+gem 'friendly_id'
 
 group :doc do
   gem 'sdoc', require: false
