@@ -30,19 +30,21 @@
     </div>
   <% end %>
 
-<div class="field">
+  <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name, :class=>"form-control" %>
   </div>
+
   <div class="field">
     <%= f.label :password %><br>
     <%= f.password_field :password, :class=>"form-control" %>
   </div>
+
   <div class="field">
     <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation, :class=>"form-control" %>
   </div>
-
+<br>
 <%= f.label :roles %>
 <label class="checkbox">
  <input id="user_roles" name="user[role_name]" type="checkbox" value="super_user" /> Super User
@@ -55,7 +57,6 @@
 <div style="display:none;">
 <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Select a tab (if role is not super user) </label>
  <%= f.collection_select :tab_id, Tab.all, :id, :name %>
-</div>
 </br>
 
 
@@ -72,10 +73,8 @@ $(".checkbox").click(function(){
 </br>
 
 
-  <br><br>
-
 
 <div class="actions">
-    <%= f.submit :class=>"btn btn-default" %>
+    <%= f.submit :class=>"btn btn-primary" %>
   </div>
 <%end%>
