@@ -1,5 +1,6 @@
 
-<% if logged_in? && current_user.role_name == "tab_user" %>
+<% if logged_in? %>
+<% if current_user.role_name == "tab_user" %>
   <table class ="table table-condensed">
   <% @tab_user_task.each do |tab_task| %>
   <% if tab_task.customer.status == 'submitted' %>
@@ -11,6 +12,7 @@
    </tr>
   <% end %>
   <% end %>
+    <% end %>
   </table>
 <% else %>
 <p> Todays Status </p>
