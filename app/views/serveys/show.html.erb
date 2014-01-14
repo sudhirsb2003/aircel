@@ -1,139 +1,139 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name Of the Customer:</strong>
+<p id="notice"><%= notice %></tr>
+<table class="table table-condensed">
+<tr>
+  <td><strong>Name Of the Customer:</strong>
   <%= @servey.customer.applicant_name %>
-</p>
+</tr>
 
-<p>
-  <strong>Name of the Tab User who made the Servey:</strong>
+<tr>
+  <td><strong>Name of the Tab User who made the Servey:</strong>
   <%= @servey.tab.name %>
-</p>
+</tr>
 
-<p>
-  <strong>User:</strong>
-  <%= @servey.user_id %>
-</p>
+<tr>
+  <td><strong>User:</strong>
+  <%= @servey.user.name %>
+</tr>
 
-<p>
-  <strong>Landmark:</strong>
+<tr>
+  <td><strong>Landmark:</strong>
   <%= @servey.landmark %>
-</p>
+</tr>
 
-<p>
-  <strong>Ease of location:</strong>
+<tr>
+  <td><strong>Ease of location:</strong>
   <%= @servey.ease_of_location %>
-</p>
+</tr>
 
-<p>
-  <strong>Telephone number:</strong>
+<tr>
+  <td><strong>Telephone number:</strong>
   <%= @servey.telephone_number %>
-</p>
+</tr>
 
-<p>
-  <strong>Mobile number:</strong>
+<tr>
+  <td><strong>Mobile number:</strong>
   <%= @servey.mobile_number %>
-</p>
+</tr>
 
-<p>
-  <strong>Person contacted:</strong>
+<tr>
+  <td><strong>Person contacted:</strong>
   <%= @servey.person_contacted %>
-</p>
+</tr>
 
-<p>
-  <strong>Relationship with applicant:</strong>
+<tr>
+  <td><strong>Relationship with applicant:</strong>
   <%= @servey.relationship_with_applicant %>
-</p>
+</tr>
 
-<p>
-  <strong>Years at current address:</strong>
+<tr>
+  <td><strong>Years at current address:</strong>
   <%= @servey.years_at_current_address %>
-</p>
+</tr>
 
-<p>
-  <strong>Expected monthly usage:</strong>
+<tr>
+  <td><strong>Expected monthly usage:</strong>
   <%= @servey.expected_monthly_usage %>
-</p>
+</tr>
 
-<p>
-  <strong>Bill payer:</strong>
+<tr>
+  <td><strong>Bill payer:</strong>
   <%= @servey.bill_payer %>
-</p>
+</tr>
 
-<p>
-  <strong>Bill payer occupation:</strong>
+<tr>
+  <td><strong>Bill payer occupation:</strong>
   <%= @servey.bill_payer_occupation %>
-</p>
+</tr>
 
-<p>
-  <strong>Residence type:</strong>
+<tr>
+  <td><strong>Residence type:</strong>
   <%= @servey.residence_type %>
-</p>
+</tr>
 
-<p>
-  <strong>Locality:</strong>
+<tr>
+  <td><strong>Locality:</strong>
   <%= @servey.locality %>
-</p>
+</tr>
 
-<p>
-  <strong>Residence status:</strong>
+<tr>
+  <td><strong>Residence status:</strong>
   <%= @servey.residence_status %>
-</p>
+</tr>
 
-<p>
-  <strong>Age:</strong>
+<tr>
+  <td><strong>Age:</strong>
   <%= @servey.age %>
-</p>
+</tr>
 
-<p>
-  <strong>Customer attitude:</strong>
+<tr>
+  <td><strong>Customer attitude:</strong>
   <%= @servey.customer_attitude %>
-</p>
+</tr>
 
-<p>
-  <strong>Credit card:</strong>
+<tr>
+  <td><strong>Credit card:</strong>
   <%= @servey.credit_card %>
-</p>
+</tr>
 
-<p>
-  <strong>Pan card:</strong>
+<tr>
+  <td><strong>Pan card:</strong>
   <%= @servey.pan_card %>
-</p>
+</tr>
 
-<p>
-  <strong>Pancard number:</strong>
+<tr>
+  <td><strong>Pancard number:</strong>
   <%= @servey.pancard_number %>
-</p>
+</tr>
 
-<p>
-  <strong>Address proof sighted:</strong>
+<tr>
+  <td><strong>Address proof sighted:</strong>
   <%= @servey.address_proof_sighted %>
-</p>
+</tr>
 
-<p>
-  <strong>Asset seen:</strong>
+<tr>
+  <td><strong>Asset seen:</strong>
   <%= @servey.asset_seen %>
-</p>
+</tr>
 
-<p>
-  <strong>Vihicle owned:</strong>
+<tr>
+  <td><strong>Vihicle owned:</strong>
   <%= @servey.vihicle_owned %>
-</p>
+</tr>
 
-<p>
-  <strong>Final recomendation:</strong>
+<tr>
+  <td><strong>Final recomendation:</strong>
   <%= @servey.final_recomendation %>
-</p>
+</tr>
 
-<p>
-  <strong>Av done by:</strong>
+<tr>
+  <td><strong>Av done by:</strong>
   <%= @servey.av_done_by %>
-</p>
+</tr>
 
-<p>
-  <strong>Av supervisor name:</strong>
+<tr>
+  <td><strong>Av supervisor name:</strong>
   <%= @servey.av_supervisor_name %>
-</p>
+</tr>
 
 <%= link_to 'Edit', edit_servey_path(@servey) %> |
 <%= link_to 'Back', serveys_path %>

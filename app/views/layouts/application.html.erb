@@ -18,9 +18,8 @@
   <li><a href="/"><b>AIRCEL SALES REPORT</b></a></li>
   <% if logged_in? && current_user.admin?   %>
   <li><%= link_to 'Customers', customers_path %></li>
-  <li><%= link_to 'tabs', tabs_path %></li>
-  <li><%= link_to "Add users", new_user_path  %></li>
-  <li><%= link_to "Assignments", assignments_path  %></li>
+  <li><%= link_to 'Tabs', tabs_path %></li>
+  <li><%= link_to "List users", users_path  %></li>
   <li><%= link_to "Servey Detail", serveys_path  %></li>
   <% end %>
 </ul>
@@ -41,6 +40,7 @@
 
 <body data-no-turbolink>
 <div class="body_data">
+<p id="notice"><%= notice %></p>
 <%= yield %>
 </div>
 </body>

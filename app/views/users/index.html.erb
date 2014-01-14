@@ -4,8 +4,8 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Address</th>
-      <th>Employee uid</th>
+      <th>Role</th>
+      <th>Tab Name</th>
     </tr>
   </thead>
 
@@ -13,8 +13,8 @@
     <% @users.each do |tab_user| %>
       <tr>
         <td><%= tab_user.name %></td>
-        <td><%= tab_user.address %></td>
-        <td><%= tab_user.employee_uid %></td>
+        <td><%= tab_user.role_name %></td>
+        <td><% if tab_user.tab %><%= tab_user.tab.name %><% end %></td>
         <td><%= link_to 'Show', tab_user %></td>
         <% if current_user %>
         <td><%= link_to 'Edit', edit_user_path(tab_user) %></td>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Tab user', new_user_path %>
+<%= link_to 'New Tab user', new_user_path, :class => "btn btn-primary" %>

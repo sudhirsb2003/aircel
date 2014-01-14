@@ -158,39 +158,131 @@
   </div>
   <div class="field">
     <%= f.label :age %><br>
-    <%= f.text_field :age %>
+    <%#= f.text_field :age %>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[age]" type="checkbox" value="Below 18" /> Below 18
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[age]" type="checkbox" value="18 to 25" />18 to 25
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[age]" type="checkbox" value="25 to 35" />25 to 35
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[age]" type="checkbox" value="35 to 58" />35 to 58
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[age]" type="checkbox" value="58 and above" />58 and above
+      </label>
   </div>
+
   <div class="field">
     <%= f.label :customer_attitude %><br>
-    <%= f.text_field :customer_attitude %>
+    <%#= f.text_field :customer_attitude %>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[customer_attitude]" type="checkbox" value="co-operative" />co-operative
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[customer_attitude]" type="checkbox" value="non co-operative" />non co-operative
+      </label>
+
   </div>
   <div class="field">
     <%= f.label :credit_card %><br>
-    <%= f.text_field :credit_card %>
+    <%#= f.text_field :credit_card %>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[credit_card]" type="checkbox" value="No credit card" />No credit card
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[creadit_card]" type="checkbox" value="Recent paid statement shown" />Recent paid statement shown
+      </label>
+
+
   </div>
   <div class="field">
     <%= f.label :pan_card %><br>
-    <%= f.text_field :pan_card %>
+    <%#= f.text_field :pan_card %>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[pan_card]" type="checkbox" value="No pan card" />No pan card
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[pan_card]" type="checkbox" value="Pan Card Available " />Pan card Available
+      </label>
   </div>
+
   <div class="field">
+    <p> if pan card shown </p>
     <%= f.label :pancard_number %><br>
     <%= f.text_field :pancard_number %>
   </div>
+
   <div class="field">
     <%= f.label :address_proof_sighted %><br>
-    <%= f.text_field :address_proof_sighted %>
+    <%#= f.text_field :address_proof_sighted %>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[address_proof_sighted]" type="checkbox" value="ration card" />Ration card
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[address_proof_sighted]" type="checkbox" value="Electricity Bill" />Electricity Bill
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[address_proof_sighted]" type="checkbox" value="Telephone Bill" />Telephone Bill
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[address_proof_sighted]" type="checkbox" value="Bank statement" />Bank Statement
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[address_proof_sighted]" type="checkbox" value="Driving Licence" />Driving Licence
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[address_proof_sighted]" type="checkbox" value="Passport" />Passport
+      </label>
   </div>
+
   <div class="field">
     <%= f.label :asset_seen %><br>
-    <%= f.text_field :asset_seen %>
+    <%#= f.text_field :asset_seen %>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[asset_seen]" type="checkbox" value="TV" />TV
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[asset_seen]" type="checkbox" value="Fridge" />Fridge
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[asset_seen]" type="checkbox" value="AC" />AC
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[asset_seen]" type="checkbox" value="Music System" />Music System
+      </label>
+
   </div>
   <div class="field">
-    <%= f.label :vihicle_owned %><br>
-    <%= f.text_field :vihicle_owned %>
+    <%= f.label :vehicle_owned %><br>
+    <%#= f.text_field :vihicle_owned %>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[vihicle_owned]" type="checkbox" value="Two Wheeler" />Two Wheeler
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[vihicle_owned]" type="checkbox" value="Four Wheeler" />Four Wheeler
+      </label>
+
   </div>
   <div class="field">
     <%= f.label :final_recomendation %><br>
-    <%= f.text_field :final_recomendation %>
+    <%#= f.text_field :final_recomendation %>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[final_recomendation]" type="checkbox" value="Positive" />Positive
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[final_recomendation]" type="checkbox" value="Negative" />Negative
+      </label>
+
   </div>
   <div class="field">
     <%= f.label :av_done_by %><br>
@@ -199,8 +291,8 @@
   <div class="field">
     <%= f.label :av_supervisor_name %><br>
     <%= f.text_field :av_supervisor_name %>
-  </div>
+  </div><br><br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class=> "btn btn-primary" %>
   </div>
-<% end %>
+<% end %><br>

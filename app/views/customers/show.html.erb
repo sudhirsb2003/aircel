@@ -15,12 +15,25 @@
 <% end %>
 <br><br>
 
- <% if logged_in? && current_user.role_name=="super_user" &&  @customer.status=="pending" %>
+<style>
+ .dropdown{ border: medium none;
+    border-radius: 4px 4px 4px 4px;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.4;
+    padding: 9px 10px;
+    transition: all 0.25s linear 0s;
+    background:#1ABC9C;
+    color:#fff;}
+</style>
+
+<% if logged_in? && current_user.role_name=="super_user" &&  @customer.status=="pending" %>
    <%= form_for(@new_assignments) do |f| %>
     <%= f.hidden_field :customer_id , :value => @customer.id %>
     <%= f.hidden_field :user_id , :value => current_user.id %>
-<%= select_tag "assignment[tab_id]", options_for_select(Tab.all.collect {|r|[r.name,r.id]}), {:class=>'tf help',:style=>"margin-top:15px;"} %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <%= f.submit "Send for verification", :class=>"btn btn-primary btn-small" %>
+    <%= select_tag "assignment[tab_id]", options_for_select(User.includes(:tab).collect {|r| [r.name ,r.tab.id] }), :class=>"dropdown" %>
+    <span class="dropdown-arrow"></span>
+   <%= f.submit "Send for verification", :class=>"btn btn-primary btn-small" %>
  <% end %>
 <% else %>
 
@@ -30,7 +43,8 @@
      <td><span class="label label-warning">Submitted to Tab User </span></td></tr><br>
 		<small>
 		 The customer has been send for verification. this is been assigned to
-		 <%= link_to @customer.assignment.tab.name, tab_path(@customer.assignment.tab) %><br>
+		 <%= link_to @customer.assignment.tab.inspect, tab_path(@customer.assignment.tab) %><br>
+		 <%#= link_to @customer.assignment.tab.user.name, tab_path(@customer.assignment.tab) %><br>
 		</small>
     <% end %>
 

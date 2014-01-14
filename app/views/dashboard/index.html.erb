@@ -1,6 +1,8 @@
-
-<% if logged_in? %>
-<% if current_user.role_name == "tab_user" %>
+<% if logged_in? && current_user.role_name == "tab_user" %>
+ <p>Welcome ! <%= current_user.name %></p>
+ <%= current_user.tab.name %>
+ <hr>
+ <p> Assigned Customers </p><hr>
   <table class ="table table-condensed">
   <% @tab_user_task.each do |tab_task| %>
   <% if tab_task.customer.status == 'submitted' %>
@@ -11,11 +13,18 @@
    <td><%= link_to "Start Servey", new_servey_path(:user_id => tab_task.user.id, :tab_id => tab_task.tab.id , :customer_id => tab_task.customer.id, ) %></td>
    </tr>
   <% end %>
-  <% end %>
     <% end %>
   </table>
-<% else %>
-<p> Todays Status </p>
+<% elsif logged_in? && current_user.role_name == "super_user" %>
+<table class="table">
 
-
+<p> Completed Customers </p><hr>
+<tr>
+  <% Customer.where(status: "completed").each do |task| %>
+		  <td><%= link_to task.applicant_name, servey_path(task.servey) %><td>
+		  <td><%= link_to "Accept", accept_customer_path(task.slug, :customer_id => task.id) %> </td>
+		  <td><%= link_to "Reassign", reassign_customer_path(task.id, :customer_id => task.id) %></td>
+  <% end %>
+</tr>
+</table>
 <% end %>

@@ -20,7 +20,11 @@
         <td><%= link_to customer.applicant_name, customer %></td>
         <td><%= customer.date_of_birth %></td>
         <td><%= customer.contact_number %></td>
-        <td> <span class="label label-info"><%= customer.status %></span></td>
+        <td><% if customer.status == 'verified' %>
+         <span class="label label-success"><%= customer.status %></span></td>
+         <% else %>
+        <span class="label label-info"><%= customer.status %></span></td>
+         <% end %>
       </tr>
     <% end %>
   </tbody>
