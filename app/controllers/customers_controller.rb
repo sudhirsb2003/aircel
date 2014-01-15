@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.order("id ASC")
+    @customers = Customer.order("id").page(params[:page]).per(15)
   end
 
   # GET /customers/1
@@ -27,6 +27,9 @@ class CustomersController < ApplicationController
   end
 
 
+ def customer_mapdetail
+  @customer = Customer.find(params[:customer_id])
+ end
 
 
 
@@ -52,7 +55,6 @@ class CustomersController < ApplicationController
 
   def accept
    @customer = Customer.find(params[:customer_id])
-   logger.info "##############" + @customer.inspect
    @customer.accept!
      redirect_to @customer, notice: 'Customer was successfully updated.'
   end
@@ -98,6 +100,12 @@ class CustomersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
       @customer = Customer.friendly.find(params[:id])
+   @hash = Gmaps4rails.build_markers(@customer) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+    end
+
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

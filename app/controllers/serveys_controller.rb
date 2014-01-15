@@ -1,10 +1,15 @@
 class ServeysController < ApplicationController
   before_action :set_servey, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in?
 
   # GET /serveys
   # GET /serveys.json
   def index
+    if current_user.role_name == 'tab_user'
+    @serveys = Servey.where(tab_id: current_user.tab.id)
+    else
     @serveys = Servey.all
+    end
   end
 
   # GET /serveys/1
@@ -30,7 +35,7 @@ class ServeysController < ApplicationController
     respond_to do |format|
       if @servey.save
         @servey.customer.complete!
-        format.html { redirect_to @servey, notice: 'Servey was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Servey was successfully created.' }
         format.json { render action: 'show', status: :created, location: @servey }
       else
         format.html { render action: 'new' }
@@ -71,6 +76,10 @@ class ServeysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def servey_params
-      params.require(:servey).permit(:customer_id, :tab_id, :user_id, :landmark, :ease_of_location, :telephone_number, :mobile_number, :person_contacted, :relationship_with_applicant, :years_at_current_address, :expected_monthly_usage, :bill_payer, :bill_payer_occupation, :residence_type, :locality, :residence_status, :age, :customer_attitude, :credit_card, :pan_card, :pancard_number, :address_proof_sighted, :asset_seen, :vihicle_owned, :final_recomendation, :av_done_by, :av_supervisor_name)
+      params.require(:servey).permit(:customer_id, :tab_id, :user_id, :landmark, :ease_of_location, :telephone_number, :mobile_number,
+                                     :person_contacted, :relationship_with_applicant, :years_at_current_address, :expected_monthly_usage,
+                                     :bill_payer, :bill_payer_occupation, :residence_type, :locality, :residence_status,:age, :customer_attitude,
+                                     :credit_card, :pan_card, :pancard_number, :address_proof_sighted, :asset_seen, :vihicle_owned,:final_recomendation,
+                                     :av_done_by, :av_supervisor_name,document_photos_attributes: [:servey_id, :photo, :_destroy])
     end
 end

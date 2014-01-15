@@ -1,5 +1,7 @@
 Airecel::Application.routes.draw do
+  #get "reports/index"
   resources :serveys
+  resources :reports
   resources :assignments
   resources :tabs
   resources :customers do
@@ -8,6 +10,7 @@ Airecel::Application.routes.draw do
     post :accpet
     get :reassign
     post :reassign
+    get :customer_mapdetail
    end
   end
   resources :users

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140113104439) do
+ActiveRecord::Schema.define(version: 20140115140128) do
 
   create_table "assignments", force: true do |t|
     t.integer  "tab_id"
@@ -37,6 +37,18 @@ ActiveRecord::Schema.define(version: 20140113104439) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.float    "latitude"
+    t.float    "longitude"
+  end
+
+  create_table "document_photos", force: true do |t|
+    t.string   "servey_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "serveys", force: true do |t|

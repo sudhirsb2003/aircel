@@ -30,7 +30,7 @@ class AssignmentsController < ApplicationController
     respond_to do |format|
       if @assignment.save
          @assignment.customer.submit!
-        format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }
+        format.html { redirect_to assignments_path, notice: 'Assignment was successfully created.' }
         format.json { render action: 'show', status: :created, location: @assignment }
       else
         format.html { render action: 'new' }

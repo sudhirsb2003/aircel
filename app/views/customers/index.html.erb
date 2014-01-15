@@ -1,4 +1,4 @@
-
+<p style ="float:right;margin-right:50px;"><%= link_to 'New Customer', new_customer_path, :class => "label label-primary" %></p><br>
 <table class = "table table-condensed">
   <thead>
     <tr>
@@ -31,5 +31,4 @@
 </table>
 
 <br>
-
-<%= link_to 'New Customer', new_customer_path %>
+<%= paginate @customers %>

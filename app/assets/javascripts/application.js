@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-datepicker
+//= require underscore
+//= require gmaps/google
+//= require jquery_nested_form
 //= require_tree .

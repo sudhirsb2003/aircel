@@ -10,6 +10,7 @@
    <td><%= tab_task.customer.id %><br>
    <td><%= tab_task.customer.applicant_name %><br>
    <small><%= tab_task.customer.address %></small></td>
+   <td><%= link_to "show map", customer_mapdetail_customer_path(tab_task.customer.id, :customer_id => tab_task.customer.id) %></td>
    <td><%= link_to "Start Servey", new_servey_path(:user_id => tab_task.user.id, :tab_id => tab_task.tab.id , :customer_id => tab_task.customer.id, ) %></td>
    </tr>
   <% end %>
@@ -19,12 +20,12 @@
 <table class="table">
 
 <p> Completed Customers </p><hr>
-<tr>
   <% Customer.where(status: "completed").each do |task| %>
+ <tr>
 		  <td><%= link_to task.applicant_name, servey_path(task.servey) %><td>
 		  <td><%= link_to "Accept", accept_customer_path(task.slug, :customer_id => task.id) %> </td>
 		  <td><%= link_to "Reassign", reassign_customer_path(task.id, :customer_id => task.id) %></td>
-  <% end %>
 </tr>
+  <% end %>
 </table>
 <% end %>

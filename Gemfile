@@ -11,8 +11,12 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jbuilder', '~> 1.2'
 gem 'workflow'
 gem 'friendly_id'
-gem 'faker' 
-
+gem 'faker'
+gem 'kaminari'
+gem 'gmaps4rails'
+gem "geocoder"
+gem 'paperclip'
+gem "nested_form"
 group :doc do
   gem 'sdoc', require: false
 end

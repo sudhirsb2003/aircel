@@ -1,3 +1,6 @@
+<% @servey.document_photos.each do |photo| %>
+ <%= image_tag photo.photo.url %>
+<% end %>
 <p id="notice"><%= notice %></tr>
 <table class="table table-condensed">
 <tr>
@@ -7,11 +10,11 @@
 
 <tr>
   <td><strong>Name of the Tab User who made the Servey:</strong>
-  <%= @servey.tab.name %>
+  <%= @servey.tab.user.name %>
 </tr>
 
 <tr>
-  <td><strong>User:</strong>
+  <td><strong>Assigned by :</strong>
   <%= @servey.user.name %>
 </tr>
 

@@ -11,6 +11,14 @@ class Customer < ActiveRecord::Base
   has_one :assignment
   has_one :servey
 
+  geocoded_by :full_address
+  after_validation :geocode, :if => :address_changed?
+
+  def full_address
+   [address, coountry, city, state].compact.join(', ')
+  end
+
+
 
 include Workflow
 

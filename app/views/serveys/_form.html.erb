@@ -1,4 +1,4 @@
-<%= form_for(@servey) do |f| %>
+<%= nested_form_for @servey do |f| %>
   <% if @servey.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@servey.errors.count, "error") %> prohibited this servey from being saved:</h2>
@@ -10,6 +10,13 @@
       </ul>
     </div>
   <% end %>
+
+	<%= f.fields_for :document_photos do |photo| %>
+		<%= photo.file_field :photo %>
+		<%= photo.link_to_remove "Remove this Document" %>
+	<% end %>
+
+<p><%= f.link_to_add "Add a Document", :document_photos %></p>
   <div class="field">
     <%= f.hidden_field :customer_id, :value => params[:customer_id] %>
   </div>
@@ -196,7 +203,7 @@
          <input id="bill_payer" name="servey[credit_card]" type="checkbox" value="No credit card" />No credit card
       </label>
       <label class="checkbox controls">
-         <input id="bill_payer" name="servey[creadit_card]" type="checkbox" value="Recent paid statement shown" />Recent paid statement shown
+         <input id="bill_payer" name="servey[credit_card]" type="checkbox" value="Recent paid statement shown" />Recent paid statement shown
       </label>
 
 

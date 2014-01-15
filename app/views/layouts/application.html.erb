@@ -3,7 +3,9 @@
 <head>
   <title>Aircel Report</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "datepicker", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
+  <%= javascript_include_tag 'bootstrap-datepicker' %>
   <%= csrf_meta_tags %>
 </head>
 <style>
@@ -20,6 +22,7 @@
   <li><%= link_to 'Customers', customers_path %></li>
   <li><%= link_to 'Tabs', tabs_path %></li>
   <li><%= link_to "List users", users_path  %></li>
+  <li><%= link_to "Generate Report", reports_path  %></li>
   <li><%= link_to "Servey Detail", serveys_path  %></li>
   <% end %>
 </ul>
