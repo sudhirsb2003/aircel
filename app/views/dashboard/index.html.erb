@@ -1,4 +1,21 @@
+<style>
+ #main_content{
+  float:left;
+  width:500px;
+  border-right:0px solid silver;
+  padding-right:35px;
+  }
+ #sidebar {
+	height: 300px;
+	width: 500px;
+	float: right;
+	margin-right: 5px;
+	padding: 5px 0 0 5px;
+}
+</style>
+
 <% if logged_in? && current_user.role_name == "tab_user" %>
+
  <p>Welcome ! <%= current_user.name %></p>
  <%= current_user.tab.name %>
  <hr>
@@ -14,18 +31,34 @@
    <td><%= link_to "Start Servey", new_servey_path(:user_id => tab_task.user.id, :tab_id => tab_task.tab.id , :customer_id => tab_task.customer.id, ) %></td>
    </tr>
   <% end %>
-    <% end %>
+   <% end %>
   </table>
-<% elsif logged_in? && current_user.role_name == "super_user" %>
-<table class="table">
 
-<p> Completed Customers </p><hr>
-  <% Customer.where(status: "completed").each do |task| %>
- <tr>
-		  <td><%= link_to task.applicant_name, servey_path(task.servey) %><td>
-		  <td><%= link_to "Accept", accept_customer_path(task.slug, :customer_id => task.id) %> </td>
-		  <td><%= link_to "Reassign", reassign_customer_path(task.id, :customer_id => task.id) %></td>
-</tr>
+
+<% elsif logged_in? && current_user.role_name == "super_user" %>
+
+<div id ="main_content">
+	<table class="table">
+	<p>Completed Customers</p>
+		<% Customer.where(status: "completed").each do |task| %>
+			<tr>
+				<td><%= link_to task.applicant_name, servey_path(task.servey) %><td>
+				<td><%= link_to "Accept", accept_customer_path(task.slug, :customer_id => task.id), :class=>"label label-info" %> </td>
+				<td><%= link_to "Reassign", reassign_customer_path(task.id, :customer_id => task.id), :class=>"label label-danger" %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div id ="sidebar">
+ <p> Assigned Task</p>
+  <table class="table table-condensed">
+  <% Assignment.where('DATE(created_at) > ? AND DATE(created_at) < ?', Date.today-5, Date.today).each do |task| %>
+   <tr>
+		 <td><%= task.tab.user.name %></td>
+		 <td><%= task.customer.applicant_name %></td>
+		 <td><%= task.customer.status %></td>
+   </tr>
   <% end %>
-</table>
+</div>
 <% end %>

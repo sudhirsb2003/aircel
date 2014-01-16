@@ -1,5 +1,5 @@
-<h1>Listing tabs</h1>
-
+<p style ="float:right;margin-right:50px;"><%= link_to 'New Tab', new_tab_path, :class => "label label-primary" %></p><br>
+<%= paginate @tabs %>
 <table class='table'>
   <thead>
     <tr>
@@ -7,7 +7,6 @@
       <th>Tab code</th>
       <th>Pincode</th>
       <th>Mac address</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -28,5 +27,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Tab', new_tab_path %>

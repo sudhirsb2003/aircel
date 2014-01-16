@@ -1,7 +1,25 @@
+<style>
+ #main_content{float:left;width:700px;border-right:1px solid black;padding-right:35px;}
+ #sidebar {
+	height: 300px;
+	width: 400px;
+	float: right;
+	margin-right: 5px;
+	padding: 5px 0 0 5px;
+}
+</style>
+<div id="sidebar">
+<p style="margin-top:-20px;">
+<%= link_to 'Edit Servey', edit_servey_path(@servey) %> |
+<%= link_to 'View all Servey', serveys_path %></p>
+
+<p>List Of Documents</p>
 <% @servey.document_photos.each do |photo| %>
- <%= image_tag photo.photo.url %>
+ <%= image_tag photo.photo.url(:small) %>
 <% end %>
-<p id="notice"><%= notice %></tr>
+</div>
+
+<div id="main_content">
 <table class="table table-condensed">
 <tr>
   <td><strong>Name Of the Customer:</strong>
@@ -137,6 +155,4 @@
   <td><strong>Av supervisor name:</strong>
   <%= @servey.av_supervisor_name %>
 </tr>
-
-<%= link_to 'Edit', edit_servey_path(@servey) %> |
-<%= link_to 'Back', serveys_path %>
+</div>

@@ -8,6 +8,9 @@ gem 'paperclip'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+		                          :github => 'anjlab/bootstrap-rails',
+		                          :branch => '3.0.0'
 gem 'jbuilder', '~> 1.2'
 gem 'workflow'
 gem 'friendly_id'
@@ -17,6 +20,8 @@ gem 'gmaps4rails'
 gem "geocoder"
 gem 'paperclip'
 gem "nested_form"
+gem 'to_spreadsheet'
+gem 'flatui-rails'
 group :doc do
   gem 'sdoc', require: false
 end
@@ -26,4 +31,5 @@ group :development do
   gem 'quiet_assets'
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'bootstrap-sass'
 end

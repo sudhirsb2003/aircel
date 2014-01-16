@@ -36,6 +36,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :username %><br>
+    <%= f.text_field :username, :class=>"form-control" %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %><br>
     <%= f.password_field :password, :class=>"form-control" %>
   </div>
@@ -45,7 +50,7 @@
     <%= f.password_field :password_confirmation, :class=>"form-control" %>
   </div>
 <br>
-<%= f.label :roles %>
+<%= f.label :roles %><br>
 <label class="checkbox">
  <input id="user_roles" name="user[role_name]" type="checkbox" value="super_user" /> Super User
 </label>

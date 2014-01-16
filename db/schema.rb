@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115140128) do
+ActiveRecord::Schema.define(version: 20140116074704) do
 
   create_table "assignments", force: true do |t|
     t.integer  "tab_id"
@@ -106,6 +106,8 @@ ActiveRecord::Schema.define(version: 20140115140128) do
     t.datetime "photo_updated_at"
     t.string   "role_name"
     t.integer  "tab_id"
+    t.string   "username"
+    t.datetime "logout_at"
   end
 
 end

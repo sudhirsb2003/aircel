@@ -7,12 +7,10 @@ class User < ActiveRecord::Base
   belongs_to :tab
   has_one :assignment
 
-
   def make_admin
    user = User.find 1
    user.admin = true
    user.save!
   end
-
 
 end

@@ -17,4 +17,6 @@
 //= require underscore
 //= require gmaps/google
 //= require jquery_nested_form
+//= require twitter/bootstrap
+//= require flat-ui
 //= require_tree .

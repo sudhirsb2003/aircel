@@ -1,6 +1,5 @@
-<h1>All Users</h1>
-
-<table class="table table-bordered">
+<p style="float:right;margin-right:50px"><%= link_to 'New Tab user', new_user_path, :class => "label label-info" %></p><br>
+<table class="table table-bordered-square">
   <thead>
     <tr>
       <th>Name</th>
@@ -13,7 +12,12 @@
     <% @users.each do |tab_user| %>
       <tr>
         <td><%= tab_user.name %></td>
-        <td><%= tab_user.role_name %></td>
+        <td><%= tab_user.role_name %>
+          <% if tab_user.updated_at > 5.minutes.ago %>
+             - Online
+          <% else %>
+             - Offline
+        <% end %></td>
         <td><% if tab_user.tab %><%= tab_user.tab.name %><% end %></td>
         <td><%= link_to 'Show', tab_user %></td>
         <% if current_user %>
@@ -25,5 +29,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Tab user', new_user_path, :class => "btn btn-primary" %>
