@@ -12,13 +12,13 @@ $(function() {
 <%= form_for :reports_path, :method => :get do |f| %>
 <div class ="row">
   <div class="field_name">
-  <%= label_tag :'Choose Start Date' %>
+  <%= label_tag :'Choose Start Date' %><br>
   <%= text_field_tag :start_date, '', :class=> "datepicker", :value => @start_date %>
 </div>
   <div class="field_name">
-  <%= label_tag :'Choose End Date' %>
+  <%= label_tag :'Choose End Date' %><br>
   <%= text_field_tag :end_date, '', :class => "datepicker", :value => @end_date %>
-</div><br><Br><br><br>
+</div><br><br>
 <%= f.submit "Generate Report", :class =>"btn btn-info" %>
 </div>
 <% end %>

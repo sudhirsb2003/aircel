@@ -35,6 +35,8 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
+   #@customer = Customer.find(params[:id])
+   @final_no = @customer.application_ref_number
   end
 
   # POST /customers
