@@ -42,20 +42,9 @@
   <div class="field">
     <%= f.label :photo %><br>
     <%= f.file_field :photo %>
-  </div>
-  <div class="field">
-    <%= f.label :"Assign role" %><br>
-    <%#= f.text_field :role_name %>
-    <select name="user[role_name]">
-			<option value="">Please select</option>
-			<option value="admin" selected="selected">Administrator</option>
-			<option value="tab_user">Tab User</option>
-		</select>
-  </div>
-
-
+  </div><br><br>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class=> "btn btn-primary" %>
   </div>
 <% end %>

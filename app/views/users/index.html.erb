@@ -3,6 +3,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>UserName</th>
       <th>Role</th>
       <th>Tab Name</th>
     </tr>
@@ -12,12 +13,8 @@
     <% @users.each do |tab_user| %>
       <tr>
         <td><%= tab_user.name %></td>
+        <td><%= tab_user.username %>
         <td><%= tab_user.role_name %>
-          <% if tab_user.updated_at > 5.minutes.ago %>
-             - Online
-          <% else %>
-             - Offline
-        <% end %></td>
         <td><% if tab_user.tab %><%= tab_user.tab.name %><% end %></td>
         <td><%= link_to 'Show', tab_user %></td>
         <% if current_user %>

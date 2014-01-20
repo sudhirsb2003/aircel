@@ -1,3 +1,28 @@
+<style>
+.dk_fouc select{
+	background-color: #666;
+	border: medium none;
+	border-radius: 5px;
+	color: #FFFFFF;
+	font-size: 12px;
+	height: 30px;
+	padding-top: 3px;
+	position: relative;
+	top: 0;
+	visibility: visible;
+	float: left;
+	margin-right: 10px;
+	outline:none;
+}
+
+.dk_fouc select option{
+	border:none;
+	margin-top:10px;
+	background-color: #666;
+}
+.btn.btn-primary { border:none;}
+</style>
+
 <script src="//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry" type="text/javascript"></script>
 <script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" type="text/javascript"></script>
 <div style='width: 800px;'>
@@ -28,8 +53,8 @@
   <h3 style ="float:right;"> <span class="btn btn-hg btn-primary"><%= @customer.status %></span></h3><br><br><br><br>
   <p style ="float:right;">
     <%= link_to "Accept", accept_customer_path(:customer_id => @customer.id), :class=> "label label-success" %>
-    <%= link_to "Reassign", reassign_customer_path(:customer_id => @customer.id), :class=> "label label-danger" %>
-  </p>
+    <%#= link_to "Reassign", reassign_customer_path(:customer_id => @customer.id), :class=> "label label-danger" %>
+  </td>
   <% else %>
   <h3 style ="float:right;"> <span class="btn btn-hg btn-primary"><%= @customer.status %></span></h3>
 <% end %>
@@ -51,7 +76,7 @@
    <%= form_for(@new_assignments) do |f| %>
     <%= f.hidden_field :customer_id , :value => @customer.id %>
     <%= f.hidden_field :user_id , :value => current_user.id %>
-    <%= select_tag "assignment[tab_id]", options_for_select(User.includes(:tab).collect {|r| [r.name ,r.tab.id] }) %>
+    <%= select_tag "assignment[tab_id]", options_for_select(User.includes(:tab).where('users.role_name!=?', 'super_user').collect {|r| [r.name ,r.tab.id] }) %>
     <span class="dropdown-arrow"></span>
    <%= f.submit "Send for verification", :class=>"btn btn-primary btn-small" %>
  <% end %>
@@ -61,11 +86,9 @@
 <br>
     <% if @customer.status=='submitted' %>
      <td><span class="label label-warning">Submitted to Tab User </span></td></tr><br>
-		<small>
 		 The customer has been send for verification. this is been assigned to
-		 <%= link_to @customer.assignment.tab.inspect, tab_path(@customer.assignment.tab) %><br>
+		 <%= link_to @customer.assignment.tab.user.name, tab_path(@customer.assignment.tab) %><br>
 		 <%#= link_to @customer.assignment.tab.user.name, tab_path(@customer.assignment.tab) %><br>
-		</small>
     <% end %>
 
 
@@ -135,3 +158,70 @@
   <%= @customer.city %>
 </td><tr>
 </table>
+<hr>
+<% if @customer.servey %>
+<p style="padding:2px;background:blue;color:white;width:500px">Servey Done By : <%= @customer.servey.tab.user.name %>
+| Created By :<%= @customer.servey.user.name %></p><hr>
+
+<table class="table" style="width:500px;">
+<th>Detail</th>
+<p>Final Recomendation :
+<% if @customer.servey.final_recomendation == 'Positive' %>
+  <b style="float:right;font-size:13px;padding:5px;color:white;background:green">
+   <%= @customer.servey.final_recomendation %></b></p>
+ <% else %>
+   <b style="background:red">
+   <%= @customer.servey.final_recomendation %></b></p>
+ <% end %>
+
+
+<tr>
+ <td>Location Difficulty :</td>
+ <td> <%= @customer.servey.ease_of_location %></td></tr>
+</tr>
+<tr>
+	<td>Landmark : </td>
+	<td><%= @customer.servey.landmark %></td>
+</tr>
+<tr>
+ <td>Contact Number :</td>
+ <td> <%= @customer.servey.telephone_number %></td>
+</tr>
+ <td>Mobile Number : </td><td><%= @customer.servey.mobile_number %></td></tr>
+<td>Person Contacted :</td><td> <%= @customer.servey.person_contacted %></td></tr>
+
+<td>Relation With Person Contacted : </td><td><%= @customer.servey.relationship_with_applicant %></td></tr>
+
+<td>Years at Current Address  :</td><td> <%= @customer.servey.years_at_current_address %></td></tr>
+
+<td>Expected Monthly Usage :</td><td> <%= @customer.servey.expected_monthly_usage %></td></tr>
+
+<td>Bill Payer :</td><td> <%= @customer.servey.bill_payer %></td></tr>
+
+<td>Bill Payer Occupation :</td><td> <%= @customer.servey.bill_payer_occupation %></td></tr>
+
+<td>Residence Type :</td><td> <%= @customer.servey.residence_type %></td></tr>
+
+<td>Locality :</td><td> <%= @customer.servey.locality %></td></tr>
+
+<td>Residence status : </td><td><%= @customer.servey.residence_status %></td></tr>
+
+<td>Customers Attitude :</td><td> <%= @customer.servey.customer_attitude %></td></tr>
+
+<td>Credit card :</td><td> <%= @customer.servey.credit_card %></td></tr>
+
+<td>Pan card : </td><td><%= @customer.servey.pan_card %></td></tr>
+
+<td>Pan card Number :</td><td> <%= @customer.servey.pancard_number %></td></tr>
+
+<td>Address Proof Sighted : </td><td><%= @customer.servey.address_proof_sighted %></td></tr>
+
+<td>Assets Seen at Place  : </td><td><%= @customer.servey.asset_seen %></td></tr>
+
+<td>Vehicle Owned : </td><td><%= @customer.servey.vihicle_owned %></td></tr>
+
+<td>Av Done By	: </td><td><%= @customer.servey.av_done_by %></td></tr>
+
+<td>Av Supervisor name : </td><td><%= @customer.servey.av_supervisor_name %></td></tr>
+</table>
+<% end %>

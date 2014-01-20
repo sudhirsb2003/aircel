@@ -1,10 +1,11 @@
 class CustomersController < ApplicationController
+  before_action :login_required
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.order("id").page(params[:page]).per(15)
+    @customers = Customer.order("created_at DESC").page(params[:page]).per(15)
   end
 
   # GET /customers/1

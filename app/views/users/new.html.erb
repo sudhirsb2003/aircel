@@ -14,6 +14,30 @@
     vertical-align: middle;
     width: 21%;
 }
+
+.dk_fouc select{
+	background-color: #666;
+	border: medium none;
+	border-radius: 5px;
+	color: #FFFFFF;
+	font-size: 12px;
+	height: 30px;
+	padding-top: 3px;
+	position: relative;
+	top: 0;
+	visibility: visible;
+	float: left;
+	margin-right: 10px;
+	outline:none;
+}
+
+.dk_fouc select option{
+	border:none;
+	margin-top:10px;
+	background-color: #666;
+}
+.btn.btn-primary { border:none;}
+
 </style>
 
 
@@ -60,7 +84,7 @@
 </label>
 
 <div style="display:none;">
-<label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Select a tab (if role is not super user) </label>
+<label for="passwordsignup_confirm" class="youpasswd">Select a tab (if role is not super user) </label>
  <%= f.collection_select :tab_id, Tab.all, :id, :name %>
 </br>
 

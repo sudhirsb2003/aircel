@@ -15,7 +15,7 @@
 
 <p>List Of Documents</p>
 <% @servey.document_photos.each do |photo| %>
- <%= image_tag photo.photo.url(:small) %>
+ <%= link_to image_tag photo.photo.url(:small) %>
 <% end %>
 </div>
 
@@ -27,7 +27,7 @@
 </tr>
 
 <tr>
-  <td><strong>Name of the Tab User who made the Servey:</strong>
+  <td><strong>Name of the Tab User who completed the Servey:</strong>
   <%= @servey.tab.user.name %>
 </tr>
 

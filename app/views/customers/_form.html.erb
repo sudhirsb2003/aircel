@@ -1,8 +1,34 @@
+<style>
+.dk_fouc select{
+	background-color: #666;
+	border: medium none;
+	border-radius: 5px;
+	color: #FFFFFF;
+	font-size: 12px;
+	height: 30px;
+	padding-top: 7px;
+	position: relative;
+	top: 0;
+	visibility: visible;
+	float: left;
+	margin-right: 10px;
+	outline:none;
+}
+
+.dk_fouc select option{
+	border:none;
+	margin-top:10px;
+	background-color: #666;
+}
+.btn.btn-primary { border:none;}
+
+.form-control{ width: 210%; border: 2px solid #999999;}
+</style>
+
 <%= form_for(@customer) do |f| %>
   <% if @customer.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
-
+      <!--<h2><%#= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>-->
       <ul>
       <% @customer.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -45,8 +71,9 @@
   </div>
   <div class="field">
     <%= f.label :date_of_birth %><br>
-    <%= f.date_select :date_of_birth, :class=>"form-control", :start_year => 1990,:prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year' }  %>
-  </div>
+    <%= f.date_select :date_of_birth, :class=>"form-control", :start_year => 1990,
+                      :prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year' }  %>
+  </div><br><br>
  <div class="row">
   <!--<div class="field">
     <%= f.label :status %><br>

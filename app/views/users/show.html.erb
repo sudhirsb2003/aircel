@@ -1,13 +1,29 @@
-<p id="notice"><%= notice %></p>
 
+
+<style>
+ #main_content{float:left;width:700px;border-right:0px solid black;padding-right:35px;}
+ #sidebar {
+	height: 300px;
+	width: 400px;
+	float: right;
+	margin-right: 5px;
+	padding: 5px 0 0 5px;
+}
+</style>
+
+
+<div id ="sidebar">
 <p>
-  <strong>Name:</strong>
-  <%= @user.name %>
+  <%= image_tag @user.photo.url(:medium) %>
 </p>
 
+</div>
+
+<div id = "main_content">
+<p><%= link_to 'Edit', edit_user_path(@user) %> </p>
 <p>
-  <strong>Employee Photo:</strong>
-  <%= image_tag @user.photo.url(:medium) %>
+  <strong>Username:</strong>
+  <%= @user.username %>
 </p>
 
 <p>
@@ -19,8 +35,4 @@
   <strong>Employee uid:</strong>
   <%= @user.employee_uid %>
 </p>
-
-
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> 
+</div>

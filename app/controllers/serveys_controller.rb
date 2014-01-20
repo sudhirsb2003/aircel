@@ -25,6 +25,7 @@ class ServeysController < ApplicationController
 
   # GET /serveys/1/edit
   def edit
+      @id = Customer.find(params[:id])
   end
 
   # POST /serveys

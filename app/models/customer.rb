@@ -3,6 +3,14 @@ class Customer < ActiveRecord::Base
 	validates_presence_of:applicant_name, :application_ref_number, :address
 	validates_uniqueness_of :application_ref_number
 
+  validate :valid_date?
+
+  def valid_date?
+    if self.date_of_birth.nil?
+      errors.add(:date_of_birth, "is missing or invalid")
+    end
+  end
+
 	extend FriendlyId
 	friendly_id :applicant_name, use: :slugged
 

@@ -19,8 +19,10 @@
   <strong>Mac address:</strong>
   <%= @tab.mac_address %>
 </p>
-
+<% if @tab.user %>
 <%= @tab.user.name %>
-
+<% else %>
+ <p> no tassigned to anyone </p>
+<% end %>
 <%= link_to 'Edit', edit_tab_path(@tab) %> |
 <%= link_to 'Back', tabs_path %>
