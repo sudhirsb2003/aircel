@@ -77,7 +77,7 @@ class ServeysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def servey_params
-      params.require(:servey).permit(:customer_id, :tab_id, :user_id, :landmark, :ease_of_location, :telephone_number, :mobile_number,
+      params.require(:servey).permit(:signature_image, :customer_id, :tab_id, :user_id, :landmark, :ease_of_location, :telephone_number, :mobile_number,
                                      :person_contacted, :relationship_with_applicant, :years_at_current_address, :expected_monthly_usage,
                                      :bill_payer, :bill_payer_occupation, :residence_type, :locality, :residence_status,:age, :customer_attitude,
                                      :credit_card, :pan_card, :pancard_number, :address_proof_sighted, :asset_seen, :vihicle_owned,:final_recomendation,

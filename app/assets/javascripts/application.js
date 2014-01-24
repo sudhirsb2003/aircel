@@ -13,10 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require twitter/bootstrap
 //= require bootstrap-datepicker
 //= require underscore
 //= require gmaps/google
 //= require jquery_nested_form
-//= require twitter/bootstrap
 //= require flat-ui
 //= require_tree .

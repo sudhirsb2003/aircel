@@ -1,9 +1,9 @@
 
-<table class="table">
+<table class = "table">
   <thead>
     <tr>
       <th>Customer</th>
-      <th>Tab Name</th>
+      <th>Servey Done By</th>
       <th>Assigned By</th>
       <th>Status</th>
       <th></th>
@@ -16,7 +16,7 @@
     <% @serveys.each do |servey| %>
       <tr>
         <td><%= servey.customer.applicant_name %></td>
-        <td><%= servey.tab.name %></td>
+        <td><%= servey.tab.user.name %></td>
         <td><%= servey.user.name %></td>
         <td><%= servey.customer.status %></td>
         <td><%= link_to 'Show', servey %></td>

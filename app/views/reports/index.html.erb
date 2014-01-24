@@ -1,6 +1,6 @@
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<%= javascript_include_tag "bootstrap-datepicker.js" %></script>
+<%= javascript_include_tag 'application','bootstrap-datepicker.js' %></script>
 <script type="text/javascript">
 $(function() {
     $('.datepicker').datepicker({
@@ -32,8 +32,8 @@ $(function() {
 
 
 <div id="reports" style ="font-size:12px;background:#fff;width:1200px;padding:5px;border-radius:5px;border:0px solid #000000;text-align:center">
-<b style="float:right"><%= link_to "Download this Report", reports_path(:start_date => params[:start_date], :end_date => params[:end_date], format: :xls) %></b><br>
-<table id="myTable" class="tablesorter">
+<b style="float:right"><%= link_to "Download this Report", reports_path(:start_date => params[:start_date], :end_date => params[:end_date], format: :xls) %></b><hr>
+<table class="table table-bordered table-condensed">
 <thead>
 <tr>
    <th> Customer Name </th>

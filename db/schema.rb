@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140116074704) do
+ActiveRecord::Schema.define(version: 20140123055351) do
 
   create_table "assignments", force: true do |t|
     t.integer  "tab_id"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20140116074704) do
     t.string   "av_supervisor_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "signature_image"
   end
 
   create_table "tabs", force: true do |t|

@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(auth_user_params)
+    @user = User.new(user_params)
 
     respond_to do |format|
       if @user.save

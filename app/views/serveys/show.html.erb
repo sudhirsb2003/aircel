@@ -1,3 +1,8 @@
+
+<%= image_tag("file://#{Rails.root}/public/#{@servey.signature_image}") %>
+
+
+<h4 style="float:right"><%= link_to "accept", accept_customer_path(@servey.customer.slug, :customer_id => @servey.customer.id) , :class=>" label label-info" %></h4><br>
 <style>
  #main_content{float:left;width:700px;border-right:1px solid black;padding-right:35px;}
  #sidebar {

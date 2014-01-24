@@ -14,10 +14,10 @@ class Customer < ActiveRecord::Base
 	extend FriendlyId
 	friendly_id :applicant_name, use: :slugged
 
-  has_one :servey, :dependent => :destroy
+  #has_one :servey, :dependent => :destroy
   belongs_to :tab
-  has_one :assignment
-  has_one :servey
+  has_one :assignment, dependent: :destroy
+  has_one :servey, dependent: :destroy
 
   geocoded_by :full_address
   after_validation :geocode, :if => :address_changed?

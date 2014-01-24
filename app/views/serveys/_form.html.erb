@@ -1,3 +1,4 @@
+
 <%= nested_form_for @servey do |f| %>
   <% if @servey.errors.any? %>
     <div id="error_explanation">
@@ -290,6 +291,28 @@
          <input id="bill_payer" name="servey[final_recomendation]" type="checkbox" value="Negative" />Negative
       </label>
 
+<p onselectstart="return false">
+  <a id="github" href="https://github.com/szimek/signature_pad">
+    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
+  </a>
+
+  <div id="signature-pad" class="m-signature-pad">
+    <div class="m-signature-pad--body" style="border:1px solid silver;width:400px;">
+      <canvas></canvas>
+    </div>
+    <div class="m-signature-pad--footer">
+      <div class="description"></div>
+       <a href="javascript:void(0)" data-action="clear">Sign Again</a>
+       <a href="javascript:void(0)" data-action="save"> Save Signature </a>
+      <!--<button class="button clear" data-action="clear">Clear</button>
+      <button class="button save" data-action="save">Save</button>-->
+    </div>
+  </div>
+</p>
+<%= javascript_include_tag 'app.js', 'signature_pad.js' %>
+  <div class="field">
+    <%= f.hidden_field :signature_image %>
+  </div>
   </div>
   <div class="field">
     <%= f.label :av_done_by %><br>
@@ -300,6 +323,6 @@
     <%= f.text_field :av_supervisor_name %>
   </div><br><br>
   <div class="actions">
-    <%= f.submit :class=> "btn btn-primary" %>
+    <%= f.submit :class=> "btn btn-primary", :id => "create_survey", "data-action" => "d" %>
   </div>
 <% end %><br>

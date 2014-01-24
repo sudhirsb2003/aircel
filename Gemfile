@@ -11,6 +11,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
 		                          :github => 'anjlab/bootstrap-rails',
 		                          :branch => '3.0.0'
+gem 'bootstrap-datepicker-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'workflow'
 gem 'friendly_id'
