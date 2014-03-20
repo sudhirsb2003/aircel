@@ -1,7 +1,8 @@
 <p style="float:right;margin-right:50px"><%= link_to 'New Tab user', new_user_path, :class => "label label-info" %></p><br>
-<table class="table table-bordered-square">
+<table class="table table-striped table-condensed table-bordered">
   <thead>
     <tr>
+      <th> Sr. No. </th>
       <th>Name</th>
       <th>UserName</th>
       <th>Role</th>
@@ -10,8 +11,9 @@
   </thead>
 
   <tbody>
-    <% @users.each do |tab_user| %>
+    <% @users.order("id").each do |tab_user| %>
       <tr>
+        <td><%= tab_user.id %></td>
         <td><%= tab_user.name %></td>
         <td><%= tab_user.username %>
         <td><%= tab_user.role_name %>

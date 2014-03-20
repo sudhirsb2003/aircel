@@ -291,12 +291,12 @@
          <input id="bill_payer" name="servey[final_recomendation]" type="checkbox" value="Negative" />Negative
       </label>
 
+    <% if controller.action_name == 'new' %>
 <p onselectstart="return false">
   <a id="github" href="https://github.com/szimek/signature_pad">
-    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
   </a>
 
-  <div id="signature-pad" class="m-signature-pad">
+  <div id="signature-pad" class="m-signature-pad" style="width:500px;">
     <div class="m-signature-pad--body" style="border:1px solid silver;width:400px;">
       <canvas></canvas>
     </div>
@@ -314,6 +314,7 @@
     <%= f.hidden_field :signature_image %>
   </div>
   </div>
+  <% end %>
   <div class="field">
     <%= f.label :av_done_by %><br>
     <%= f.text_field :av_done_by %>
