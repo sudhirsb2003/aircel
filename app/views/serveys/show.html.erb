@@ -1,6 +1,4 @@
 
-<%= image_tag("file://#{Rails.root}/public/#{@servey.signature_image}") %>
-
 
 <h4 style="float:right"><%= link_to "accept", accept_customer_path(@servey.customer.slug, :customer_id => @servey.customer.id) , :class=>" label label-info" %></h4><br>
 <style>
@@ -22,6 +20,8 @@
 <% @servey.document_photos.each do |photo| %>
  <%= link_to image_tag photo.photo.url(:small) %>
 <% end %>
+<p> Signature</p>
+<%= image_tag("#{@servey.signature_image}") %>
 </div>
 
 <div id="main_content">

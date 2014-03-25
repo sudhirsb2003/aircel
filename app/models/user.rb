@@ -7,10 +7,12 @@ class User < ActiveRecord::Base
   belongs_to :tab
   has_one :assignment
 
-  def make_admin
-   user = User.find 1
+  def make_admin(user)
    user.admin = true
    user.save!
   end
+
+  validates_uniqueness_of :tab_id, :scope => [:tab_id]
+
 
 end

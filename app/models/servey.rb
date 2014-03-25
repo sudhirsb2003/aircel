@@ -12,7 +12,7 @@ class Servey < ActiveRecord::Base
       require "base64"
 			encoded_image = signature_image.split(",")[1]
 			decoded_image = Base64.decode64(encoded_image)
-			File.open(Rails.root.to_s + "/public/#{self.customer.applicant_name}_signature.png", "wb") { |f| f.write(decoded_image) }
+			File.open(Rails.root.to_s + "/app/assets/images/#{self.customer.applicant_name}_signature.png", "wb") { |f| f.write(decoded_image) }
 			self.signature_image = "#{self.customer.applicant_name}_signature.png"
     end
   end

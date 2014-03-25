@@ -85,7 +85,7 @@
 
 <div style="display:none;">
 <label for="passwordsignup_confirm" class="youpasswd">Select a tab (if role is not super user) </label>
- <%= f.collection_select :tab_id, Tab.all, :id, :name %>
+ <%= f.collection_select :tab_id, @array_without_excluded_ids, :id, :name %>
 </br>
 
 
