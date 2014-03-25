@@ -6,6 +6,7 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     @customers = Customer.order("created_at DESC").page(params[:page]).per(15)
+    @customer = Customer.new
   end
 
   # GET /customers/1
@@ -54,6 +55,11 @@ class CustomersController < ApplicationController
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def import
+   Customer.import params[:file]
+   redirect_to root_path, notice: "Imported!!"
   end
 
   def accept

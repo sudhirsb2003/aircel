@@ -86,6 +86,7 @@ GEM
     hike (1.2.3)
     htmlentities (4.3.1)
     i18n (0.6.9)
+    iconv (1.0.2)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -135,6 +136,11 @@ GEM
     rake (10.1.1)
     rdoc (4.1.1)
       json (~> 1.4)
+    roo (1.13.2)
+      nokogiri
+      rubyzip
+      spreadsheet (> 0.6.4)
+    ruby-ole (1.2.11.7)
     rubyzip (1.0.0)
     sass (3.2.13)
     sass-rails (4.0.1)
@@ -144,6 +150,8 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    spreadsheet (0.9.7)
+      ruby-ole (>= 1.0)
     sprockets (2.10.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -190,6 +198,7 @@ DEPENDENCIES
   friendly_id
   geocoder
   gmaps4rails
+  iconv
   jbuilder (~> 1.2)
   jquery-rails
   kaminari
@@ -198,6 +207,7 @@ DEPENDENCIES
   pg
   quiet_assets
   rails (= 4.0.0)
+  roo
   sass-rails (~> 4.0.0)
   sdoc
   to_spreadsheet

@@ -5,6 +5,9 @@ Airecel::Application.routes.draw do
   resources :assignments
   resources :tabs
   resources :customers do
+   collection do
+    post :import
+   end
    member do
     get :accept
     post :accpet

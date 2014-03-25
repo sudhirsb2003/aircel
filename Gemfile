@@ -19,10 +19,12 @@ gem 'faker'
 gem 'kaminari'
 gem 'gmaps4rails'
 gem "geocoder"
-gem 'paperclip'
 gem "nested_form"
 gem 'to_spreadsheet'
 gem 'flatui-rails'
+gem 'roo'
+gem 'iconv'
+
 group :doc do
   gem 'sdoc', require: false
 end

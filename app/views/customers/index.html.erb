@@ -1,3 +1,9 @@
+<h2>Import Customers</h2>
+<%= form_tag import_customers_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+<% end %>
+
 <p style ="float:right;margin-right:50px;"><%= link_to 'New Customer', new_customer_path, :class => "label label-primary" %></p><br>
 <table class = "table table-condensed">
   <thead>
