@@ -1,28 +1,26 @@
-<h2>Import Customers</h2>
-<%= form_tag import_customers_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Import" %>
-<% end %>
+<strong>Import Customers</strong><hr>
+<table><%= form_tag import_customers_path, multipart: true do %>
+    <tr><td><%= file_field_tag :file %><br></td></tr>
+    <tr><td><%= submit_tag "Upload Customers", class: 'btn btn-danger' %></td></tr>
+<% end %></table>
+<hr>
 
-<p style ="float:right;margin-right:50px;"><%= link_to 'New Customer', new_customer_path, :class => "label label-primary" %></p><br>
-<table class = "table table-condensed">
+<table id="customers" class = "table table-condensed table-bordered table-striped">
   <thead>
     <tr>
-      <th>Application ref number</th>
+      <th>Serial number</th>
+      <th>Reference number</th>
       <th>Applicant name</th>
       <th>Date of birth</th>
       <th>Contact number</th>
       <th>Status</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
-
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
-        <td><%= link_to customer.application_ref_number, customer %></td>
+        <td><%= customer.id %></td>
+        <td><%= customer.application_ref_number %></td>
         <td><%= link_to customer.applicant_name, customer %></td>
         <td><%= customer.date_of_birth %></td>
         <td><%= customer.contact_number %></td>
@@ -40,5 +38,6 @@
   </tbody>
 </table>
 
-<br>
-<%= paginate @customers %>
+<br><br>
+
+<p style ="margin-right:50px;"><%= link_to 'New Customer', new_customer_path, :class => "btn btn-primary" %></p><br>

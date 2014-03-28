@@ -45,7 +45,9 @@ class CustomersController < ApplicationController
   # POST /customers.json
   def create
     @customer = Customer.new(customer_params)
-
+     if @customer.application_ref_number==""
+       @customer.application_ref_number = Customer.last.application_ref_number+1
+     end
     respond_to do |format|
       if @customer.save
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
@@ -59,7 +61,7 @@ class CustomersController < ApplicationController
 
   def import
    Customer.import params[:file]
-   redirect_to root_path, notice: "Imported!!"
+   redirect_to customers_path, notice: "Imported!!"
   end
 
   def accept

@@ -11,14 +11,16 @@
 	padding: 15px;
 	float:right;
 }
+welcome{color:green;}
 </style>
 
 <% if logged_in? && current_user.role_name == "super_user" %>
-<p>Welcome , <%= current_user.name %></p><hr>
+<p>Welcome , <welcome><%= current_user.name %></welcome></p><hr>
 
 
 <div id ="sidebar">
-<table class ="table">
+
+<table class ="table-bordered table-condensed table-striped table">
  <p> Tab Status Task</p>
  <tr>
   <td> Tab name </td>
@@ -29,29 +31,38 @@
   <td><%= link_to t.name  %></td>
   <td><%= Assignment.find_all_by_tab_id(t).count %></td>
 </tr>
-<% end %></table>
+<% end %>
+</table>
 </div>
 
 <div id ="main_content">
-	<table class="table">
 	<p>Completed Customers</p>
+	<table class="table table-condensed table-striped table-bordered">
+    <tr>
+      <th> Applicant Name </th>
+    </tr>
 		<% @completed_customers.each do |task| %>
-			<tr>
-				<td><%= link_to task.applicant_name, servey_path(task.servey) %><td>
-				<td><%= link_to "Accept", accept_customer_path(task.slug, :customer_id => task.id), :class=>"label label-info" %> </td>
-				<td><%= link_to "Reassign", reassign_customer_path(task.id, :customer_id => task.id), :class=>"label label-danger" %></td>
-			</tr>
+		<tr>
+			<td><%= task.applicant_name %> <strong style="float:right;margin-right:50px;"> <%= link_to 'More..', servey_path(task.servey) %>
+			<td style="text-align:center"><%= link_to "Accept", accept_customer_path(task.slug, :customer_id => task.id) %></td>
+			<td style="text-align:center"><%= link_to "Reassign", reassign_customer_path(task.id, :customer_id => task.id) %></td>
+		</tr>
 		<% end %>
 	</table>
   <hr>
 
  <p> Assigned Task</p>
-  <table class="table table-condensed">
+  <table class="table table-condensed table-bordered table-striped">
+   <tr>
+     <th> Tab Name </th>
+     <th> Tab User name </th>
+     <th> Status </th>
+  </tr>
   <% Assignment.where('DATE(created_at) > ? AND DATE(created_at) < ?', Date.today-5, Date.today+1).each do |task| %>
    <tr>
-		 <td><%= task.tab.user.name %></td>
-		 <td><%= task.customer.applicant_name %></td>
-		 <td><%= task.customer.status %></td>
+		 <td><%= task.tab.user.name if task.tab.user %></td>
+		 <td><%= task.customer.applicant_name if task.customer %></td>
+		 <td><%= task.customer.status if task.customer %></td>
    </tr>
   <% end %>
 </div>

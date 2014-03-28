@@ -20,9 +20,12 @@
   <%= @tab.mac_address %>
 </p>
 <% if @tab.user %>
-<%= @tab.user.name %>
+ <p>Assigned to: <%= @tab.user.name %> : <%= @tab.user.role_name %></p>
 <% else %>
  <p> no tassigned to anyone </p>
 <% end %>
+
+
+
 <%= link_to 'Edit', edit_tab_path(@tab) %> |
 <%= link_to 'Back', tabs_path %>

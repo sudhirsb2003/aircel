@@ -1,7 +1,7 @@
 class Customer < ActiveRecord::Base
 
 	validates_presence_of:applicant_name, :application_ref_number, :address
-	validates_uniqueness_of :application_ref_number
+	#validates_uniqueness_of :application_ref_number
 
   validate :valid_date?
 
@@ -27,7 +27,6 @@ class Customer < ActiveRecord::Base
   end
 
   def self.import(file)
-  logger.info "##################" + file.inspect
   	return if file.nil?
   	f = open_file file
   	header = f.row(1)
@@ -35,8 +34,10 @@ class Customer < ActiveRecord::Base
   	(2..f.last_row).each do |i|
   		t = self.new Hash[[header, f.row(i)].transpose]
   		t.save! if t.valid?
+    tab = find_tab(t)
   	end
   end
+
 
 
 # def self.import(file)
@@ -53,6 +54,15 @@ class Customer < ActiveRecord::Base
 
 
   private
+
+  def self.find_tab(tab)
+    tab_pincode_to_integer = tab.pincode.to_i
+    tab_pincode_number = tab_pincode_to_integer.to_s
+    tabname = Tab.find_by_pincode(tab_pincode_number)
+    if tabname && !tabname.nil?
+      Assignment.create(tab_id: tabname.id, customer_id: tab.id)
+    end
+  end
 
   	def self.open_file(file)
   		case File.extname(file.original_filename)

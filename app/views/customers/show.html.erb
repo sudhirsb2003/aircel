@@ -7,6 +7,11 @@
 	padding-left: 40px;
   padding-bottom: 20px;
 }
+
+
+ .dk_toggle{  padding:4px 4px 4px 4px;width:250px;height:27px;}
+ .dk_container{margin-bottom:0px;}
+
 .dk_fouc select{
 	background-color: #666;
 	border: medium none;
@@ -94,60 +99,56 @@
 <% end %>
 </div>
 
-<table class="table" style= "width:500px;">
+<table class="table table-condensed table-bordered table-striped" style= "width:500px;">
 <p style = "font-size:15px"> Basic Info </p>
-<tr><td>
-  <strong>Application ref number:</strong></td>
-  <td><%= @customer.application_ref_number %>
-</td></tr>
+<tr><td>Application ref number:</td>
+    <td><%= @customer.application_ref_number %></td></tr>
+
+<tr><td>Ageny name:</td>
+    <td><%= @customer.ageny_name %></td></tr>
 
 <tr><td>
-  <strong>Ageny name:</strong></td>
-  <td><%= @customer.ageny_name %>
-</td></tr>
-
-<tr><td>
-  <strong>Applicant name:</strong></td>
+  Applicant name:</td>
   <td><%= @customer.applicant_name %>
 </td></tr>
 
 <tr><td>
-  <strong>Address:</strong></td>
+  Address:</td>
   <td><%= @customer.address %>
 </td><tr>
 
 <tr><td>
-  <strong>Landmark:</strong></td>
+  Landmark:</td>
   <td><%= @customer.landmark %>
 </td><tr>
 
 <tr><td>
-  <strong>Date of birth:</strong></td>
+  Date of birth:</td>
   <td><%= @customer.date_of_birth %>
 </td><tr>
 
 <tr><td>
-  <strong>Pincode:</strong></td>
+  Pincode:</td>
   <td><%= @customer.pincode %>
 </td><tr>
 
 <tr><td>
-  <strong>Contact number:</strong></td>
+  Contact number:</td>
   <td><%= @customer.contact_number %>
 </td></tr>
 
 <tr><td>
-  <strong>Country:</strong></td>
+  Country:</td>
   <td><%= @customer.coountry %>
 </td><tr>
 
 <tr><td>
-  <strong>State:</strong></td>
+  State:</td>
   <td><%= @customer.state %>
 </td><tr>
 
 <tr><td>
-  <strong>City:</strong></td>
+  City:</td>
   <td><%= @customer.city %>
 </td><tr>
 </table>

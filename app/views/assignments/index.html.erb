@@ -1,4 +1,4 @@
-<table class ="table">
+<table class ="table table-condensed table-bordered table-striped">
   <thead>
     <tr>
       <th>Tab name</th>
@@ -13,7 +13,7 @@
   <tbody>
     <% @assignments.each do |assignment| %>
       <tr>
-        <td><%= assignment.tab.user.name %></td>
+        <td><%= assignment.tab.user.name if assignment.tab.user %></td>
         <td><%= assignment.customer.applicant_name %></td>
         <td><%= assignment.user.name %></td>
         <td><%= assignment.customer.status %></td>

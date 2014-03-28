@@ -1,49 +1,42 @@
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <%= javascript_include_tag 'application','bootstrap-datepicker.js' %></script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
+<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/redmond/jquery-ui.css" rel="stylesheet" />
 <script type="text/javascript">
-$(function() {
-    $('.datepicker').datepicker({
-    format: 'mm-dd-yyyy',
-    weekStart: 1,
+$(document).ready(function () {
+  $(function () {
+                var dates = $("#fromDate, #toDate").datepicker({
+                    defaultDate: "+1w",
+                    dateFormat: 'dd-mm-yy',
+                    changeMonth: true,
+                    numberOfMonths: 3,
+                    onSelect: function (selectedDate) {
+                        var option = this.id == "from" ? "minDate" : "maxDate",
+                    instance = $(this).data("datepicker"),
+                    date = $.datepicker.parseDate(
+                        instance.settings.dateFormat ||
+                        $.datepicker._defaults.dateFormat,
+                        selectedDate, instance.settings);
+                        dates.not(this).datepicker("option", option, date);
+                    }
+                });
+            });
 });
-});
+
 </script>
-   <script>
-      /* Update datepicker plugin so that MM/DD/YYYY format is used. */
-      $.extend($.fn.datepicker.defaults, {
-        parse: function (string) {
-          var matches;
-          if ((matches = string.match(/^(\d{2,2})\/(\d{2,2})\/(\d{4,4})$/))) {
-            return new Date(matches[3], matches[1] - 1, matches[2]);
-          } else {
-            return null;
-          }
-        },
-        format: function (date) {
-          var
-            month = (date.getMonth() + 1).toString(),
-            dom = date.getDate().toString();
-          if (month.length === 1) {
-            month = "0" + month;
-          }
-          if (dom.length === 1) {
-            dom = "0" + dom;
-          }
-          return month + "/" + dom + "/" + date.getFullYear();
-        }
-      });
-    </script>
-                    <input data-datepicker="datepicker" class="small" type="text" value="01/05/2011" />
+
 <%= form_for :reports_path, :method => :get do |f| %>
 <div class ="row">
   <div class="field_name">
   <%= label_tag :'Choose Start Date' %><br>
-  <%= text_field_tag :start_date, '', :class=> "datepicker", :value => @start_date %>
+  <%= text_field_tag :start_date, '', :id=> "fromDate", :value => @start_date %>
 </div>
   <div class="field_name">
   <%= label_tag :'Choose End Date' %><br>
-  <%= text_field_tag :end_date, '', :class => "datepicker", :value => @end_date %>
+  <%= text_field_tag :end_date, '', :id => "toDate", :value => @end_date %>
 </div><br><br>
 <%= f.submit "Generate Report", :class =>"btn btn-info" %>
 </div>

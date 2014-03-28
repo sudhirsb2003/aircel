@@ -24,6 +24,8 @@ gem 'to_spreadsheet'
 gem 'flatui-rails'
 gem 'roo'
 gem 'iconv'
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+gem 'jquery-ui-rails'
 
 group :doc do
   gem 'sdoc', require: false
