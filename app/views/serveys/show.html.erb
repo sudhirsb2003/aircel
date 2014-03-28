@@ -1,6 +1,4 @@
 
-
-<h4 style="float:right"><%= link_to "accept", accept_customer_path(@servey.customer.slug, :customer_id => @servey.customer.id) , :class=>" label label-info" %></h4><br>
 <style>
  #main_content{float:left;width:700px;border-right:1px solid black;padding-right:35px;}
  #sidebar {
@@ -11,12 +9,16 @@
 	padding: 5px 0 0 5px;
 }
 </style>
-<div id="sidebar">
+<div id = "actions">
 <p style="margin-top:-20px;">
 <%= link_to 'Edit Servey', edit_servey_path(@servey) %> |
-<%= link_to 'View all Servey', serveys_path %></p>
+<%= link_to 'View all Servey', serveys_path %>
+<b style="margin-left:450px;">
+ <%= link_to "accept", accept_customer_path(@servey.customer.slug, :customer_id => @servey.customer.id) %></b></p>
+</div><hr>
 
-<p>List Of Documents</p>
+<div id="sidebar">
+<h4><b>List Of Documents</b></h4>
 <% @servey.document_photos.each do |photo| %>
  <%= link_to image_tag photo.photo.url(:small) %>
 <% end %>
@@ -25,139 +27,139 @@
 </div>
 
 <div id="main_content">
-<table class="table table-condensed">
+<table class="table table-striped table-bordered table-condensed">
 <tr>
   <td><strong>Name Of the Customer:</strong>
-  <%= @servey.customer.applicant_name %>
+  <td><%= @servey.customer.applicant_name %></td>
 </tr>
 
 <tr>
   <td><strong>Name of the Tab User who completed the Servey:</strong>
-  <%= @servey.tab.user.name %>
+  <td><%= @servey.tab.user.name %></td>
 </tr>
 
 <tr>
   <td><strong>Assigned by :</strong>
-  <%= @servey.user.name %>
+  <td><%= @servey.user.name %></td>
 </tr>
 
 <tr>
   <td><strong>Landmark:</strong>
-  <%= @servey.landmark %>
+  <td><%= @servey.landmark %></td>
 </tr>
 
 <tr>
   <td><strong>Ease of location:</strong>
-  <%= @servey.ease_of_location %>
+  <td><%= @servey.ease_of_location %></td>
 </tr>
 
 <tr>
   <td><strong>Telephone number:</strong>
-  <%= @servey.telephone_number %>
+  <td><%= @servey.telephone_number %></td>
 </tr>
 
 <tr>
   <td><strong>Mobile number:</strong>
-  <%= @servey.mobile_number %>
+  <td><%= @servey.mobile_number %></td>
 </tr>
 
 <tr>
   <td><strong>Person contacted:</strong>
-  <%= @servey.person_contacted %>
+  <td><%= @servey.person_contacted %></td>
 </tr>
 
 <tr>
   <td><strong>Relationship with applicant:</strong>
-  <%= @servey.relationship_with_applicant %>
+  <td><%= @servey.relationship_with_applicant %></td>
 </tr>
 
 <tr>
   <td><strong>Years at current address:</strong>
-  <%= @servey.years_at_current_address %>
+  <td><%= @servey.years_at_current_address %></td>
 </tr>
 
 <tr>
   <td><strong>Expected monthly usage:</strong>
-  <%= @servey.expected_monthly_usage %>
+  <td><%= @servey.expected_monthly_usage %></td>
 </tr>
 
 <tr>
   <td><strong>Bill payer:</strong>
-  <%= @servey.bill_payer %>
+  <td><%= @servey.bill_payer %></td>
 </tr>
 
 <tr>
   <td><strong>Bill payer occupation:</strong>
-  <%= @servey.bill_payer_occupation %>
+  <td><%= @servey.bill_payer_occupation %></td>
 </tr>
 
 <tr>
   <td><strong>Residence type:</strong>
-  <%= @servey.residence_type %>
+  <td><%= @servey.residence_type %></td>
 </tr>
 
 <tr>
   <td><strong>Locality:</strong>
-  <%= @servey.locality %>
+  <td><%= @servey.locality %></td>
 </tr>
 
 <tr>
   <td><strong>Residence status:</strong>
-  <%= @servey.residence_status %>
+  <td><%= @servey.residence_status %></td>
 </tr>
 
 <tr>
   <td><strong>Age:</strong>
-  <%= @servey.age %>
+  <td><%= @servey.age %></td>
 </tr>
 
 <tr>
   <td><strong>Customer attitude:</strong>
-  <%= @servey.customer_attitude %>
+  <td><%= @servey.customer_attitude %></td>
 </tr>
 
 <tr>
   <td><strong>Credit card:</strong>
-  <%= @servey.credit_card %>
+  <td><%= @servey.credit_card %></td>
 </tr>
 
 <tr>
   <td><strong>Pan card:</strong>
-  <%= @servey.pan_card %>
+  <td><%= @servey.pan_card %></td>
 </tr>
 
 <tr>
   <td><strong>Pancard number:</strong>
-  <%= @servey.pancard_number %>
+  <td><%= @servey.pancard_number %></td>
 </tr>
 
 <tr>
   <td><strong>Address proof sighted:</strong>
-  <%= @servey.address_proof_sighted %>
+  <td><%= @servey.address_proof_sighted %></td>
 </tr>
 
 <tr>
   <td><strong>Asset seen:</strong>
-  <%= @servey.asset_seen %>
+  <td><%= @servey.asset_seen %></td>
 </tr>
 
 <tr>
   <td><strong>Vihicle owned:</strong>
-  <%= @servey.vihicle_owned %>
+  <td><%= @servey.vihicle_owned %></td>
 </tr>
 
 <tr>
   <td><strong>Final recomendation:</strong>
-  <%= @servey.final_recomendation %>
+  <td><%= @servey.final_recomendation %></td>
 </tr>
 
 <tr>
   <td><strong>Av done by:</strong>
-  <%= @servey.av_done_by %>
+  <td><%= @servey.av_done_by %></td>
 </tr>
 
 <tr>
   <td><strong>Av supervisor name:</strong>
-  <%= @servey.av_supervisor_name %>
+  <td><%= @servey.av_supervisor_name %></td>
 </tr>
 </div>
