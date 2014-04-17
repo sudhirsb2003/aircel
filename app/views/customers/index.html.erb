@@ -8,7 +8,7 @@
 <table id="customers" class = "table table-condensed table-bordered table-striped">
   <thead>
     <tr>
-      <th>Serial number</th>
+      <th>Customer Type</th>
       <th>Reference number</th>
       <th>Applicant name</th>
       <th>Date of birth</th>
@@ -19,7 +19,7 @@
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
-        <td><%= customer.id %></td>
+        <td><%= customer.customer_type.name %></td>
         <td><%= customer.application_ref_number %></td>
         <td><%= link_to customer.applicant_name, customer %></td>
         <td><%= customer.date_of_birth %></td>

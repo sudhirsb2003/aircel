@@ -16,6 +16,7 @@ class Customer < ActiveRecord::Base
 
   #has_one :servey, :dependent => :destroy
   belongs_to :tab
+  belongs_to :customer_type
   has_one :assignment, dependent: :destroy
   has_one :servey, dependent: :destroy
 

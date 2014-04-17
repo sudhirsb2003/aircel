@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.order("created_at DESC").page(params[:page]).per(15)
+    @customers = Customer.order("created_at DESC").includes(:customer_type)
     @customer = Customer.new
   end
 

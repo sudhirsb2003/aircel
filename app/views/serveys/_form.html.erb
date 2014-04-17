@@ -1,4 +1,4 @@
-
+<%= javascript_include_tag 'app.js', 'signature_pad.js' %>
 <%= nested_form_for @servey do |f| %>
   <% if @servey.errors.any? %>
     <div id="error_explanation">
@@ -297,8 +297,8 @@
   </a>
 
   <div id="signature-pad" class="m-signature-pad" style="width:500px;">
-    <div class="m-signature-pad--body" style="border:1px solid silver;width:400px;">
-      <canvas></canvas>
+    <div class="m-signature-pad--body" style="border:1px solid silver;">
+      <canvas width="500" height="480"></canvas>
     </div>
     <div class="m-signature-pad--footer">
       <div class="description"></div>
@@ -309,7 +309,6 @@
     </div>
   </div>
 </p>
-<%= javascript_include_tag 'app.js', 'signature_pad.js' %>
   <div class="field">
     <%= f.hidden_field :signature_image %>
   </div>
