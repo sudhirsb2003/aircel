@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416172311) do
+ActiveRecord::Schema.define(version: 20140417062415) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "assignments", force: true do |t|
     t.integer  "tab_id"
@@ -46,6 +49,10 @@ ActiveRecord::Schema.define(version: 20140416172311) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "customer_type_id"
+    t.string   "caf_number"
+    t.string   "activation_code"
+    t.string   "dist_code"
+    t.string   "channel_string"
   end
 
   create_table "document_photos", force: true do |t|

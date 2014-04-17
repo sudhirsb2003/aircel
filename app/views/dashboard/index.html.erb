@@ -55,12 +55,16 @@ welcome{color:green;}
   <table class="table table-condensed table-bordered table-striped">
    <tr>
      <th> Tab Name </th>
-     <th> Tab User name </th>
+     <th> Customer Name </th>
      <th> Status </th>
   </tr>
   <% Assignment.where('DATE(created_at) > ? AND DATE(created_at) < ?', Date.today-5, Date.today+1).each do |task| %>
    <tr>
-		 <td><%= task.tab.user.name if task.tab.user %></td>
+     <%  if task.tab.user.present? %>
+		 <td><%= task.tab.user.inspect %></td>
+		 <% else %>
+		 <td>Test </td>
+		 <% end %>
 		 <td><%= task.customer.applicant_name if task.customer %></td>
 		 <td><%= task.customer.status if task.customer %></td>
    </tr>

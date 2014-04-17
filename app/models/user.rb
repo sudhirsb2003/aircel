@@ -3,16 +3,21 @@ class User < ActiveRecord::Base
 	#validates :employee_uid , uniqueness: true
 	has_secure_password
 	validates :username ,presence: true , uniqueness: true
+  validates_uniqueness_of :tab_id, :scope => [:tab_id]
 	has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }#, :default_url => "/images/:style/missing.png"
   belongs_to :tab
   has_one :assignment
+  after_create :assign_tab_role
+
+
+  def assign_tab_role
+    self.role_name = 'tab_user'
+    self.save!
+  end
+
 
   def make_admin(user)
    user.admin = true
    user.save!
   end
-
-  validates_uniqueness_of :tab_id, :scope => [:tab_id]
-
-
 end

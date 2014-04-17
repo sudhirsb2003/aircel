@@ -81,7 +81,9 @@
 <br>
     <% if @customer.status=='submitted' %>
      <!--<td><span class="label label-warning">Submitted to Tab User </span></td></tr><br>-->
-		 <b style="font-size:15px;" class="label label-warning">The customer has been send for verification. this has been assigned to   &nbsp;&nbsp;<%= link_to @customer.assignment.tab.user.name, tab_path(@customer.assignment.tab) %></b>
+		 <b style="font-size:15px;" class="label label-warning">
+		   The customer has been send for verification. this has been assigned to  &nbsp;&nbsp;
+		   <%= @customer.tab.inspect %></b>
     <% end %>
 
 

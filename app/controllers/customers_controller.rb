@@ -111,7 +111,7 @@ class CustomersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
       @customer = Customer.friendly.find(params[:id])
-   @hash = Gmaps4rails.build_markers(@customer) do |user, marker|
+      @hash = Gmaps4rails.build_markers(@customer) do |user, marker|
       marker.lat user.latitude
       marker.lng user.longitude
     end
@@ -121,6 +121,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:application_ref_number, :ageny_name, :applicant_name, :address, :landmark, :date_of_birth, :pincode, :contact_number, :status, :coountry, :state, :city)
+      params.require(:customer).permit(:application_ref_number, :ageny_name, :applicant_name, :address, :activation_code, :dist_code, :channel_string, :caf_number, :landmark, :date_of_birth, :pincode, :contact_number, :status, :coountry, :state, :city)
     end
 end

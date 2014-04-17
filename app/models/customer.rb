@@ -1,6 +1,6 @@
 class Customer < ActiveRecord::Base
 
-	validates_presence_of:applicant_name, :application_ref_number, :address
+	#validates_presence_of:applicant_name, :application_ref_number, :address
 	#validates_uniqueness_of :application_ref_number
 
   validate :valid_date?
@@ -27,32 +27,31 @@ class Customer < ActiveRecord::Base
    [address, coountry, city, state].compact.join(', ')
   end
 
-  def self.import(file)
-  	return if file.nil?
-  	f = open_file file
-  	header = f.row(1)
 
-  	(2..f.last_row).each do |i|
-  		t = self.new Hash[[header, f.row(i)].transpose]
-  		t.save! if t.valid?
-    tab = find_tab(t)
-  	end
+ def self.import(file)
+		allowed_attributes = ['application_ref_number','customer_type_id','ageny_name', 'applicant_name', 'address', 'activation_code','dist_code', 'channel_string', 'caf_number', 'landmark', 'date_of_birth', 'pincode', 'contact_number', 'status', 'coountry', 'state', 'city']
+   spreadsheet = open_spreadsheet(file)
+   header = spreadsheet.row(1)
+   (2..spreadsheet.last_row).collect do |i|
+    row = Hash[[header,spreadsheet.row(i)].transpose]
+    customer = Customer.find_by_id(row["id"]) || new
+    customer.attributes = row.to_hash.select { |k,v| allowed_attributes.include? k }
+    customer.application_ref_number = spreadsheet.row(i)[3].to_i
+    customer.contact_number = spreadsheet.row(i)[7].to_i
+    customer.pincode = spreadsheet.row(i)[8].to_i
+    customer.dist_code = spreadsheet.row(i)[10].to_i
+    customer.save!
+    self.assign_customer_to_tab(customer)
+   end
+ end
+
+  def self.assign_customer_to_tab(customer)
+    customer_pincode = Customer.where('id=?', customer.id)
+    tab_id = Tab.find_by_pincode(customer_pincode.map(&:pincode))
+    assign_to_tab = Assignment.create!(user_id: 1, tab_id: tab_id.id, customer_id: customer.id)
+    assign_to_tab.customer.submit!
+    assign_to_tab.save!
   end
-
-
-
-# def self.import(file)
-#  spreadsheet = open_spreadsheet(file)
-#  header = spreadsheet.row(1)
-#  (2..spreadsheet.last_row).each do |i|
-#    row = Hash[[header, spreadsheet.row(i)].transpose]
-#    customer = find_by_id(row["id"]) || new
-#    customer.attributes = row.to_hash.slice(*accessible_attributes)
-#    customer.save!
-#  end
-# end
-#
-
 
   private
 
@@ -65,7 +64,7 @@ class Customer < ActiveRecord::Base
     end
   end
 
-  	def self.open_file(file)
+  	def self.open_spreadsheet(file)
   		case File.extname(file.original_filename)
   		when '.csv' then Roo::Csv.new(file.path, nil, :ignore)
   		when '.xls' then Roo::Excel.new(file.path, nil, :ignore)

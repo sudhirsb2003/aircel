@@ -75,10 +75,10 @@
                       :prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year' }  %>
   </div><br><br>
  <div class="row">
-  <!--<div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status, :class=>"form-control" %>
-  </div>-->
+  <div class="field">
+    <%= f.label :CafNumber %><br>
+    <%= f.text_field :caf_number, :class=>"form-control" %>
+  </div>
   <div class="field">
     <%= f.label :country %><br>
     <b><%= f.text_field :coountry, :class=>"form-control", :value => "India" %></b>
@@ -92,9 +92,22 @@
     <%= f.text_field :city, :class=>"form-control", :value => "Mumbai" %>
   </div>
     <div class="field">
-    <%= f.label :pincode %><br>
+    <%= f.label :Zipcode %><br>
     <%= f.text_field :pincode, :class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label 'Activation Status' %><br>
+    <%= f.text_field :activation_code, :class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label 'Distributor Code' %><br>
+    <%= f.text_field :dist_code, :class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :Channel %><br>
+    <%= f.text_field :channel_string, :class=>"form-control" %>
   </div></div>
+
   <br><br>
   <div class="actions">
     <%= f.submit :class=>"btn btn-primary" %> <%= link_to 'Back', customers_path, :class=>"btn btn-info" %>

@@ -11,7 +11,6 @@
 }
 </style>
 
-
 <div id ="sidebar">
 <p>
   <%= image_tag @user.photo.url(:medium) %>
@@ -21,6 +20,22 @@
 
 <div id = "main_content">
 <p><%= link_to 'Edit', edit_user_path(@user) %> </p>
+
+<p>
+<% if @user.tab.present? %>
+<table class="table table-condesed table-bordered">
+ <tr>
+  <td>Tab Name: <%= @user.tab.name %></td>
+  </tr>
+</table>
+<% else %>
+  <%= form_for User.find(@user) do |tab| %>
+  <%= tab.collection_select :tab_id, Tab.all, :id, :name, prompt: true %>
+  <%= tab.submit %>
+  <% end %>
+<% end %>
+</p>
+
 <p>
   <strong>Username:</strong>
   <%= @user.username %>

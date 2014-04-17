@@ -8,24 +8,28 @@
 <table id="customers" class = "table table-condensed table-bordered table-striped">
   <thead>
     <tr>
+      <th>Serial Number</th>
       <th>Customer Type</th>
       <th>Reference number</th>
       <th>Applicant name</th>
       <th>Date of birth</th>
       <th>Contact number</th>
+      <th>Pincode </th>
       <th>Status</th>
     </tr>
   </thead>
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
-        <td><%= customer.customer_type.name %></td>
+        <td><%= customer.id %></td>
+        <td><%= customer.customer_type.name if customer.customer_type %></td>
         <td><%= customer.application_ref_number %></td>
         <td><%= link_to customer.applicant_name, customer %></td>
         <td><%= customer.date_of_birth %></td>
         <td><%= customer.contact_number %></td>
+        <td><%= customer.pincode %></td>
         <td><% if customer.status == 'verified' %>
-         <span class="label label-success"><%= customer.status %></span></td>
+        <span class="label label-success"><%= customer.status %></span></td>
          <% elsif customer.status == 'completed' %>
         <span class="label label-danger"><%= customer.status %></span></td>
          <% elsif customer.status == 'submitted' %>
