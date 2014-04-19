@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
 	#validates :employee_uid , uniqueness: true
 	has_secure_password
 	validates :username ,presence: true , uniqueness: true
-  validates_uniqueness_of :tab_id, :scope => [:tab_id]
+  #validates_uniqueness_of :tab_id, :scope => [:tab_id], :allow_blank => true
+  validates_uniqueness_of :tab_id, :scope => :tab_id, :case_sensitive => false, :allow_blank => true, :allow_nil => true
 	has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }#, :default_url => "/images/:style/missing.png"
   belongs_to :tab
   has_one :assignment
@@ -18,6 +19,7 @@ class User < ActiveRecord::Base
 
   def make_admin(user)
    user.admin = true
+   user.role_name = 'super_user'
    user.save!
   end
 end

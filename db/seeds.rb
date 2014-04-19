@@ -9,11 +9,16 @@
 
 
 
-#30.times do |t|
-# code = 1101
-# pin = 400050
-# Tab.create!(name: "Tab-#{t+1}", tab_code: "Tab-#{t+1}", pincode: "#{pin+1}" )
-#end
+30.times do |t|
+ code = 1101
+ pin = 400050
+if Tab.all.empty?
+ Tab.create!(name: "Tab-#{t+1}", tab_code: "Tab-#{t+1}", pincode: pin )
+ else
+ pin = Tab.all.last.pincode
+ Tab.create!(name: "Tab-#{t+1}", tab_code: "Tab-#{t+1}", pincode: "#{pin}".to_i+1 )
+end
+end
 
 
 #130.times do |t|

@@ -11,15 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417062415) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20140418191923) do
 
   create_table "assignments", force: true do |t|
     t.integer  "tab_id"
     t.integer  "customer_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "customer_office_id"
+  end
+
+  create_table "customer_offices", force: true do |t|
+    t.integer  "customer_id"
+    t.text     "office_address"
+    t.string   "office_city"
+    t.string   "office_pincode"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -53,6 +60,10 @@ ActiveRecord::Schema.define(version: 20140417062415) do
     t.string   "activation_code"
     t.string   "dist_code"
     t.string   "channel_string"
+    t.string   "msisdn_number"
+    t.string   "city_office"
+    t.string   "office_pincode"
+    t.string   "office_address"
   end
 
   create_table "document_photos", force: true do |t|

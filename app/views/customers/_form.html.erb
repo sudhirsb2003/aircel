@@ -14,13 +14,23 @@
 	margin-right: 10px;
 	outline:none;
 }
-
+.dk_toggle {
+  border-radius: 6px 6px 6px 6px;
+    color: white;
+    height: 30px;
+    overflow: hidden;
+    padding: 5px 45px 11px 13px;
+    text-decoration: none;
+    transition: all 0.25s ease 0s;
+    white-space: nowrap;
+    width: 150px;
+    }
 .dk_fouc select option{
 	border:none;
 	margin-top:10px;
 	background-color: #666;
 }
-.btn.btn-primary { border:none;}
+.btn.btn-info { height:30px;font-size:15px;border:none;}
 
 .form-control{ width: 210%; border: 2px solid #999999;}
 </style>
@@ -56,7 +66,7 @@
   </div></div>
   <div class="row">
   <div class="field">
-    <%= f.label :address %><br>
+    <%= f.label :billing_address %><br>
     <%= f.text_area :address, :class=>"form-control" %>
   </div></div>
   <div class="row">
@@ -106,10 +116,25 @@
   <div class="field">
     <%= f.label :Channel %><br>
     <%= f.text_field :channel_string, :class=>"form-control" %>
+  </div>
+  </div>
+ <div class="row">
+  <div class="field">
+    <%= f.label 'Office Address' %><br>
+    <%= f.text_area :office_address, :class=>"form-control" %>
+  </div></div>
+ <div class="row">
+  <div class="field">
+    <%= f.label 'Office City' %><br>
+    <%= f.text_field :city_office, :class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label 'Office Pincode' %><br>
+    <%= f.text_field :office_pincode, :class=>"form-control" %>
   </div></div>
 
   <br><br>
   <div class="actions">
-    <%= f.submit :class=>"btn btn-primary" %> <%= link_to 'Back', customers_path, :class=>"btn btn-info" %>
+    <%= f.submit :class=>"btn btn-info" %> <%= link_to 'Back', customers_path, :class=>"btn btn-info" %>
   </div>
 <% end %>

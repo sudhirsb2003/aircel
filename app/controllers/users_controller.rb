@@ -17,6 +17,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    ids_to_exclude = Tab.joins(:user)
+    @array_without_excluded_ids = Tab.where.not(id: ids_to_exclude)
   end
 
   # GET /users/new

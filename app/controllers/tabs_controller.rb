@@ -4,7 +4,7 @@ class TabsController < ApplicationController
   # GET /tabs
   # GET /tabs.json
   def index
-    @tabs = Tab.order("id").page(params[:page]).per(15)
+    @tabs = Tab.order("id")
   end
 
   # GET /tabs/1

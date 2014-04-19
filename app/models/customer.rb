@@ -3,7 +3,7 @@ class Customer < ActiveRecord::Base
 	#validates_presence_of:applicant_name, :application_ref_number, :address
 	#validates_uniqueness_of :application_ref_number
 
-  validate :valid_date?
+  #validate :valid_date?
 
   def valid_date?
     if self.date_of_birth.nil?
@@ -15,6 +15,7 @@ class Customer < ActiveRecord::Base
 	friendly_id :applicant_name, use: :slugged
 
   #has_one :servey, :dependent => :destroy
+  has_one :customer_office
   belongs_to :tab
   belongs_to :customer_type
   has_one :assignment, dependent: :destroy
@@ -29,28 +30,50 @@ class Customer < ActiveRecord::Base
 
 
  def self.import(file)
-		allowed_attributes = ['application_ref_number','customer_type_id','ageny_name', 'applicant_name', 'address', 'activation_code','dist_code', 'channel_string', 'caf_number', 'landmark', 'date_of_birth', 'pincode', 'contact_number', 'status', 'coountry', 'state', 'city']
+		allowed_attributes = ['application_ref_number','customer_type_id','ageny_name', 'applicant_name', 'address', 'activation_code','dist_code', 'channel_string', 'caf_number', 'landmark', 'date_of_birth', 'pincode', 'contact_number', 'status', 'coountry', 'state', 'city', 'msisdn_number']
    spreadsheet = open_spreadsheet(file)
    header = spreadsheet.row(1)
    (2..spreadsheet.last_row).collect do |i|
     row = Hash[[header,spreadsheet.row(i)].transpose]
     customer = Customer.find_by_id(row["id"]) || new
     customer.attributes = row.to_hash.select { |k,v| allowed_attributes.include? k }
-    customer.application_ref_number = spreadsheet.row(i)[3].to_i
-    customer.contact_number = spreadsheet.row(i)[7].to_i
-    customer.pincode = spreadsheet.row(i)[8].to_i
-    customer.dist_code = spreadsheet.row(i)[10].to_i
+    customer.msisdn_number = spreadsheet.row(i)[3].to_i
+    customer.application_ref_number = spreadsheet.row(i)[1].to_i
+    customer.address = spreadsheet.row(i)[5]
+    customer.pincode = spreadsheet.row(i)[7].to_i
+    customer.dist_code = spreadsheet.row(i)[12].to_i
     customer.save!
-    self.assign_customer_to_tab(customer)
+     if spreadsheet.row(i)[8].present?
+       self.generate_customer_office_detail(customer, spreadsheet, i, row)
+     end
+     self.assign_customer_to_tab(customer)
    end
  end
 
   def self.assign_customer_to_tab(customer)
     customer_pincode = Customer.where('id=?', customer.id)
     tab_id = Tab.find_by_pincode(customer_pincode.map(&:pincode))
-    assign_to_tab = Assignment.create!(user_id: 1, tab_id: tab_id.id, customer_id: customer.id)
-    assign_to_tab.customer.submit!
-    assign_to_tab.save!
+    if tab_id.present?
+      assign_to_tab = Assignment.create!(user_id: 1, tab_id: tab_id.id, customer_id: customer.id)
+      assign_to_tab.customer.submit!
+      assign_to_tab.save!
+    end
+  end
+
+  def self.generate_customer_office_detail(customer, spreadsheet, i, row)
+		allowed_attributes = ['customer_id', 'office_city', 'office_pincode', 'office_address']
+    office = CustomerOffice.new
+    office.customer_id = customer.id
+    office.office_city = spreadsheet.row(i)[9]
+    office.office_pincode = spreadsheet.row(i)[10].to_i
+    office.office_address = spreadsheet.row(i)[8]
+    office.save!
+    customer_pincode = CustomerOffice.where('id=?', office.id)
+    tab_id = Tab.find_by_pincode(customer_pincode.map(&:office_pincode))
+    if tab_id.present?
+      assign_to_tab = Assignment.create!(user_id: 1, tab_id: tab_id.id, customer_office_id: office.id)
+      assign_to_tab.save!
+    end
   end
 
   private

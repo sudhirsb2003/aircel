@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  customer_id: 1
+  office_address: MyText
+  office_city: MyString
+  office_pincode: MyString
+
+two:
+  customer_id: 1
+  office_address: MyText
+  office_city: MyString
+  office_pincode: MyString

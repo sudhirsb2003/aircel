@@ -11,10 +11,17 @@
       <th>Serial Number</th>
       <th>Customer Type</th>
       <th>Reference number</th>
+      <th>CAF Number</th>
+      <th>MSISDN Number</th>
       <th>Applicant name</th>
-      <th>Date of birth</th>
-      <th>Contact number</th>
+      <th>Billing Address</th>
+      <th>City </th>
       <th>Pincode </th>
+      <th>Office Address </th>
+      <th>Office City </th>
+      <th>Office Pincode </th>
+      <th>Activation Code </th>
+      <th>Distributor code </th>
       <th>Status</th>
     </tr>
   </thead>
@@ -24,10 +31,23 @@
         <td><%= customer.id %></td>
         <td><%= customer.customer_type.name if customer.customer_type %></td>
         <td><%= customer.application_ref_number %></td>
+        <td><%= customer.caf_number %></td>
+        <td><%= customer.msisdn_number %></td>
         <td><%= link_to customer.applicant_name, customer %></td>
-        <td><%= customer.date_of_birth %></td>
-        <td><%= customer.contact_number %></td>
+        <td><%= customer.address %></td>
+        <td><%= customer.city %></td>
         <td><%= customer.pincode %></td>
+        <% if customer && customer.customer_office %>
+        <td><%= customer.customer_office.office_address %></td>
+        <td><%= customer.customer_office.office_city %></td>
+        <td><%= customer.customer_office.office_pincode %></td>
+        <% else %>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <% end %>
+        <td><%= customer.activation_code %></td>
+        <td><%= customer.dist_code %></td>
         <td><% if customer.status == 'verified' %>
         <span class="label label-success"><%= customer.status %></span></td>
          <% elsif customer.status == 'completed' %>

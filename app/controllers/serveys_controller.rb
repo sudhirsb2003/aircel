@@ -5,7 +5,7 @@ class ServeysController < ApplicationController
   # GET /serveys
   # GET /serveys.json
   def index
-    if current_user.role_name == 'tab_user'
+    unless current_user.admin?
     @serveys = Servey.where(tab_id: current_user.tab.id)
     else
     @serveys = Servey.all

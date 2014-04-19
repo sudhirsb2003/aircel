@@ -1,5 +1,3 @@
-
-
 <style>
  #main_content{float:left;width:700px;border-right:0px solid black;padding-right:35px;}
  #sidebar {
@@ -9,45 +7,64 @@
 	margin-right: 5px;
 	padding: 5px 0 0 5px;
 }
+.dk_toggle{padding-top:5px;height:31px;margin-top:10px;width:250px;}
 </style>
 
 <div id ="sidebar">
 <p>
+<% if @user.photo? %>
   <%= image_tag @user.photo.url(:medium) %>
+<% else %>
+<%= image_tag('verifyme.jpg')%>
+<% end %>
 </p>
 
 </div>
 
 <div id = "main_content">
-<p><%= link_to 'Edit', edit_user_path(@user) %> </p>
-
-<p>
+<strong><%= link_to 'Edit', edit_user_path(@user) %> </strong>
+<table class="table table-striped table-condesed table-bordered">
 <% if @user.tab.present? %>
-<table class="table table-condesed table-bordered">
  <tr>
-  <td>Tab Name: <%= @user.tab.name %></td>
-  </tr>
-</table>
-<% else %>
+  <td>Tab Name:</td><td><%= @user.tab.name %></td>
+ </tr>
+
+<% elsif !@user.admin? %>
   <%= form_for User.find(@user) do |tab| %>
-  <%= tab.collection_select :tab_id, Tab.all, :id, :name, prompt: true %>
-  <%= tab.submit %>
+  <%= tab.collection_select :tab_id, @array_without_excluded_ids, :id, :name, prompt: true %>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= tab.submit :class=>"btn btn-warning" %>
   <% end %>
 <% end %>
-</p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<tr>
+  <td>Username:</td>
+  <td><%= @user.username %></td>
+</td>
 
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
+<tr>
+  <td>Address:</td>
+  <td><%= @user.address %></td>
+</tr>
 
-<p>
-  <strong>Employee uid:</strong>
-  <%= @user.employee_uid %>
-</p>
+<tr>
+  <td>Employee uid:</td>
+  <td><%= @user.employee_uid %></td>
+</tr>
+</table>
+
+<% if @user.tab && !@user.admin? %>
+<table class="table table-condensed table-striped table-bordered">
+ <tr>
+   <th> Applicant Name </th>
+   <th> Status </th>
+  </tr>
+<% @user.tab.assignments.each do |tab_task| %>
+  <tr>
+   <td><%= tab_task.customer.applicant_name %></td>
+   <td><%= tab_task.customer.status %></td>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
 </div>
