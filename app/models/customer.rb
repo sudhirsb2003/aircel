@@ -28,6 +28,9 @@ class Customer < ActiveRecord::Base
    [address, coountry, city, state].compact.join(', ')
   end
 
+	def should_generate_new_friendly_id?
+		applicant_name_changed?
+	end
 
  def self.import(file)
 		allowed_attributes = ['application_ref_number','customer_type_id','ageny_name', 'applicant_name', 'address', 'activation_code','dist_code', 'channel_string', 'caf_number', 'landmark', 'date_of_birth', 'pincode', 'contact_number', 'status', 'coountry', 'state', 'city', 'msisdn_number']

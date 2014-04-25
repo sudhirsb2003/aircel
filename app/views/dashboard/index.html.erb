@@ -79,6 +79,45 @@ welcome{color:green;}
  <%= current_user.tab.name if current_user.tab %>
  <hr>
  <p> Assigned Customers </p><hr>
+
+	<div class="accordion" id="accordion2">
+
+		 <div class="accordion-group">
+
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        	Residential Verificatgion : <%= current_user.tab.assignments.where(customer_office_id: nil).count %>
+				</a>
+			</div>
+
+		 <div id="collapseOne" class="accordion-body collapse in">
+			<div class="accordion-inner">
+				Anim pariatur cliche...
+			</div>
+		 </div>
+
+	</div>
+
+	<div class="accordion-group">
+
+		<div class="accordion-heading">
+			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+				Office Verificatgion : <%= current_user.tab.assignments.where(customer_id: nil).count %>
+			</a>
+		</div>
+
+			<div id="collapseTwo" class="accordion-body collapse">
+				<div class="accordion-inner">
+					Anim pariatur cliche...
+				</div>
+			</div>
+
+  </div>
+
+</div>
+
+
+
   <table class ="table table-striped table-condensed table-bordered" style="width:500px;">
    <tr>
    <th>Customer Name </th>
@@ -91,7 +130,11 @@ welcome{color:green;}
   <tr>
    <td><%= tab_task.customer.applicant_name %></td>
    <td><small><%= tab_task.customer.address %></small></td>
-   <td><%= link_to "Start Servey", new_servey_path(:user_id => tab_task.user.id, :tab_id => tab_task.tab.id , :customer_id => tab_task.customer.id, ) %></td>
+   <% if tab_task.customer %>
+   <td><%= link_to "Start Servey", new_servey_path(:user_id => tab_task.user.id, :tab_id => tab_task.tab.id , :customer_id => tab_task.customer.id) %></td>
+   <% elsif tab_task.customer_office %>
+     <td>Sdr</td>
+   <% end %>
    </tr>
   <% end %>
 
@@ -99,7 +142,7 @@ welcome{color:green;}
   <tr>
    <td><%= tab_task.customer_office.customer.applicant_name %></td>
    <td><small><%= tab_task.customer_office.customer.address %></small></td>
-   <td><%= link_to "Start Servey", new_servey_path(:user_id => tab_task.user.id, :tab_id => tab_task.tab.id , :customer_id => tab_task.customer_office.customer.id, ) %></td>
+   <td><%= link_to "Start Servey", new_servey_path(:user_id => tab_task.user.id, :tab_id => tab_task.tab.id , :customer_id => tab_task.customer_office.customer.id) %></td>
    </tr>
   <% end %>
 

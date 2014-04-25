@@ -60,8 +60,13 @@
   </tr>
 <% @user.tab.assignments.each do |tab_task| %>
   <tr>
+  <% if tab_task.customer %>
    <td><%= tab_task.customer.applicant_name %></td>
    <td><%= tab_task.customer.status %></td>
+  <% else %>
+   <td><%= tab_task.customer_office.customer.applicant_name %> (Office Verifiction)</td>
+   <td><%= tab_task.customer_office.customer.status %></td>
+  <% end %>
   </tr>
 <% end %>
 </table>

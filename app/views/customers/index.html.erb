@@ -33,8 +33,8 @@
         <td><%= customer.application_ref_number %></td>
         <td><%= customer.caf_number %></td>
         <td><%= customer.msisdn_number %></td>
-        <td><%= link_to customer.applicant_name, customer %></td>
-        <td><%= customer.address %></td>
+        <td width="160px"><%= link_to customer.applicant_name, customer %></td>
+        <td width="360px"><%= customer.address %></td>
         <td><%= customer.city %></td>
         <td><%= customer.pincode %></td>
         <% if customer && customer.customer_office %>
