@@ -77,10 +77,14 @@ class ServeysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def servey_params
-      params.require(:servey).permit(:signature_image, :customer_id, :tab_id, :user_id, :landmark, :ease_of_location, :telephone_number, :mobile_number,
-                                     :person_contacted, :relationship_with_applicant, :years_at_current_address, :expected_monthly_usage,
-                                     :bill_payer, :bill_payer_occupation, :residence_type, :locality, :residence_status,:age, :customer_attitude,
-                                     :credit_card, :pan_card, :pancard_number, :address_proof_sighted, :asset_seen, :vihicle_owned,:final_recomendation,
-                                     :av_done_by, :av_supervisor_name,document_photos_attributes: [:servey_id, :photo, :_destroy])
+      params.require(:servey).permit(:customer_id, :tab_id, :user_id, :alternate_number, :date_of_birth, :bill_plan,
+                                     :email, :billing_address_correction, :new_billing_address, :office_address_correction,
+                                     :new_office_address, :applied_before, :sim_recieved, :sim_number, 
+                                     :postpaid_connection_first_time, :address_verified, :locality, :type_of_locality, 
+                                     :type_of_residence, :type_of_stay, :years_of_stay, :occupation, :type_of_work, 
+                                     :type_of_organisation, :documentation, :person_met, :name_person_met, :visit_number, 
+                                     :network, :av_result, :agency_name, :team_leader_name, :date_of_visit, :remark_tab, 
+                                     :remark_team_leader, :billing_address, :signature_image,
+                                     document_photos_attributes: [:servey_id, :photo, :_destroy])
     end
 end

@@ -1,0 +1,22 @@
+	.wrapper {
+		max-width: 620px;
+		height: auto;
+	}
+
+	.box {
+		display: inline-block;
+		position: relative;
+		width: 200px;
+		height: 200px;
+		background: #FCC;
+		z-index: 0;
+		margin: 2px 2px 2px -2px;
+		transition: all .15s ease-in-out;
+	}
+
+	.box:hover {
+		background: #9CC;
+		z-index: 100;
+		transform: scale(1.2,1.2);
+		box-shadow: 0 5px 10px 0 rgba(0,0,0,.2);
+	}

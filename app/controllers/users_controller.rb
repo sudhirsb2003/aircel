@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       @users = User.order(:name).where("name ilike ? and admin is false ","%#{params[:term]}%")
       render json: @users.map(&:name)
     else
-      @users= User.all
+      @users= User.all.includes(:tab)
       render html: @users
     end
   end

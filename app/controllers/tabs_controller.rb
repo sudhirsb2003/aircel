@@ -4,7 +4,7 @@ class TabsController < ApplicationController
   # GET /tabs
   # GET /tabs.json
   def index
-    @tabs = Tab.order("id")
+    @tabs = Tab.order("id").includes(:user)
   end
 
   # GET /tabs/1

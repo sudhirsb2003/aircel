@@ -13,11 +13,13 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
 		                          :branch => '3.0.0'
 gem 'bootstrap-datepicker-rails'
 gem 'jbuilder', '~> 1.2'
+  gem 'bullet', group: :development
 gem 'workflow'
 gem 'friendly_id'
 gem 'faker'
 gem 'kaminari'
 gem 'gmaps4rails'
+gem 'rack-mini-profiler'
 gem "geocoder"
 gem "nested_form"
 gem 'to_spreadsheet'
@@ -34,6 +36,7 @@ end
 group :development do
   gem 'webrick', '1.3.1'
   gem 'quiet_assets'
+
   gem "better_errors"
   gem "binding_of_caller"
   gem 'bootstrap-sass'

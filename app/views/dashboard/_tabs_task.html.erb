@@ -1,0 +1,63 @@
+<style>
+	.wrapper {
+	    height: auto;
+	    margin-left: auto;
+	    max-width: 500px;
+ 	}
+
+	.box_with_record {
+        padding:20px;
+		display: inline-block;
+		position: relative;
+		width: 70px;
+		height: 70px;
+		color:white;
+		background: orange;
+		border:1px solid black;
+		border-radius:5px;
+		z-index: 0;
+		margin: 2px 2px 2px -2px;
+		transition: all .15s ease-in-out;
+	}
+
+	.box {
+        padding:20px;
+		display: inline-block;
+		position: relative;
+		width: 70px;
+		height: 70px;
+		background: #FFF;
+		border:1px solid black;
+		border-radius:5px;
+		z-index: 0;
+		margin: 2px 2px 2px -2px;
+		transition: all .15s ease-in-out;
+	}
+
+	.box:hover {
+		background: #9CC;
+		z-index: 100;
+		transform: scale(1.2,1.2);
+		box-shadow: 0 5px 10px 0 rgba(0,0,0,.2);
+	}
+</style>
+
+
+
+
+  <p> Tab Status Task</p>
+<ul class="wrapper">
+  <% Tab.all.includes(:assignments).each do |t| %>
+	      <% if t.assignments.present? %>
+	      <li class="box_with_record">      
+	      <b><%= t.name %></b><br>
+          <b><%= t.assignments.includes(:assignments).count %></b>
+	      </li>
+	      <% else %>
+	      <li class="box">      
+	      <b><%= t.name %></b><br>
+          <b style="color:green"><%= t.assignments.includes(:assignments).count %></b>
+	      </li>
+          <% end %>
+  <% end %>
+ </ul>

@@ -161,12 +161,12 @@
 | Created By :<%= @customer.servey.user.name %></p>
 <p>
 Final Recomendation :
-<% if @customer.servey.final_recomendation == 'Positive' %>
+<% if @customer.servey.remark_team_leader == 'Positive' %>
   <b style="padding:0px 5px 0px 5px;font-weight:100px;color:white;background:green">
-   <%= @customer.servey.final_recomendation %></b></p>
+   <%= @customer.servey.remark_team_leader %></b></p>
  <% else %>
    <b style="background:red">
-   <%= @customer.servey.final_recomendation %></b></p>
+   <%= @customer.servey.remark_team_leader %></b></p>
  <% end %>
 <hr>
 
@@ -174,58 +174,62 @@ Final Recomendation :
 <th>Detail</th>
 
 <tr>
- <td>Location Difficulty :</td>
- <td> <%= @customer.servey.ease_of_location %></td></tr>
+ <td>Email :</td>
+ <td> <%= @customer.servey.email %></td></tr>
 </tr>
 <tr>
-	<td>Landmark : </td>
-	<td><%= @customer.servey.landmark %></td>
+	<td>Bill PLan : </td>
+	<td><%= @customer.servey.bill_plan %></td>
 </tr>
 <tr>
- <td>Contact Number :</td>
- <td> <%= @customer.servey.telephone_number %></td>
+ <td>billing address :</td>
+ <td><%= @customer.servey.billing_address %></td>
 </tr>
-<td>Mobile Number : </td>
-<td><%= @customer.servey.mobile_number %></td>
-</tr>
-<tr>
-<td>Person Contacted :</td>
-<td> <%= @customer.servey.person_contacted %></td>
-</tr>
-<tr>
-<td>Relation With Person Contacted : </td>
-<td><%= @customer.servey.relationship_with_applicant %></td>
+
+<td>Address Verified :</td><td> <%= @customer.servey.address_verified %></td></tr>
+
+<td>Alternate Number : </td>
+<td><%= @customer.servey.alternate_number %></td>
 </tr>
 <tr>
-<td>Years at Current Address  :</td>
-<td> <%= @customer.servey.years_at_current_address %></td>
+<td>Have Your Applied Before for this connection?:</td>
+<td> <%= @customer.servey.applied_before %></td>
 </tr>
-<td>Expected Monthly Usage :</td><td> <%= @customer.servey.expected_monthly_usage %></td></tr>
-<td>Bill Payer :</td><td> <%= @customer.servey.bill_payer %></td></tr>
-<td>Bill Payer Occupation :</td><td> <%= @customer.servey.bill_payer_occupation %></td></tr>
-<td>Residence Type :</td><td> <%= @customer.servey.residence_type %></td></tr>
+<tr>
+<td>Sim Recieved : </td>
+<td><%= @customer.servey.sim_recieved %></td>
+</tr>
+<tr>
+<td>Sim NUmber:</td>
+<td> <%= @customer.servey.sim_number %></td>
+</tr>
+<td>postpaid connection first time ? :</td><td> <%= @customer.servey.postpaid_connection_first_time %></td></tr>
+<td>Residence Type :</td><td> <%= @customer.servey.type_of_residence %></td></tr>
 
 <td>Locality :</td><td> <%= @customer.servey.locality %></td></tr>
 
-<td>Residence status : </td><td><%= @customer.servey.residence_status %></td></tr>
+<td>Residence status : </td><td><%= @customer.servey.type_of_stay %></td></tr>
 
-<td>Customers Attitude :</td><td> <%= @customer.servey.customer_attitude %></td></tr>
+<td>years to stay :</td><td> <%= @customer.servey.years_of_stay %></td></tr>
 
-<td>Credit card :</td><td> <%= @customer.servey.credit_card %></td></tr>
+<td>Occupation :</td><td> <%= @customer.servey.occupation %></td></tr>
 
-<td>Pan card : </td><td><%= @customer.servey.pan_card %></td></tr>
+<td>Type Of Work : </td><td><%= @customer.servey.type_of_work %></td></tr>
 
-<td>Pan card Number :</td><td> <%= @customer.servey.pancard_number %></td></tr>
+<td>Organisation Type :</td><td> <%= @customer.servey.type_of_organisation %></td></tr>
 
-<td>Address Proof Sighted : </td><td><%= @customer.servey.address_proof_sighted %></td></tr>
+<td>Documentation : </td><td><%= @customer.servey.documentation %></td></tr>
 
-<td>Assets Seen at Place  : </td><td><%= @customer.servey.asset_seen %></td></tr>
+<td>Person Met  : </td><td><%= @customer.servey.person_met %></td></tr>
 
-<td>Vehicle Owned : </td><td><%= @customer.servey.vihicle_owned %></td></tr>
+<td>Visit Number : </td><td><%= @customer.servey.visit_number %></td></tr>
 
-<td>Av Done By	: </td><td><%= @customer.servey.av_done_by %></td></tr>
-
-<td>Av Supervisor name : </td><td><%= @customer.servey.av_supervisor_name %></td></tr>
+<td>Network	: </td><td><%= @customer.servey.network %></td></tr>
+<td>Av Result : </td><td><%= @customer.servey.av_result %></td></tr>
+<td>Av Supervisor name : </td><td><%= @customer.servey.team_leader_name %></td></tr>
+<td>Date Of Visit : </td><td><%= @customer.servey.date_of_visit %></td></tr>
+<td>Remark Tab : </td><td><%= @customer.servey.remark_tab %></td></tr>
+<td>Av Supervisor Remark : </td><td><%= @customer.servey.remark_team_leader %></td></tr>
 </table>
 <% end %>
 

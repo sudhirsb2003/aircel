@@ -58,7 +58,7 @@
    <th> Applicant Name </th>
    <th> Status </th>
   </tr>
-<% @user.tab.assignments.each do |tab_task| %>
+<% @user.tab.assignments.includes(:customer).each do |tab_task| %>
   <tr>
   <% if tab_task.customer %>
    <td><%= tab_task.customer.applicant_name %></td>

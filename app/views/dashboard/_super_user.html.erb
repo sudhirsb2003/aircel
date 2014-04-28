@@ -1,0 +1,42 @@
+  <p>Welcome , <welcome><%= current_user.name %></welcome></p><hr>
+
+
+  <div id ="sidebar">
+   <%= render "tabs_task" %>
+  </div>
+
+  <div id ="main_content">
+	  <p>Completed Customers</p>
+	  <table class="table table-condensed table-striped table-bordered">
+      <tr>
+        <th> Applicant Name </th>
+      </tr>
+		  <% @completed_customers.each do |task| %>
+		  <tr>
+			  <td><%= task.applicant_name %> <strong style="float:right;margin-right:50px;"> <%= link_to 'More..', servey_path(task.servey) %>
+			  <td style="text-align:center"><%= link_to "Accept", accept_customer_path(task.slug, :customer_id => task.id) %></td>
+			  <td style="text-align:center"><%= link_to "Reassign", reassign_customer_path(task.id, :customer_id => task.id) %></td>
+		  </tr>
+		  <% end %>
+	  </table>
+    <hr>
+
+   <p> Assigned Task</p>
+    <table class="table table-condensed table-bordered table-striped">
+     <tr>
+       <th> Tab Name </th>
+       <th> Customer Name  </th>
+       <th> Status </th>
+    </tr>
+    <% Assignment.where('DATE(created_at) > ? AND DATE(created_at) < ?', Date.today-5, Date.today+1).includes(:user, :customer, :tab).each do |task| %>
+     <tr>
+       <%  if task.tab.user.present? %>
+		   <td><%= link_to task.tab.user.name, task.tab.user %></td>
+		   <% else %>
+		   <td>No Tab </td>
+		   <% end %>
+  <td><%= task.customer.applicant_name if task.customer %><%= task.customer_office.customer.applicant_name if task.customer_office %></td>
+		   <td><%= task.customer.status if task.customer %></td>
+     </tr>
+    <% end %>
+  </div>

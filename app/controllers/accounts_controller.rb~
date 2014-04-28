@@ -1,0 +1,7 @@
+class AccountsController < ApplicationController
+  def index
+   tab_id = current_user.tab
+   tab_assignments = Assignment.where(tab_id: tab_id)
+   verified_customers = tab_assignments.joins(:customer).where('customers.status =?', 'verified')
+  end
+end

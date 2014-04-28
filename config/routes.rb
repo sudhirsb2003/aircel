@@ -1,6 +1,7 @@
 Airecel::Application.routes.draw do
+  #get "accounts/index"
   #get "reports/index"
-  resources :serveys
+  resources :serveys, :accounts
   resources :reports
   resources :assignments
   resources :tabs
