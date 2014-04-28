@@ -8,6 +8,7 @@ class AccountsController < ApplicationController
    @total_earning = (7*@verified_customers).to_f
    @total_verified_for_admin = current_user.assignments.joins(:customer).where('customers.status =? ', "verified").count 
    @total_earning_admin = (10*@total_verified_for_admin).to_f
+   @total_pending_admin = current_user.assignments.joins(:customer).where('customers.status = ?', "submitted").count
    @total_customers_made  = current_user.assignments.count
    @total_customers = current_user.tab.assignments.count unless current_user.admin?
    render :layout => "accounts"

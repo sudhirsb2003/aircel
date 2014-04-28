@@ -1,16 +1,16 @@
 <style>
 	.wrapper {
-		max-width: 920px;
+		max-width: 800px;
 		height: auto;
-    margin-left:200px;
+        margin-left:200px;
 	}
 
 	.box {
-    padding:20px;
+        padding:20px;
 		display: inline-block;
 		position: relative;
 		width: 200px;
-		height: 200px;
+		height: 100px;
 		background: #FFF;
 		border:1px solid black;
 		border-radius:5px;
@@ -48,7 +48,11 @@
         <% end %>
 	  </li>
     <li class="box">Total Pending :
-    	   <b> <%= @pending_customers %> </b>
+        <% if current_user.admin? %>
+           <b><%= @total_pending_admin %></b>
+        <% else %>
+    	   <b><%= @pending_customers %></b>
+        <% end %>   
     </li>
     <li class="box"> Total Customers :
     <% unless current_user.admin? %>
@@ -58,7 +62,11 @@
      <% end %>
     </li>
     <li class="box">Total Completed :
-    	   <b> <%= @verified_customers %> </b>
+    	<% if current_user.admin? %>
+          <%= @total_verified_for_admin %>
+        <% else %>
+         <b> <%= @verified_customers %> </b>
+        <% end %> 
     </li>
     <li class="box"> Total In progress :
     	   <b> <%= @total_earning %> </b>
