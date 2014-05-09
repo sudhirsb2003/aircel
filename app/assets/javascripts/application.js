@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.ui.all
+//= require autocomplete-rails
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
 //= require turbolinks

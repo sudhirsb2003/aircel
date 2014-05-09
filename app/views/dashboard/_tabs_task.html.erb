@@ -49,12 +49,12 @@
 <ul class="wrapper">
   <% Tab.all.includes(:assignments).each do |t| %>
 	      <% if t.assignments.present? %>
-	      <li class="box_with_record">      
+	      <li class="box_with_record">
 	      <b><%= t.name %></b><br>
           <b><%= t.assignments.includes(:assignments).count %></b>
 	      </li>
 	      <% else %>
-	      <li class="box">      
+	      <li class="box">
 	      <b><%= t.name %></b><br>
           <b style="color:green"><%= t.assignments.includes(:assignments).count %></b>
 	      </li>

@@ -1,4 +1,5 @@
 class ReportsController < ApplicationController
+#load_and_authorize_resource
 #include ApplicationHelper
 #include ReportsHelper
   def index

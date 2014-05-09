@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140427054400) do
+ActiveRecord::Schema.define(version: 20140504040029) do
 
   create_table "assignments", force: true do |t|
     t.integer  "tab_id"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20140427054400) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "customer_office_id"
+  end
+
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.integer  "zone_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "customer_offices", force: true do |t|
@@ -77,6 +84,16 @@ ActiveRecord::Schema.define(version: 20140427054400) do
     t.datetime "photo_updated_at"
   end
 
+  create_table "pincodes", force: true do |t|
+    t.string   "name"
+    t.string   "pin_number"
+    t.string   "city"
+    t.integer  "city_id"
+    t.integer  "zone_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "serveys", force: true do |t|
     t.integer  "customer_id"
     t.integer  "tab_id"
@@ -126,6 +143,7 @@ ActiveRecord::Schema.define(version: 20140427054400) do
     t.string   "mac_address"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "zone_id"
   end
 
   create_table "users", force: true do |t|
@@ -144,6 +162,12 @@ ActiveRecord::Schema.define(version: 20140427054400) do
     t.integer  "tab_id"
     t.string   "username"
     t.datetime "logout_at"
+  end
+
+  create_table "zones", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
