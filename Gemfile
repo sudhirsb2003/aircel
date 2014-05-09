@@ -28,6 +28,8 @@ gem 'roo'
 gem 'iconv'
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'jquery-ui-rails'
+gem 'rails4-autocomplete'
+gem 'cancancan', '~> 1.7'
 
 group :doc do
   gem 'sdoc', require: false

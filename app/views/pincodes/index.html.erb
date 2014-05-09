@@ -1,0 +1,35 @@
+<h1>Listing pincodes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Pin number</th>
+      <th>City</th>
+      <th>City</th>
+      <th>Zone</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pincodes.each do |pincode| %>
+      <tr>
+        <td><%= pincode.name %></td>
+        <td><%= pincode.pin_number %></td>
+        <td><%= pincode.city %></td>
+        <td><%= pincode.city_id %></td>
+        <td><%= pincode.zone_id %></td>
+        <td><%= link_to 'Show', pincode %></td>
+        <td><%= link_to 'Edit', edit_pincode_path(pincode) %></td>
+        <td><%= link_to 'Destroy', pincode, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pincode', new_pincode_path %>

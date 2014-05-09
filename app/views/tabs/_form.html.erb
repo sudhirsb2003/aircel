@@ -21,7 +21,8 @@
   </div>
   <div class="field">
     <%= f.label :pincode %><br>
-    <%= f.text_field :pincode , :class=>"form-control"%>
+    <%= f.autocomplete_field :pincode, autocomplete_pincode_pin_number_tabs_path %>
+    <%#= f.text_field :pincode, data: {autocomplete_source: pincodes_path} %>
   </div>
   <div class="field">
     <%= f.label :mac_address %><br>
@@ -31,3 +32,20 @@
     <%= f.submit :class=>"btn btn-success"%>
   </div>
 <% end %>
+
+
+<style>
+#ui-id-1 {
+    background: none repeat scroll 0 0 white;
+    display: none;
+    left: 96px;
+    padding-left: 20px;
+    top: 328.7px;
+    width: 250px;
+    border-top: 1px solid blue;
+    }
+    .ui-helper-hidden-accessible{display:none;}
+</style>
+
+
+</style>

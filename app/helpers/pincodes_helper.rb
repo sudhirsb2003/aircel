@@ -1,0 +1,2 @@
+module PincodesHelper
+end

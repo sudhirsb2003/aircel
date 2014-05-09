@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
     self.save!
   end
 
+#  def user.role? :super_user
+#
+#  end
 
   def make_admin(user)
    user.admin = true

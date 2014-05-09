@@ -61,6 +61,7 @@ GEM
     builder (3.1.4)
     bullet (4.6.0)
       uniform_notifier
+    cancancan (1.7.1)
     chronic (0.10.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -142,6 +143,8 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.0)
       sprockets-rails (~> 2.0.0)
+    rails4-autocomplete (1.0.7)
+      rails (>= 3.0)
     railties (4.0.0)
       actionpack (= 4.0.0)
       activesupport (= 4.0.0)
@@ -207,6 +210,7 @@ DEPENDENCIES
   bootstrap-datepicker-rails
   bootstrap-sass
   bullet
+  cancancan (~> 1.7)
   coffee-rails (~> 4.0.0)
   devise
   faker
@@ -226,6 +230,7 @@ DEPENDENCIES
   quiet_assets
   rack-mini-profiler
   rails (= 4.0.0)
+  rails4-autocomplete
   roo
   sass-rails (~> 4.0.0)
   sdoc

@@ -1,6 +1,7 @@
 class TabsController < ApplicationController
   before_action :set_tab, only: [:show, :edit, :update, :destroy]
-
+  autocomplete :pincode, :pin_number
+    load_and_authorize_resource param_method: :tab_params
   # GET /tabs
   # GET /tabs.json
   def index

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pincode.name %>
+</p>
+
+<p>
+  <strong>Pin number:</strong>
+  <%= @pincode.pin_number %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @pincode.city %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @pincode.city_id %>
+</p>
+
+<p>
+  <strong>Zone:</strong>
+  <%= @pincode.zone_id %>
+</p>
+
+<%= link_to 'Edit', edit_pincode_path(@pincode) %> |
+<%= link_to 'Back', pincodes_path %>

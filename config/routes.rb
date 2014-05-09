@@ -1,10 +1,15 @@
 Airecel::Application.routes.draw do
+  resources :pincodes
+
   #get "accounts/index"
   #get "reports/index"
   resources :serveys, :accounts
   resources :reports
   resources :assignments
-  resources :tabs
+  resources :tabs do
+    get :autocomplete_pincode_pin_number, :on => :collection
+  end
+
   resources :customers do
    collection do
     post :import
