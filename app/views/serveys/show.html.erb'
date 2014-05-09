@@ -1,0 +1,165 @@
+
+<style>
+ #main_content{float:left;width:700px;border-right:1px solid black;padding-right:35px;}
+ #sidebar {
+	height: 300px;
+	width: 400px;
+	float: right;
+	margin-right: 5px;
+	padding: 5px 0 0 5px;
+}
+</style>
+<div id = "actions">
+<p style="margin-top:-20px;">
+<%= link_to 'Edit Servey', edit_servey_path(@servey) %> |
+<%= link_to 'View all Servey', serveys_path %>
+<b style="margin-left:450px;">
+ <%= link_to "accept", accept_customer_path(@servey.customer.slug, :customer_id => @servey.customer.id) %></b></p>
+</div><hr>
+
+<div id="sidebar">
+<h4><b>List Of Documents</b></h4>
+<% @servey.document_photos.each do |photo| %>
+ <%= link_to image_tag photo.photo.url(:small), image_tag photo.photo.url(:small) %>
+<% end %>
+<p> Signature</p>
+<%= image_tag("#{@servey.signature_image}") %>
+</div>
+
+<div id="main_content">
+<table class="table table-striped table-bordered table-condensed">
+<tr>
+  <td><strong>Name Of the Customer:</strong>
+  <td><%= @servey.customer.applicant_name %></td>
+</tr>
+
+<tr>
+  <td><strong>Name of the Tab User who completed the Servey:</strong>
+  <td><%= @servey.tab.user.name %></td>
+</tr>
+
+<tr>
+  <td><strong>Assigned by :</strong>
+  <td><%= @servey.user.name %></td>
+</tr>
+
+<tr>
+  <td><strong>Landmark:</strong>
+  <td><%= @servey.landmark %></td>
+</tr>
+
+<tr>
+  <td><strong>Ease of location:</strong>
+  <td><%= @servey.ease_of_location %></td>
+</tr>
+
+<tr>
+  <td><strong>Telephone number:</strong>
+  <td><%= @servey.telephone_number %></td>
+</tr>
+
+<tr>
+  <td><strong>Mobile number:</strong>
+  <td><%= @servey.mobile_number %></td>
+</tr>
+
+<tr>
+  <td><strong>Person contacted:</strong>
+  <td><%= @servey.person_contacted %></td>
+</tr>
+
+<tr>
+  <td><strong>Relationship with applicant:</strong>
+  <td><%= @servey.relationship_with_applicant %></td>
+</tr>
+
+<tr>
+  <td><strong>Years at current address:</strong>
+  <td><%= @servey.years_at_current_address %></td>
+</tr>
+
+<tr>
+  <td><strong>Expected monthly usage:</strong>
+  <td><%= @servey.expected_monthly_usage %></td>
+</tr>
+
+<tr>
+  <td><strong>Bill payer:</strong>
+  <td><%= @servey.bill_payer %></td>
+</tr>
+
+<tr>
+  <td><strong>Bill payer occupation:</strong>
+  <td><%= @servey.bill_payer_occupation %></td>
+</tr>
+
+<tr>
+  <td><strong>Residence type:</strong>
+  <td><%= @servey.residence_type %></td>
+</tr>
+
+<tr>
+  <td><strong>Locality:</strong>
+  <td><%= @servey.locality %></td>
+</tr>
+
+<tr>
+  <td><strong>Residence status:</strong>
+  <td><%= @servey.residence_status %></td>
+</tr>
+
+<tr>
+  <td><strong>Age:</strong>
+  <td><%= @servey.age %></td>
+</tr>
+
+<tr>
+  <td><strong>Customer attitude:</strong>
+  <td><%= @servey.customer_attitude %></td>
+</tr>
+
+<tr>
+  <td><strong>Credit card:</strong>
+  <td><%= @servey.credit_card %></td>
+</tr>
+
+<tr>
+  <td><strong>Pan card:</strong>
+  <td><%= @servey.pan_card %></td>
+</tr>
+
+<tr>
+  <td><strong>Pancard number:</strong>
+  <td><%= @servey.pancard_number %></td>
+</tr>
+
+<tr>
+  <td><strong>Address proof sighted:</strong>
+  <td><%= @servey.address_proof_sighted %></td>
+</tr>
+
+<tr>
+  <td><strong>Asset seen:</strong>
+  <td><%= @servey.asset_seen %></td>
+</tr>
+
+<tr>
+  <td><strong>Vihicle owned:</strong>
+  <td><%= @servey.vihicle_owned %></td>
+</tr>
+
+<tr>
+  <td><strong>Final recomendation:</strong>
+  <td><%= @servey.final_recomendation %></td>
+</tr>
+
+<tr>
+  <td><strong>Av done by:</strong>
+  <td><%= @servey.av_done_by %></td>
+</tr>
+
+<tr>
+  <td><strong>Av supervisor name:</strong>
+  <td><%= @servey.av_supervisor_name %></td>
+</tr>
+</div>
