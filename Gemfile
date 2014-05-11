@@ -8,12 +8,15 @@ gem 'paperclip'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
-		                          :github => 'anjlab/bootstrap-rails',
-		                          :branch => '3.0.0'
+#gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+#		                          :github => 'anjlab/bootstrap-rails',
+#		                          :branch => '3.0.0'
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
 gem 'bootstrap-datepicker-rails'
 gem 'jbuilder', '~> 1.2'
-  gem 'bullet', group: :development
+gem 'bullet', group: :development
 gem 'workflow'
 gem 'friendly_id'
 gem 'faker'

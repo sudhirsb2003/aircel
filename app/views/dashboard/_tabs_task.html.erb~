@@ -1,3 +1,6 @@
+<% @t = Tab.find 3 %>
+<%= Assignment.find_by_sql("SELECT * FROM assignments WHERE tab_id = '#{@tab}' and customer_office_id IS NOT NULL;").count %>
+
 <table class="table table-condensed table-striped">
 <tr>
  <th> Tab Name </th>

@@ -27,7 +27,7 @@
 <%= f.submit "SignIn", :class=>"btn btn-primary" %>
 <% end %>
 
-        <div class="span3" style="float:right;">
+        <div class="span3" style="float:right">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
 														<li><%= image_tag('verifyme.jpg') %></li>

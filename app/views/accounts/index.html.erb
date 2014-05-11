@@ -34,7 +34,7 @@
     font-style: normal;
 }
 </style>
-<h4> <%= current_user.name %> | <%= current_user.tab.name unless current_user.admin? %></h4> <%= link_to "Back", root_url %>
+<h4><%= current_user.name %> | <%= current_user.tab.name if current_user.tab && current_user.admin? %></h4> <%= link_to "Back", root_url %>
 
 <hr>
 

@@ -71,7 +71,7 @@
    <%= form_for(@new_assignments) do |f| %>
     <%= f.hidden_field :customer_id , :value => @customer.id %>
     <%= f.hidden_field :user_id , :value => current_user.id %>
-    <%= select_tag "assignment[tab_id]", options_for_select(User.includes(:tab).where('users.role_name!=?', 'super_user').collect {|r| [r.name, r.tab.id] }) %>
+    <%= select_tag "assignment[tab_id]", options_for_select(User.includes(:tab).where('users.role_name!=?', 'super_user').collect {|r| [r.name, r.tab] }) %>
     <span class="dropdown-arrow"></span>
    <%= f.submit "Send for verification", :class=>"btn btn-primary btn-small" %>
  <% end %>

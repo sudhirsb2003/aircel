@@ -1,4 +1,5 @@
 class AccountsController < ApplicationController
+  before_action :login_required
 #load_and_authorize_resource
   def index
    tab_id = current_user.tab
@@ -11,7 +12,9 @@ class AccountsController < ApplicationController
    @total_earning_admin = (10*@total_verified_for_admin).to_f
    @total_pending_admin = current_user.assignments.joins(:customer).where('customers.status = ?', "submitted").count
    @total_customers_made  = current_user.assignments.count
-   @total_customers = current_user.tab.assignments.count unless current_user.admin?
+   if current_user.tab && current_user.admin?
+    @total_customers = current_user.tab.assignments.count
+   end
    render :layout => "accounts"
   end
 
