@@ -1,37 +1,29 @@
-<style>
-.form-control {
-    background-color: white;
-    border: 1px solid #CCCCCC;
-    border-radius: 4px 4px 4px 4px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-    color: #555555;
-    display: block;
-    font-size: 14px;
-    height: 34px;
-    line-height: 1.42857;
-    padding: 6px 12px;
-    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-    vertical-align: middle;
-    width: 21%;
-}
-</style>
+<div id ="logo" style="float:left;width:50%">
+  <%= image_tag "verifyme.jpg" %>
+  <%= image_tag('scorpLogo.jpg', :size => "250x450")%>
+</div>
+
+
+<div style="float:right;width:50%">
+ <h4>Sign in</h4>
 <%= form_for :session, url: sessions_path , method: :post  do |f| %>
-  <div class="form-group">
-	<%= f.label :name %><br>
-	<%= f.text_field :username, :class=>"form-control" %>
-  </div>
-  <div class="form-group">
-	<%= f.label :password %><br>
-	<%= f.password_field :password, :class=>"form-control" %>
-  </div>
-<%= f.submit "SignIn", :class=>"btn btn-primary" %>
+
+<p> 
+ <label for="username" class="uname" data-icon="u" > Your email or username </label>
+  <%= f.text_field :username, :id=>"username", :placeholder=>"mymail@mail.com" %><br>
+</p>
+
+<p>
+<label for="password" class="youpasswd" data-icon="p"> Your password </label>
+  <%= f.password_field :password, :id=>"password", :placeholder=>"eg. X8df!90EO" %><br>
+</p>
+
+<p>
+ <i><label for="loginkeeping"><%= f.check_box :remember_me, :id=>"loginkeeping" %>
+ Keep me logged in</label></i> 
+</p>
+
+<%= f.submit "Sign in", :class=>"btn btn-small btn-primary" %>
+
 <% end %>
-
-        <div class="span3" style="float:right;">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-														<li><%= image_tag('verifyme.jpg') %></li>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-
+</div>

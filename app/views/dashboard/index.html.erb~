@@ -1,6 +1,0 @@
-
-<% if logged_in? && current_user.role_name == "super_user" %>
-  <%= render "super_user" %>
-<% elsif logged_in? && current_user.role_name == "tab_user" %>
-  <%= render "tab" %>
-<% end %>

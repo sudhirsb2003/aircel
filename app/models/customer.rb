@@ -1,7 +1,7 @@
 class Customer < ActiveRecord::Base
 
-	#validates_presence_of:applicant_name, :application_ref_number, :address
-	#validates_uniqueness_of :application_ref_number
+	validates_presence_of:applicant_name, :application_ref_number, :address
+	validates_uniqueness_of :application_ref_number
 
   #validate :valid_date?
 
@@ -33,7 +33,8 @@ class Customer < ActiveRecord::Base
 	end
 
  def self.import(file)
-		allowed_attributes = ['application_ref_number','customer_type_id','ageny_name', 'applicant_name', 'address', 'activation_code','dist_code', 'channel_string', 'caf_number', 'landmark', 'date_of_birth', 'pincode', 'contact_number', 'status', 'coountry', 'state', 'city', 'msisdn_number']
+	 application_ref_number = 1001
+   allowed_attributes = ['application_ref_number','customer_type_id','ageny_name', 'applicant_name', 'address', 'activation_code','dist_code', 'channel_string', 'caf_number', 'landmark', 'date_of_birth', 'pincode', 'contact_number', 'status', 'coountry', 'state', 'city', 'msisdn_number']
    spreadsheet = open_spreadsheet(file)
    header = spreadsheet.row(1)
    (2..spreadsheet.last_row).collect do |i|
@@ -45,6 +46,11 @@ class Customer < ActiveRecord::Base
     customer.address = spreadsheet.row(i)[5]
     customer.pincode = spreadsheet.row(i)[7].to_i
     customer.dist_code = spreadsheet.row(i)[12].to_i
+    if Customer.all.any?
+      customer.application_ref_number = Customer.last.application_ref_number.to_i+1
+    else
+      customer.application_ref_number = application_ref_number.to_i
+    end
     customer.save!
      if spreadsheet.row(i)[8].present?
        self.generate_customer_office_detail(customer, spreadsheet, i, row)

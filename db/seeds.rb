@@ -9,9 +9,9 @@
 
 
 
-30.times do |t|
+100.times do |t|
  code = 1101
- pin = 400050
+ pin = 400001
 if Tab.all.empty?
  Tab.create!(name: "Tab-#{t+1}", tab_code: "Tab-#{t+1}", pincode: pin )
  else

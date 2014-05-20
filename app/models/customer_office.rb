@@ -1,6 +1,7 @@
 class CustomerOffice < ActiveRecord::Base
  belongs_to :customer
  has_one :assignment
+ has_one :customer_office
 
  include Workflow
 
@@ -25,7 +26,5 @@ workflow_column :status
     end
 
 end
-
-
 
 end

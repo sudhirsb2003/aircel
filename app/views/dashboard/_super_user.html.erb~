@@ -1,6 +1,0 @@
-  <p>Welcome , <welcome><%= current_user.name %></welcome></p><hr>
-
-   <%= render "tabs_task" %>
-   <%= render "completed_customers" %>
-
-

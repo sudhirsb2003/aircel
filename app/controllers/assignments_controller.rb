@@ -64,6 +64,16 @@ class AssignmentsController < ApplicationController
     end
   end
 
+  def residential_verifications
+   @assignments = Assignment.where('DATE(created_at) > ? AND DATE(created_at) < ? and customer_office_id Is NULL', Date.today-105, Date.today+1).includes(:user, :customer, :tab)
+  end 
+
+  def office_verifications
+   #@office_assignments = Assignment.where('DATE(created_at) > ? AND DATE(created_at) < ? and customer_office_id Is NULL', Date.today-105, Date.today+1).includes(:user, :customer, :tab)
+   @office_assignments = Assignment.where('DATE(created_at) > ? AND DATE(created_at) < ? and customer_id Is NULL', Date.today-105, Date.today+1).includes(:user, :customer, :tab)  
+  end 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_assignment

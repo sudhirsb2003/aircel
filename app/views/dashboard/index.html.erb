@@ -1,21 +1,41 @@
-<style>
- #main_content{
-  float:left;
-  width:750px;
-  border-right:0px solid silver;
-  padding:15px;
-  }
- #sidebar {
-	width: 350px;
-	margin-right: 5px;
-	padding: 15px;
-	float:right;
-}
-welcome{color:green;}
-</style>
-
 <% if logged_in? && current_user.role_name == "super_user" %>
-  <%= render "super_user" %>
+  <%#= render "super_user" %>
+  <b><p style="font-size:15px;color:green;text-transform:capitalize;">Welcome, <%= current_user.name %> <i class="icon-user"></i></p></b><hr>
+
+<h5>Completed Verifications</h5>
+
+<table class="table table-condensed table-striped table-bordered">
+	<tr>
+		<td style="padding-left:20px;">Completed Verification</td>
+		<td style="padding-left:20px;">Pending Verification</td>
+        <td style="padding-left:20px;">In Progress Verification</td>		
+	</tr>
+	<tr>
+	<% if @completed_customers.present? %>
+		<td><h1 style="padding-left:50px;"><%= link_to @completed_customers.count, residential-verifications_path %></h1></td>
+		<td><h1 style="padding-left:50px;"><%= link_to @completed_customers.count %></h1></td>	
+        <td><h1 style="padding-left:50px;"><%= link_to @completed_customers.count %></h1></td>			
+	<% else %>
+		<td><h1> 0 </h1></td>
+		<td><h1> 0 </h1></td>		
+        <td><h1> 0 </h1></td>		
+	<% end %>
+	</tr>
+</table>
+	<hr>
+
+<h5> Assigned Verifications </h5>
+<table class="table table-condensed table-striped table-bordered">
+	<tr>
+		<td style="padding-left:20px;">Residential Verification</td>
+        <td style="padding-left:20px;">Office Verification</td>
+    </tr>
+    <tr>
+        <td><h1 style="padding-left:50px;"><%= link_to @assignments.count, residential_verifications_path %></h1></td>
+        <td><h1 style="padding-left:50px;"><%= link_to @office_assignments.count, office_verifications_path %></h1></td>
+    </tr>
+</table>
+
 <% elsif logged_in? && current_user.role_name == "tab_user" %>
   <%= render "tab" %>
 <% end %>

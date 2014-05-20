@@ -4,7 +4,7 @@ class DashboardController < ApplicationController
   include ApplicationHelper
   def index
    @completed_customers = Customer.where(status: "completed")
-   @tab_user_task = Assignment.where(:tab_id => current_user.tab)
-   @assignments = Assignment.where('DATE(created_at) > ? AND DATE(created_at) < ?', Date.today-5, Date.today+1).includes(:user, :customer, :tab)
+   @assignments = Assignment.where('DATE(created_at) > ? AND DATE(created_at) < ? and customer_office_id Is NULL', Date.today-105, Date.today+1).includes(:user, :customer, :tab)
+   @office_assignments = Assignment.where('DATE(created_at) > ? AND DATE(created_at) < ? and customer_id Is NULL', Date.today-105, Date.today+1).includes(:user, :customer, :tab)
   end
 end

@@ -1,19 +1,15 @@
-<table class="table table-condensed table-striped">
-<tr>
- <th> Tab Name </th>
- <th> Number of task </th>
-</tr>
+<style>
 
+</style>
+<table class="table table-condensed table-bordered table-striped">
+<tr>
+	<th> Tab Name </th>
+	<th> Number of task </th>
+</tr>
 <% Tab.all.includes(:assignments).each do |t| %>
 <tr>
-	<% if t.assignments.present? %>
-			<td><%= t.name %></td>
-			<td><%= t.assignments.includes(:assignments).count %></td>
-	<% else %>
-		<td><%= t.name %></td>
-		<td style="color:green"><%= t.assignments.includes(:assignments).count %></td>
- <% end %>
+	<td><%= t.name %></td>
+	<td><%= t.assignments.includes(:assignments).count %></td>
 </tr>
-
 <% end %>
 <table>

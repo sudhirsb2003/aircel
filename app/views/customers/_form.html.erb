@@ -1,4 +1,4 @@
-<style>
+<!--<style>
 .dk_fouc select{
 	background-color: #666;
 	border: medium none;
@@ -33,7 +33,7 @@
 .btn.btn-info { height:30px;font-size:15px;border:none;}
 
 .form-control{ width: 210%; border: 2px solid #999999;}
-</style>
+</style>-->
 
 <%= form_for(@customer) do |f| %>
   <% if @customer.errors.any? %>
@@ -48,7 +48,7 @@
   <% end %>
  <div class="row">
   <div class="field">
-    <%= f.label :application_ref_number %><br>
+    <%= f.label :application_ref_number %>
     <% if @customer.blank? %>
       <b><%= f.text_field :application_ref_number, :class=>"form-control", :value=> @final_no %></b>
     <% else %>
@@ -56,29 +56,32 @@
     <% end %>
   </div>
   <div class="field">
-    <%= f.label :ageny_name %><br>
+    <%= f.label :ageny_name %>
     <%= f.text_field :ageny_name, :class=>"form-control" , :value => "Scorpeo Private Limited" %>
-  </div></div>
- <div class="row">
+  </div>
+
   <div class="field">
-    <%= f.label :applicant_name %><br>
+    <%= f.label :applicant_name %>
     <%= f.text_field :applicant_name, :class=>"form-control" %>
   </div></div>
+
   <div class="row">
   <div class="field">
-    <%= f.label :billing_address %><br>
+    <%= f.label :billing_address %>
     <%= f.text_area :address, :class=>"form-control" %>
   </div></div>
+
   <div class="row">
   <div class="field">
-    <%= f.label :landmark %><br>
+    <%= f.label :landmark %>
     <%= f.text_field :landmark, :class=>"form-control" %>
   </div>
     <div class="field">
-    <%= f.label :contact_number %><br>
+    <%= f.label :contact_number %>
     <%= f.text_field :contact_number, :class=>"form-control" %>
   </div>
   </div>
+
   <div class="field">
     <%= f.label :date_of_birth %><br>
     <%= f.date_select :date_of_birth, :class=>"form-control", :start_year => 1990,
@@ -86,55 +89,55 @@
   </div><br><br>
  <div class="row">
   <div class="field">
-    <%= f.label :CafNumber %><br>
+    <%= f.label :Caf_Number %>
     <%= f.text_field :caf_number, :class=>"form-control" %>
   </div>
   <div class="field">
-    <%= f.label :country %><br>
+    <%= f.label :country %>
     <b><%= f.text_field :coountry, :class=>"form-control", :value => "India" %></b>
   </div>
   <div class="field">
-    <%= f.label :state %><br>
+    <%= f.label :state %>
     <%= f.text_field :state, :class=>"form-control", :value => "Maharashtra" %>
   </div>
   <div class="field">
-    <%= f.label :city %><br>
+    <%= f.label :city %>
     <%= f.text_field :city, :class=>"form-control", :value => "Mumbai" %>
   </div>
     <div class="field">
-    <%= f.label :Zipcode %><br>
+    <%= f.label :Zipcode %>
     <%= f.text_field :pincode, :class=>"form-control" %>
   </div>
   <div class="field">
-    <%= f.label 'Activation Status' %><br>
+    <%= f.label 'Activation Status' %>
     <%= f.text_field :activation_code, :class=>"form-control" %>
   </div>
   <div class="field">
-    <%= f.label 'Distributor Code' %><br>
+    <%= f.label 'Distributor Code' %>
     <%= f.text_field :dist_code, :class=>"form-control" %>
   </div>
   <div class="field">
-    <%= f.label :Channel %><br>
+    <%= f.label :Channel %>
     <%= f.text_field :channel_string, :class=>"form-control" %>
   </div>
   </div>
  <div class="row">
   <div class="field">
-    <%= f.label 'Office Address' %><br>
+    <%= f.label 'Office Address' %>
     <%= f.text_area :office_address, :class=>"form-control" %>
   </div></div>
  <div class="row">
   <div class="field">
-    <%= f.label 'Office City' %><br>
+    <%= f.label 'Office City' %>
     <%= f.text_field :city_office, :class=>"form-control" %>
   </div>
   <div class="field">
-    <%= f.label 'Office Pincode' %><br>
+    <%= f.label 'Office Pincode' %>
     <%= f.text_field :office_pincode, :class=>"form-control" %>
   </div></div>
 
   <br><br>
   <div class="actions">
-    <%= f.submit :class=>"btn btn-info" %> <%= link_to 'Back', customers_path, :class=>"btn btn-info" %>
+    <%= f.submit :class=>"btn btn-info" %> <%= link_to 'Back', customers_path, :class=>"btn" %>
   </div>
 <% end %>

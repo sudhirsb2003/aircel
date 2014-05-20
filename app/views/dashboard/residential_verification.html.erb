@@ -1,11 +1,11 @@
-<h2> Office Task</h2>
+<p> Residential Verifications</p>
 <table class="table table-condensed table-bordered table-striped">
 	<tr>
 		<th> Tab Name </th>
 		<th> Customer Name  </th>
 		<th> Status </th>
 	</tr>
-	<% @office_assignments.each do |task| %>
+		<% @assignments.each do |task| %>
 	<tr>
 		<%  if task.tab.user.present? %>
 		<td><%= link_to task.tab.user.name, task.tab.user %></td>
@@ -13,7 +13,7 @@
 		<td>No Tab </td>
 		<% end %>
 		<td><%= task.customer.applicant_name if task.customer %><%= task.customer_office.customer.applicant_name if task.customer_office %></td>
-		<td><%= task.customer_office.status if task.customer_office %></td>
+		<td><%= task.customer.status if task.customer %></td>
 	</tr>
 	<% end %>
 </table>

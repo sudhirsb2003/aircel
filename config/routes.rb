@@ -1,6 +1,6 @@
 Airecel::Application.routes.draw do
   resources :pincodes
-
+  resources :tab_tasks
   #get "accounts/index"
   #get "reports/index"
   resources :serveys, :accounts
@@ -24,6 +24,10 @@ Airecel::Application.routes.draw do
   end
   resources :users
   resources :sessions , only: [:new,:create,:destroy]
+  #match '/residential-verifications',  to: 'assignments#residential_verifications',  via: 'get'
+  get "dashboard/residential-verifications" => "assignments#residential_verifications", :as => :residential_verifications
+  get "dashboard/office-verifications" => "assignments#office_verifications", :as => :office_verifications
+
   get "dashboard/index"
   match '/signup',  to: 'users#new',  via: 'get'
   #match '/completed', to: 'appointments#completed', via: 'get'

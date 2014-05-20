@@ -1,41 +1,26 @@
-<style>
- #main_content{float:left;width:700px;border-right:0px solid black;padding-right:35px;}
- #sidebar {
-	height: 300px;
-	width: 400px;
-	float: right;
-	margin-right: 5px;
-	padding: 5px 0 0 5px;
-}
-.dk_toggle{padding-top:5px;height:31px;margin-top:10px;width:250px;}
-</style>
-
 <div id ="sidebar">
 <p>
 <% if @user.photo? %>
   <%= image_tag @user.photo.url(:medium) %>
-<% else %>
-<%= image_tag('verifyme.jpg')%>
 <% end %>
 </p>
-
 </div>
 
-<div id = "main_content">
-<strong><%= link_to 'Edit', edit_user_path(@user) %> </strong>
-<table class="table table-striped table-condesed table-bordered">
-<% if @user.tab.present? %>
- <tr>
-  <td>Tab Name:</td><td><%= @user.tab.name %></td>
- </tr>
 
-<% elsif !@user.admin? %>
+<b style="font-size:20px;color:orange;text-transform:uppercase;"><%= @user.name %></b>
+(<%= link_to 'edit', edit_user_path(@user) %>)
+<% if @user.tab.present? %>
+  <h6>Tab Name:  <%= @user.tab.name %></h6>
+<% else !@user.admin? %>
   <%= form_for User.find(@user) do |tab| %>
-  <%= tab.collection_select :tab_id, @array_without_excluded_ids, :id, :name, prompt: true %>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= tab.submit :class=>"btn btn-warning" %>
+   <%= tab.collection_select :tab_id, @array_without_excluded_ids, :id, :name, prompt: true %>
+   <%= tab.submit :class=>"btn btn-warning" %>
   <% end %>
 <% end %>
 
+<hr>
+
+<table class="table table-striped table-condesed table-bordered">
 <tr>
   <td>Username:</td>
   <td><%= @user.username %></td>
@@ -71,5 +56,3 @@
 <% end %>
 </table>
 <% end %>
-
-</div>
