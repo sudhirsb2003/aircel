@@ -16,10 +16,10 @@
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
 //= require turbolinks
+//= require jquery.turbolinks
 //= require twitter/bootstrap
 //= require bootstrap-datepicker
 //= require underscore
 //= require gmaps/google
 //= require jquery_nested_form
-//= require flat-ui
 //= require_tree .
