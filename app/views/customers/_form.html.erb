@@ -1,41 +1,4 @@
-<!--<style>
-.dk_fouc select{
-	background-color: #666;
-	border: medium none;
-	border-radius: 5px;
-	color: #FFFFFF;
-	font-size: 12px;
-	height: 30px;
-	padding-top: 7px;
-	position: relative;
-	top: 0;
-	visibility: visible;
-	float: left;
-	margin-right: 10px;
-	outline:none;
-}
-.dk_toggle {
-  border-radius: 6px 6px 6px 6px;
-    color: white;
-    height: 30px;
-    overflow: hidden;
-    padding: 5px 45px 11px 13px;
-    text-decoration: none;
-    transition: all 0.25s ease 0s;
-    white-space: nowrap;
-    width: 150px;
-    }
-.dk_fouc select option{
-	border:none;
-	margin-top:10px;
-	background-color: #666;
-}
-.btn.btn-info { height:30px;font-size:15px;border:none;}
-
-.form-control{ width: 210%; border: 2px solid #999999;}
-</style>-->
-
-<%= form_for(@customer) do |f| %>
+<%= nested_form_for(@customer) do |f| %>
   <% if @customer.errors.any? %>
     <div id="error_explanation">
       <!--<h2><%#= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>-->
@@ -121,20 +84,37 @@
     <%= f.text_field :channel_string, :class=>"form-control" %>
   </div>
   </div>
+<hr>
+<style>
+input, textarea{ height: auto;
+    width: 552px;}
+</style>
+<div class="office" style="padding:20px;background:#F0F8FF;">
+
+<h4> Office Details if any ? </h4><hr>
+  <%= f.fields_for :customer_office do |co| %>
  <div class="row">
-  <div class="field">
-    <%= f.label 'Office Address' %>
-    <%= f.text_area :office_address, :class=>"form-control" %>
-  </div></div>
- <div class="row">
-  <div class="field">
-    <%= f.label 'Office City' %>
-    <%= f.text_field :city_office, :class=>"form-control" %>
+
+    <div class="field">
+      <%= co.label 'Office Address' %>
+      <%= co.text_area :office_address, :class=>"form-control" %>
+    </div>
   </div>
+
+ <div class="row">
   <div class="field">
-    <%= f.label 'Office Pincode' %>
-    <%= f.text_field :office_pincode, :class=>"form-control" %>
-  </div></div>
+    <%= co.label 'Office City' %>
+    <%= co.text_field :city_office, :class=>"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= co.label 'Office Pincode' %>
+    <%= co.text_field :office_pincode, :class=>"form-control" %>
+  </div>
+ </div>
+  <% end %>
+
+</div>
 
   <br><br>
   <div class="actions">
