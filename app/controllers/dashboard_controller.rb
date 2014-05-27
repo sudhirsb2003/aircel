@@ -6,6 +6,7 @@ class DashboardController < ApplicationController
    @completed_customers = Customer.where(status: "verified")
    @pending_customers = Customer.where(status: "submitted")
    @in_progress_customers = Customer.where(status: "completed")
+   @tab_user_task = current_user.tab.assignments if logged_in? #Assignment.where(:tab_id => current_user.tab)
    @assignments = Assignment.where('DATE(created_at) > ? AND DATE(created_at) < ? and customer_office_id Is NULL', Date.today-105, Date.today+1).includes(:user, :customer, :tab)
    @office_assignments = Assignment.where('DATE(created_at) > ? AND DATE(created_at) < ? and customer_id Is NULL', Date.today-105, Date.today+1).includes(:user, :customer, :tab)
   end

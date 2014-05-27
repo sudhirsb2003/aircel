@@ -105,7 +105,17 @@ class CustomersController < ApplicationController
    @customer = Customer.find(params[:customer_id])
   end
 
+  def completed 
+   @completed_customers = Customer.where(status: "verified")
+  end
 
+  def pending
+   @pending_customers = Customer.where(status: "submitted")
+  end
+
+  def in_progress
+   @in_progress_customers = Customer.where(status: "completed")   
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

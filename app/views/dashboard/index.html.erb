@@ -12,13 +12,13 @@
 	</tr>
 	<tr>
 	<% if @completed_customers.present? %>
-		<td><h1 style="padding-left:50px;"><%= link_to @completed_customers.count, residential-verifications_path %></h1></td>
+		<td><h1 style="padding-left:50px;"><%= link_to @completed_customers.count, completed_path %></h1></td>
 	<% else %>
 		<td><h1> 0 </h1></td>
     <% end %>
 	
 	<% if @pending_customers.present? %>
-		<td><h1 style="padding-left:50px;"><%= link_to @pending_customers.count %></h1></td>	
+		<td><h1 style="padding-left:50px;"><%= link_to @pending_customers.count, pending_path %></h1></td>	
 	<% else %>
 		<td><h1> 0 </h1></td>		
 	<% end %>

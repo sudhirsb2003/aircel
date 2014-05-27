@@ -32,11 +32,11 @@
   <p style="color:red"> C.A.F. Number : <u><%= (@id.created_at).to_date %>-<%= @id.application_ref_number %></u></p>
 
   <div class="field">
-    <%= f.label :"alternate Number" %><br>
+    <b><%= f.label :"alternate Number:" %></b>
     <%= f.text_field :alternate_number %>
   </div>
   <div class="field">
-    <%= f.label :ease_of_location %><br>
+    <%= f.label :ease_of_location %>
    <div class="controls">
        Easy <input id="servey_address_confirmed" name="servey[ease_of_location]" type="radio" value="Easy" />
        Difficult <input id="servey_address_confirmed" name="servey[ease_of_location]" type="radio" value="Difficult" />
@@ -45,54 +45,58 @@
   </div><br>
 
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
+
   <div class="field">
-    <%= f.label :Bill_Plan %><br>
+    <%= f.label :Bill_Plan %>
     <%= f.text_field :bill_plan %>
   </div>
+
   <div class="field">
-    <%= f.label :Billing_Address %><br>
+    <%= f.label :Billing_Address %>
     <%= f.text_field :billing_address %>
   </div>
 
   <div class="field">
-    <%= f.label :Billing_Address_Correction %><br>
+    <%= f.label :Billing_Address_Correction %>
     <%= f.radio_button :billing_address_correction, "1" %> Yes
     <%= f.radio_button :billing_address_correction, "0" %> No
   </div><br>
 
   <div class="field">
-    <%= f.label :New_Billing_Address %><br>
+    <%= f.label :New_Billing_Address %>
     <%= f.text_field :new_billing_address %>
   </div>
+
   <div class="field">
-    <%= f.label :Office_Address_Correction %><br>
+    <%= f.label :Office_Address_Correction %>
     <%= f.radio_button :office_address_correction, "1" %> Yes
     <%= f.radio_button :office_address_correction, "0" %> No
   </div><br>
 
   <div class="field">
-    <%= f.label :New_Office_Address %><br>
+    <%= f.label :New_Office_Address %>
     <%= f.text_field :new_office_address %>
-  </div>
+  </div><hr>
 
   <div class="field">
-    <%= f.label :Have_You_Applied_For_This_Connection_Before? %><br>
+    <%= f.label :Have_You_Applied_For_This_Connection_Before? %>
     <%= f.radio_button :applied_before, "1" %> Yes
     <%= f.radio_button :applied_before, "0" %> No
+  </div><hr>
 
-  </div>
   <div class="field">
-    <%= f.label :SimRecieved %><br>
+    <%= f.label :Sim_Recieved %>
     <%= f.radio_button :sim_recieved, "1" %> Yes
     <%= f.radio_button :sim_recieved, "0" %> No
-  </div><br>
+  </div><hr>
   <div class="field">
-    <%= f.label :SimNumber %><br>
+    <%= f.label :Sim_Number %>
     <%= f.text_field :sim_number %>
   </div><hr>
+
   <div class="field">
     <p><%= f.label :PostpaidConnectionFirstTime %></p>
       <%= f.radio_button :postpaid_connection_first_time, "1" %> Yes
@@ -141,43 +145,43 @@
       </label>
   </div>
   <div class="field">
-    <%= f.label :YearsToStay %><br>
+    <%= f.label :YearsToStay %>
     <%= f.number_field :years_of_stay %>
   </div>
 
   <div class="field">
-    <%= f.label :Occupation %><br>
+    <%= f.label :Occupation %>
     <%= f.text_field :occupation %>
   </div>
   <div class="field">
-    <%= f.label :TypeOfWork %><br>
+    <%= f.label :TypeOfWork %>
     <%= f.text_field :type_of_work %>
   </div>
   <div class="field">
-    <%= f.label :OrganisationType %><br>
+    <%= f.label :OrganisationType %>
     <%= f.text_field :type_of_organisation %>
   </div>
 
   <div class="field">
-    <%= f.label :DocumentsShown %><br>
+    <%= f.label :DocumentsShown %>
     <%= f.text_field :documentation %>
   </div>
 
   <div class="field">
-    <%= f.label :person_met %><br>
+    <%= f.label :person_met %>
     <%= f.text_field :person_met %>
   </div>
 
   <div class="field">
-    <%= f.label :NameOfPesonMet %><br>
+    <%= f.label :NameOfPesonMet %>
     <%= f.text_field :name_person_met %>
   </div>
   <div class="field">
-    <%= f.label :VisitNumber %><br>
+    <%= f.label :VisitNumber %>
     <%= f.number_field :visit_number %>
   </div>
   <div class="field">
-    <%= f.label :Network %><br>
+    <%= f.label :Network %>
     <%= f.text_field :network %>
 
     <% if controller.action_name == 'new' %>
@@ -205,19 +209,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :AvResult %><br>
+    <%= f.label :AvResult %>
     <%= f.text_field :av_result %>
   </div>
   <%= f.hidden_field :date_of_visit, :value => Date.today %>
   <div class="field">
-    <%= f.label :TabRemark %><br>
+    <%= f.label :TabRemark %>
     <%= f.text_field :remark_tab %>
   </div>
   <div class="field">
-    <%= f.label :RemarkTeamLeader %><br>
+    <%= f.label :RemarkTeamLeader %>
     <%= f.text_field :remark_team_leader %>
-  </div><br><br>
+  </div>
   <div class="actions">
     <%= f.submit :class=> "btn btn-primary", :id => "create_survey", "data-action" => "d" %>
   </div>
-<% end %><br>
+<% end %>

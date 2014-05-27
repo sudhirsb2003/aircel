@@ -1,0 +1,13 @@
+<p>Pending Verifications</p>
+	<table class="table table-condensed table-striped table-bordered" style="width:300px;">
+		<tr>
+			<th> Applicant Name </th>
+		</tr>
+	<% @pending_customers.each do |task| %>
+		<tr>
+			<td><%= task.applicant_name %></td>
+		</tr>
+	<% end %>
+	</table>
+<hr>
+
