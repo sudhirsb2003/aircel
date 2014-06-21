@@ -5,7 +5,7 @@ label {
     padding: 0 40px 5px;
 }
 </style>
-
+<strong style="float:right"> <%= link_to "Add Customer", new_customer_path %> </strong>
 <strong>Import Customers</strong><hr>
 <table><%= form_tag import_customers_path, multipart: true do %>
     <tr><td><%= file_field_tag :file %><br></td></tr>

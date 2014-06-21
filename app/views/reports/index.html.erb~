@@ -68,7 +68,7 @@ button.btn, input.btn[type="submit"]{margin-top:11px;}
     <td width="150px"><%= d.name_person_met %></td>
     <td width="100px"><%= d.customer.date_of_birth %></td>
     <td width="200px"><%= d.years_of_stay %> Years</td>
-    <td width="150px"><%= d.type_of_stay %></td>
+    <td width="100px"><%= d.type_of_stay %></td>
    </tr>
    </tbody>
   <% end %>

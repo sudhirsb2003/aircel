@@ -36,21 +36,21 @@
 .btn.btn-primary { border:none;}
 </style>
 
-<b><%= link_to 'Edit Customer', edit_customer_path(@customer) %> |
-<%= link_to 'Destroy Customer', @customer, method: :delete, data: { confirm: 'Are you sure?' } %></b> |
-<%= link_to 'View All Customers', customers_path %>
+<h5><i class="icon-edit"></i> <%= link_to 'Edit', edit_customer_path(@customer) %> |
+<i class=" icon-remove-sign"></i> <%= link_to 'Destroy', @customer, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<i class="icon-th"></i> <%= link_to 'View All', customers_path %></h5>
 <% if @customer.status == 'pending' %>
-  <h3 style ="float:right;"> <span class="btn btn-hg btn-warning"><%= @customer.status %></span></h3>
+  <h3> <span class="btn btn-hg btn-warning"><%= @customer.status %></span></h3>
 <% elsif @customer.status == 'submitted' %>
-  <h3 style ="float:right;"> <span class="label label-info"><%= @customer.status %></span></h3>
+  <h3> <span class="label label-info"><%= @customer.status %></span></h3>
 <% elsif @customer.status == 'completed' %>
-  <h3 style ="float:right;"> <span class="btn btn-hg btn-primary"><%= @customer.status %></span></h3><br><br><br><br>
-  <p style ="float:right;">
+  <h3> <span class="btn btn-hg btn-primary"><%= @customer.status %></span></h3><br><br><br><br>
+  <p>
     <%= link_to "Accept", accept_customer_path(:customer_id => @customer.id), :class=> "label label-success" %>
     <%#= link_to "Reassign", reassign_customer_path(:customer_id => @customer.id), :class=> "label label-danger" %>
   </td>
   <% else %>
-  <h3 style ="float:right;"> <span class="btn btn-hg btn-primary"><%= @customer.status %></span></h3>
+  <h3> <span class="btn btn-hg btn-primary"><%= @customer.status %></span></h3>
 <% end %>
 <br><br>
 
@@ -71,7 +71,7 @@
    <%= form_for(@new_assignments) do |f| %>
     <%= f.hidden_field :customer_id , :value => @customer.id %>
     <%= f.hidden_field :user_id , :value => current_user.id %>
-    <%= select_tag "assignment[tab_id]", options_for_select(User.includes(:tab).where('users.role_name!=?', 'super_user').collect {|r| [r.name, r.tab] }) %>
+    <%= select_tag "assignment[tab_id]", options_for_select(User.includes(:tab).where('users.role_name!=?', 'super_user').collect {|r| [r.name, r.tab.id] }) %>
     <span class="dropdown-arrow"></span>
    <%= f.submit "Send for verification", :class=>"btn btn-primary btn-small" %>
  <% end %>
@@ -100,33 +100,19 @@
 <% end %>
 <% end %>
 </div>
+<p> Signature</p>
+<%= image_tag("#{@customer.signature_image}") %>
+</div>
+<h3 style="color:gray"><%= @customer.applicant_name %></h3>
 
-<table class="table table-condensed table-bordered table-striped" style= "width:500px;">
-<p style = "font-size:15px"> Basic Info </p>
+
+<table class="table table-condensed table-bordered table-striped">
 <tr><td>Application ref number:</td>
     <td><%= @customer.application_ref_number %></td></tr>
-
-<tr><td>Ageny name:</td>
-    <td><%= @customer.ageny_name %></td></tr>
-
-<tr><td>
-  Applicant name:</td>
-  <td><%= @customer.applicant_name %>
-</td></tr>
 
 <tr><td>
   Address:</td>
   <td><%= @customer.address %>
-</td><tr>
-
-<tr><td>
-  Landmark:</td>
-  <td><%= @customer.landmark %>
-</td><tr>
-
-<tr><td>
-  Date of birth:</td>
-  <td><%= @customer.date_of_birth %>
 </td><tr>
 
 <tr><td>
@@ -135,25 +121,22 @@
 </td><tr>
 
 <tr><td>
-  Contact number:</td>
-  <td><%= @customer.contact_number %>
-</td></tr>
-
-<tr><td>
-  Country:</td>
-  <td><%= @customer.coountry %>
-</td><tr>
-
-<tr><td>
-  State:</td>
-  <td><%= @customer.state %>
-</td><tr>
-
-<tr><td>
   City:</td>
   <td><%= @customer.city %>
 </td><tr>
 </table>
+
+<% if @customer.customer_office %>
+<h3 style="color:gray">Office Detail</h3>
+<table>
+  <tr>
+  <td><%= @customer.customer_office.office_address %><br>
+  <%= @customer.customer_office.office_pincode %><br>
+  <%= @customer.customer_office.status %></td>  
+</tr>
+</table>
+<% end %>
+
 <hr>
 <% if @customer.servey  %>
 <p style = "font-size:15px"> Servey Info </p>

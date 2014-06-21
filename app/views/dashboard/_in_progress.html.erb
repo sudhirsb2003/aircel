@@ -3,11 +3,9 @@
       <tr>
         <th> Applicant Name </th>
       </tr>
-		  <% @completed_customers.each do |task| %>
+		  <% @in_progress_customers.each do |task| %>
 		  <tr>
 			  <td><%= task.applicant_name %> <strong style="float:right;margin-right:50px;"> <%= link_to 'More..', servey_path(task.servey) %>
-			  <td style="text-align:center"><%#= link_to "Accept", accept_customer_path(task.slug, :customer_id => task.id) %></td>
-			  <td style="text-align:center"><%#= link_to "Reassign", reassign_customer_path(task.id, :customer_id => task.id) %></td>
 		  </tr>
 		  <% end %>
 	  </table>

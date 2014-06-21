@@ -23,7 +23,7 @@
   <% elsif %>
    <td class="completed"><%= task.customer.status if task.customer %></td>
   <% else %>
-   <td class="pending"><%= task.customer.status if task.customer %></td>
+   <td class="completed"><%= task.customer.status if task.customer %></td>
   <% end %>
 	</tr>
 	<% end %>

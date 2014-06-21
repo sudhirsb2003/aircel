@@ -11,13 +11,14 @@
     <th> Office Verification </th>
   </tr>
 
+<% if current_user.tab %>
   <tr>
     <td><%= current_user.tab.assignments.joins(:customer).where('assignments.customer_office_id IS NULL and customers.status =? ', 'submitted').count %></td>
     <td><%= current_user.tab.assignments.joins(:customer_office).where('assignments.customer_office_id IS NOT NULL and customer_offices.status =? ', 'pending').count %></td>
   </tr>
-  
+<% end %>  
  </table>  
-
+<% if current_user.tab %>
 <hr>
   <table class ="table table-striped table-condensed table-bordered">
    <tr>
@@ -49,3 +50,4 @@
 
    <% end %>
   </table>
+<% end %>

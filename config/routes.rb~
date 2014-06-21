@@ -24,7 +24,7 @@ Airecel::Application.routes.draw do
   end
   resources :users
   resources :sessions , only: [:new,:create,:destroy]
-  get "serveys/download_documents"
+  get "dashboards/download_documents"
   #match '/residential-verifications',  to: 'assignments#residential_verifications',  via: 'get'
   get "dashboard/residential-verifications" => "assignments#residential_verifications", :as => :residential_verifications
   get "dashboard/office-verifications" => "assignments#office_verifications", :as => :office_verifications

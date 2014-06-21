@@ -4,5 +4,5 @@ development:
   database: airecel_development
   pool: 5
   username: postgres
-  password: safew
+  password: scorp
 

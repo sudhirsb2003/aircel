@@ -73,7 +73,7 @@ class ServeysController < ApplicationController
 		 send_file(
 		   "#{Rails.root}/public/your_file.jpg",
 		   filename: "your_custom_file_name.jpg",
-		   type: "application/jpg"
+		   type: "application/pdf"
 		 )
 	end
 

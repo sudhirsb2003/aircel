@@ -47,7 +47,7 @@ footer {
 <div class="btn-group" style="float:right;margin-right:20px;">
 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 <%= current_user.name %>
-  <b style="color:green">[<%= current_user.role_name %>]</b>
+  <b style="color:green"><%= current_user.role_name %></b>
   <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu">

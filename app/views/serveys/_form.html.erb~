@@ -1,0 +1,227 @@
+<%= javascript_include_tag 'app.js', 'signature_pad.js' %>
+<%= nested_form_for @servey do |f| %>
+  <% if @servey.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@servey.errors.count, "error") %> prohibited this servey from being saved:</h2>
+
+      <ul>
+      <% @servey.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<%= f.fields_for :document_photos do |photo| %>
+		<%= photo.file_field :photo %>
+		<%= photo.link_to_remove "Remove this Document" %>
+	<% end %>
+
+<p><%= f.link_to_add "Add a Document", :document_photos %></p>
+  <div class="field">
+    <%= f.hidden_field :customer_id, :value => params[:customer_id] %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :tab_id, :value => params[:tab_id] %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :user_id, :value => params[:user_id] %>
+  </div>
+
+<hr>
+  <p style="color:red"> C.A.F. Number : <u><%= (@id.created_at).to_date %>-<%= @id.application_ref_number %></u></p>
+
+  <div class="field">
+    <b><%= f.label :"alternate Number:" %></b>
+    <%= f.text_field :alternate_number %>
+  </div>
+  <div class="field">
+    <%= f.label :ease_of_location %>
+   <div class="controls">
+       Easy <input id="servey_address_confirmed" name="servey[ease_of_location]" type="radio" value="Easy" />
+       Difficult <input id="servey_address_confirmed" name="servey[ease_of_location]" type="radio" value="Difficult" />
+       untraceable <input id="servey_address_confirmed" name="servey[ease_of_location]" type="radio" value="Untraceable" />
+    </div>
+  </div><br>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Bill_Plan %>
+    <%= f.text_field :bill_plan %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Billing_Address %>
+    <%= f.text_field :billing_address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Billing_Address_Correction %>
+    <%= f.radio_button :billing_address_correction, "1" %> Yes
+    <%= f.radio_button :billing_address_correction, "0" %> No
+  </div><br>
+
+  <div class="field">
+    <%= f.label :New_Billing_Address %>
+    <%= f.text_field :new_billing_address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Office_Address_Correction %>
+    <%= f.radio_button :office_address_correction, "1" %> Yes
+    <%= f.radio_button :office_address_correction, "0" %> No
+  </div><br>
+
+  <div class="field">
+    <%= f.label :New_Office_Address %>
+    <%= f.text_field :new_office_address %>
+  </div><hr>
+
+  <div class="field">
+    <%= f.label :Have_You_Applied_For_This_Connection_Before? %>
+    <%= f.radio_button :applied_before, "1" %> Yes
+    <%= f.radio_button :applied_before, "0" %> No
+  </div><hr>
+
+  <div class="field">
+    <%= f.label :Sim_Recieved %>
+    <%= f.radio_button :sim_recieved, "1" %> Yes
+    <%= f.radio_button :sim_recieved, "0" %> No
+  </div><hr>
+  <div class="field">
+    <%= f.label :Sim_Number %>
+    <%= f.text_field :sim_number %>
+  </div><hr>
+
+  <div class="field">
+    <p><%= f.label :PostpaidConnectionFirstTime %></p>
+      <%= f.radio_button :postpaid_connection_first_time, "1" %> Yes
+      <%= f.radio_button :postpaid_connection_first_time, "0" %> No
+  </div>
+<hr>
+  <div class="field">
+    <p><%= f.label :AddressVerified %></p>
+       <%= f.radio_button :address_verified, "1" %> Yes
+       <%= f.radio_button :address_verified, "0" %> No
+  </div><hr>
+
+  <div class="field">
+    <p><%= f.label :Locality %></p>
+    <%#= f.text_field :residence_type %>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[locality]" type="checkbox" value="Bunglow" /> Bunglow
+      </label>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[locality]" type="checkbox" value="Flat" /> Flat
+      </label>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[locality]" type="checkbox" value="Chawl" /> Chawl
+      </label>
+  </div><hr>
+
+  <div class="field">
+    <p><%= f.label :Type_Of_Residence %></p>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[type_of_residence]" type="checkbox" value="Owned" /> Owned
+      </label>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[type_of_residence]" type="checkbox" value="Rented" /> Rented
+      </label>
+  </div><hr>
+  <div class="field">
+    <p><%= f.label :TypeOfStay %></p>
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[type_of_stay]" type="checkbox" value="Owned" /> Owned
+      </label>
+
+      <label class="checkbox controls">
+         <input id="bill_payer" name="servey[type_of_stay]" type="checkbox" value="Rented" /> Rented
+      </label>
+  </div>
+  <div class="field">
+    <%= f.label :YearsToStay %>
+    <%= f.number_field :years_of_stay %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Occupation %>
+    <%= f.text_field :occupation %>
+  </div>
+  <div class="field">
+    <%= f.label :TypeOfWork %>
+    <%= f.text_field :type_of_work %>
+  </div>
+  <div class="field">
+    <%= f.label :OrganisationType %>
+    <%= f.text_field :type_of_organisation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :DocumentsShown %>
+    <%= f.text_field :documentation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :person_met %>
+    <%= f.text_field :person_met %>
+  </div>
+
+  <div class="field">
+    <%= f.label :NameOfPesonMet %>
+    <%= f.text_field :name_person_met %>
+  </div>
+  <div class="field">
+    <%= f.label :VisitNumber %>
+    <%= f.number_field :visit_number %>
+  </div>
+  <div class="field">
+    <%= f.label :Network %>
+    <%= f.text_field :network %>
+
+    <% if controller.action_name == 'new' %>
+<p onselectstart="return false">
+  <a id="github" href="https://github.com/szimek/signature_pad">
+  </a>
+
+  <div id="signature-pad" class="m-signature-pad" style="width:500px;">
+    <div class="m-signature-pad--body" style="border:1px solid silver;">
+      <canvas width="500" height="480"></canvas>
+    </div>
+    <div class="m-signature-pad--footer">
+      <div class="description"></div>
+       <a href="javascript:void(0)" data-action="clear">Sign Again</a>
+       <a href="javascript:void(0)" data-action="save"> Save Signature </a>
+      <!--<button class="button clear" data-action="clear">Clear</button>
+      <button class="button save" data-action="save">Save</button>-->
+    </div>
+  </div>
+</p>
+  <div class="field">
+    <%= f.hidden_field :signature_image %>
+  </div>
+  </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :AvResult %>
+    <%= f.text_field :av_result %>
+  </div>
+  <%= f.hidden_field :date_of_visit, :value => Date.today %>
+  <div class="field">
+    <%= f.label :TabRemark %>
+    <%= f.text_field :remark_tab %>
+  </div>
+  <div class="field">
+    <%= f.label :RemarkTeamLeader %>
+    <%= f.text_field :remark_team_leader %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class=> "btn btn-primary", :id => "create_survey", "data-action" => "d" %>
+  </div>
+<% end %>

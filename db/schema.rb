@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513024433) do
+ActiveRecord::Schema.define(version: 20140621075306) do
 
   create_table "assignments", force: true do |t|
     t.integer  "tab_id"
@@ -175,6 +175,7 @@ ActiveRecord::Schema.define(version: 20140513024433) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "signature_image"
+    t.string   "ease_of_location"
   end
 
   create_table "tabs", force: true do |t|
