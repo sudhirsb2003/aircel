@@ -36,11 +36,11 @@ footer {
           <a class="brand" href="/">Aircel VerifyMe</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-							<% if logged_in? && current_user.admin?   %>
-								<li><%= link_to 'Customers', customers_path %></li>						
-								<li><%= link_to "Generate Report", reports_path  %></li>
-								<li><%= link_to "Servey Detail", serveys_path  %></li>
-							<% end %>
+			  <% if logged_in? && current_user.admin?   %>
+				<li><%= link_to 'Customers', customers_path %></li>						
+				<li><%= link_to "Generate Report", reports_path  %></li>
+				<li><%= link_to "Servey Detail", serveys_path  %></li>
+			  <% end %>
             </ul>
 
 <% if logged_in? %>
@@ -76,7 +76,7 @@ footer {
 </ul>    
 <% end %>
 
-      </div>
+    </div>
    </div><!--/.nav-collapse -->
   </div>
  </div>

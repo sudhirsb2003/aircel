@@ -3,6 +3,6 @@ development:
   encoding: unicode
   database: airecel_development
   pool: 5
-  username: postgres
-  password: scorp
+  username: desidime
+  password: desidime123
 

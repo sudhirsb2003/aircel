@@ -2,9 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Aircel-Verify Me" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Aircel | Verify Me" %></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
@@ -13,7 +12,6 @@
     <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
     <%= javascript_include_tag "application" %>
-  </head>
 <style>
 footer {
     height: 50px;
@@ -23,74 +21,75 @@ footer {
 .navbar .btn-group .btn, .navbar .input-prepend .btn, .navbar .input-append .btn, .navbar .input-prepend .btn-group, .navbar .input-append .btn-group
 {width:auto;}
 </style>
-  <body style="font-size:12px;">
+  </head>
 
-    <div class="navbar navbar-fluid-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">Aircel VerifyMe</a>
-          <div class="container-fluid nav-collapse">
-            <ul class="nav">
-							<% if logged_in? && current_user.admin?   %>
-								<li><%= link_to 'Customers', customers_path %></li>						
-								<li><%= link_to "Generate Report", reports_path  %></li>
-								<li><%= link_to "Servey Detail", serveys_path  %></li>
-							<% end %>
+<body style="font-size:12px;">
+
+  <div class="navbar navbar-fluid-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="/">Aircel VerifyMe</a>
+
+        <div class="container-fluid nav-collapse">
+          <ul class="nav">
+            <% if logged_in? && current_user.admin?   %>
+              <li><%= link_to 'Customers', customers_path %></li>						
+              <li><%= link_to "Generate Report", reports_path  %></li>
+              <li><%= link_to "Servey Detail", serveys_path  %></li>
+            <% end %>
+          </ul>
+
+        <% if logged_in? %>
+          <div class="btn-group" style="float:right;margin-right:20px;">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <%= current_user.name %>
+            <b style="color:green">(Admin)</b>
+            <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu" role="menu">
+            <% if current_user.admin? %>  
+              <li><%= link_to "Tabs", tabs_path %></li>
+              <li><%= link_to "List users", users_path  %></li>
+              <li><%= link_to "Add Customer", new_customer_path %></li>    
+              <li><%= link_to "List Task on the tab", tab_tasks_path  %></li>      
+              <li><%= link_to "Accounts", accounts_path if logged_in? %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Signout" ,logout_path ,:method => :delete %></li>
+            <% else %> 
+              <li><%= link_to "Accounts", accounts_path if logged_in? %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Signout" ,logout_path ,:method => :delete %></li>
+            <% end %>
             </ul>
+          </div>
 
-<% if logged_in? %>
-<div class="btn-group" style="float:right;margin-right:20px;">
-<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-<%= current_user.name %>
-  <b style="color:green">(Admin)</b>
-  <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <% if current_user.admin? %>  
-        <li><%= link_to "Tabs", tabs_path %></li>
-        <li><%= link_to "List users", users_path  %></li>
-        <li><%= link_to "Add Customer", new_customer_path %></li>    
-        <li><%= link_to "List Task on the tab", tab_tasks_path  %></li>      
-        <li><%= link_to "Accounts", accounts_path if logged_in? %></li>
-        <li class="divider"></li>
-        <li><%= link_to "Signout" ,logout_path ,:method => :delete %></li>
-      <% else %> 
-        <li><%= link_to "Accounts", accounts_path if logged_in? %></li>
-        <li class="divider"></li>
-        <li><%= link_to "Signout" ,logout_path ,:method => :delete %></li>
-    <% end %>
-   </ul>
-<% else %>
-<div class="btn-group" style="float:right">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-    Login<span class="caret"></span>
-      </button>
-<ul class="dropdown-menu" role="menu">
-  <li><%= link_to "Sign-in", login_path %></li>
-  <li><%= link_to "New User?", signup_path %><li>
-</ul>    
-<% end %>
+          <% else %>
 
+          <div class="btn-group" style="float:right">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              Login<span class="caret"></span>
+            </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to "Sign-in", login_path %></li>
+            <li><%= link_to "New User?", signup_path %><li>
+          </ul>    
+        <% end %>
+         </div>
+
+        </div>
+       </div>
       </div>
-   </div><!--/.nav-collapse -->
-  </div>
- </div>
-</div>
 
-<div class="container-fluid">
-  <%= bootstrap_flash %>
-  <%= yield %>
-<hr>
+  <div class="container-fluid">
+    <%= bootstrap_flash %>
+    <%= yield %>
+  <!-- <hr> -->
+  </div> <!-- /container -->
 
-<footer style="text-align:center;">
-  Copyright &copy; <%= copyright_notice_year_range(2013) %> <%= link_to "Scorp, INC.", "http://www.scorpeo.in" %>  All Rights Reserved.
-</footer>
-
-</div> <!-- /container -->
-  </body>
 </html>

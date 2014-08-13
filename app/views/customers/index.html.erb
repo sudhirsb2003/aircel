@@ -1,12 +1,12 @@
 <style>
-.dataTables_wrapper{width:980px;}
+.dataTables_wrapper{width:auto;}
 label {
     font-size: 13px;
     padding: 0 40px 5px;
 }
 </style>
-<strong style="float:right"> <%= link_to "Add Customer", new_customer_path %> </strong>
-<strong>Import Customers</strong><hr>
+<strong style="float:right"> <%= link_to "Add Customer", new_customer_path, :class=>"btn btn-info" %> </strong>
+<strong>Import Customers</strong>
 <table><%= form_tag import_customers_path, multipart: true do %>
     <tr><td><%= file_field_tag :file %><br></td></tr>
     <tr><td><%= submit_tag "Upload Customers", class: 'btn btn-danger' %></td></tr>
@@ -37,13 +37,13 @@ label {
         <td><%= link_to customer.applicant_name, customer %></td>
         <td><%= customer.pincode %></td>
         <td><% if customer.status == 'verified' %>
-        <span class="label label-success"><%= customer.status %></span></td>
+        <span class="badge"><%= customer.status %></span></td>
          <% elsif customer.status == 'completed' %>
-        <span class="label label-danger"><%= customer.status %></span></td>
+        <span class="badge"><%= customer.status %></span></td>
          <% elsif customer.status == 'submitted' %>
-        <span class="label label-warning"><%= customer.status %></span></td>
+        <span class="badge"><%= customer.status %></span></td>
          <% else %>
-        <span class="label label-info"><%= customer.status %></span></td>
+        <span class="badge"><%= customer.status %></span></td>
          <% end %>
       </tr>
     <% end %>

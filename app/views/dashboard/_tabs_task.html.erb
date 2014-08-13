@@ -1,12 +1,20 @@
-<table class="table table-condensed table-bordered table-striped">
+<table class="table table-condensed table-bordered" style="width:900px;">
 <tr>
 	<th> Tab Name </th>
 	<th> Number of task </th>
+	<th style="text-align:center"> Status </th>
 </tr>
 <% Tab.all.includes(:assignments).each do |t| %>
 <tr>
 	<td><%= t.name %></td>
-	<td><%= t.assignments.includes(:assignments).count %></td>
+	<td><a style = "color:gray">Total : <%= t.assignments.includes(:assignments).count %></a></td>
+	    <td>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	     <a style = "color:maron">Pending : &nbsp;&nbsp;<%= pending_task_on_tab(t).count %></a>&nbsp;&nbsp; | 
+         <a style = "color:maron">Submitted : &nbsp;&nbsp;<%= submitted_task_on_tab(t).count %></a>&nbsp;&nbsp; | 
+	     <a style = "color:maron">In Progress :&nbsp;&nbsp;<%= in_progress_task_on_tab(t).count %></a>&nbsp;&nbsp; |   
+	     <a style = "color:maron">verified :&nbsp;&nbsp;<%= verified_task_on_tab(t).count %></a>
+	</td>
 </tr>
 <% end %>
 <table>

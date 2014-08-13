@@ -1,31 +1,43 @@
-<div id ="sidebar">
-<p>
-<% if @user.photo? %>
-  <%= image_tag @user.photo.url(:medium) %>
-<% end %>
-</p>
+<style>
+artilce {width: auto;}
+.left {
+
+    float: left;
+    width: 30%;
+}
+
+.right {
+    margin-left: 35%;
+    width: 60%;
+}
+</style>
+
+
+<div class="left">
+    <% if @user.photo? %>
+      <%= image_tag @user.photo.url(:medium) %>
+    <% else %>
+      <%= image_tag('avatar.jpg') %>
+    <% end %>
+
+  <h5 style="color:orange;text-transform:uppercase;font-weight:1000px;">
+    <%= @user.name %> | <%= link_to 'Edit', edit_user_path(@user) %>
+  </h5>
+  
+<!--   <%# if @user.tab.present? %>
+    <p>Tab Name:  <%#= @user.tab.name %></p>
+  <%# else !@user.admin? %>
+    <%#= form_for User.find(@user) do |tab| %>
+     <%#= tab.collection_select :tab_id, @array_without_excluded_ids, :id, :name, prompt: true %>
+     <%#= tab.submit :class=>"btn btn-warning" %>
+    <%# end %>
+  <%# end %>
+ -->
 </div>
 
-
-<b style="font-size:20px;color:orange;text-transform:uppercase;"><%= @user.name %></b>
-(<%= link_to 'edit', edit_user_path(@user) %>)
-<% if @user.tab.present? %>
-  <h6>Tab Name:  <%= @user.tab.name %></h6>
-<% else !@user.admin? %>
-  <%= form_for User.find(@user) do |tab| %>
-   <%= tab.collection_select :tab_id, @array_without_excluded_ids, :id, :name, prompt: true %>
-   <%= tab.submit :class=>"btn btn-warning" %>
-  <% end %>
-<% end %>
-
-<hr>
-
-<table class="table table-striped table-condesed table-bordered">
-<tr>
-  <td>Username:</td>
-  <td><%= @user.username %></td>
-</td>
-
+<div class="right">
+<h5 style="background:silver;padding:5px;color:white;text-align:center;"> Employee Detail</h5>
+<table class="table table-condesed">
 <tr>
   <td>Address:</td>
   <td><%= @user.address %></td>
@@ -35,10 +47,26 @@
   <td>Employee uid:</td>
   <td><%= @user.employee_uid %></td>
 </tr>
+
+<% if @user.tab.present? %>
+<tr>
+  <td>Tab Name: </td>
+  <td><%= @user.tab.name %></td>
+</tr>
+<% else !@user.admin? %>
+<tr>
+    <%= form_for User.find(@user) do |tab| %>
+     <td><%= tab.collection_select :tab_id, @array_without_excluded_ids, :id, :name, prompt: true %></td>
+     <td><%= tab.submit :class=>"btn btn-warning" %></td>
+    <% end %>
+</tr>
+<% end %>
 </table>
 
+<h5 style="background:silver;padding:5px;color:white;text-align:center;"> Verifications List </h5>
+
 <% if @user.tab && !@user.admin? %>
-<table class="table table-condensed table-striped table-bordered">
+<table class="table table-condensed">
  <tr>
    <th> Applicant Name </th>
    <th> Status </th>
@@ -56,3 +84,4 @@
 <% end %>
 </table>
 <% end %>
+</div>
